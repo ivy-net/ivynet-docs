@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
         Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
         description: (
             <>
-                While the IvyNet client focuses on automation and ease of use, you retain full control over your node. This means every decision is made by you, on your hardware, with your stake.
+                While the IvyNet client focuses on reliability and ease of use, you retain full control over your node. This means every decision is made by you, on your hardware, with your stake.
             </>
         ),
     },

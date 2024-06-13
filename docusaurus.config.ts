@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
     title: 'IvyNet',
-    tagline: 'Compute Restaking Middleware to make Node Operators more profitable',
+    tagline: 'Easy and reliable restaking middleware',
     favicon: 'img/favicon.ico',
 
     // Set the production url of your site here
@@ -40,14 +40,14 @@ const config: Config = {
                     editUrl:
                         'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
-                blog: false,
-                //  {
-                //   showReadingTime: true,
-                //   // Please change this to your repo.
-                //   // Remove this to remove the "edit this page" links.
-                //   editUrl:
-                //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-                // },
+                blog: //false,
+                 {
+                  showReadingTime: true,
+                  // Please change this to your repo.
+                  // Remove this to remove the "edit this page" links.
+                  editUrl:
+                    'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                },
                 theme: {
                     customCss: './src/css/custom.css',
                 },
@@ -70,6 +70,8 @@ const config: Config = {
                     position: 'left',
                     label: 'Client',
                 },
+                //Enable for future blog posts - standards blogs
+                // {to: '/blog', label: 'Blog', position: 'right'},
                 {
                     type: 'docSidebar',
                     sidebarId: 'devnetSidebar',
