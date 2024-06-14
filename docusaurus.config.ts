@@ -41,12 +41,12 @@ const config: Config = {
                         'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 blog: //false,
-                 {
-                  showReadingTime: true,
-                  // Please change this to your repo.
-                  // Remove this to remove the "edit this page" links.
-                  editUrl:
-                    'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                {
+                    showReadingTime: true,
+                    // Please change this to your repo.
+                    // Remove this to remove the "edit this page" links.
+                    editUrl:
+                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 theme: {
                     customCss: './src/css/custom.css',
@@ -65,19 +65,25 @@ const config: Config = {
             },
             items: [
                 {
-                    type: 'docSidebar',
-                    sidebarId: 'clientSidebar',
-                    position: 'left',
-                    label: 'Client',
+                    to: "docs/intro",
+                    label: "Overview",
+                    position: "left",
+                    activeBasePath: '/docs/',
                 },
-                //Enable for future blog posts - standards blogs
-                // {to: '/blog', label: 'Blog', position: 'right'},
                 {
-                    type: 'docSidebar',
-                    sidebarId: 'devnetSidebar',
-                    position: 'left',
-                    label: 'DevNet',
+                    to: "docs/client/ClientExplanation",
+                    label: "Client",
+                    position: "left",
+                    activeBasePath: 'docs/client/',
                 },
+                {
+                    to: "docs/devnet/devnetExplanation",
+                    label: "Devnet",
+                    position: "left",
+                    activeBasePath: 'docs/devnet/',
+                },
+                // Enable for future blog posts - standards blogs
+                { to: '/blog', label: 'Blog', position: 'right' },
                 {
                     href: 'https://github.com/ivy-net/',
                     label: 'GitHub',
