@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Ivynet API Specification (Draft)
 
-<https://api.ivynet.dev/v1/>
+https://api.ivynet.dev/v1/
 
 ## Status Codes
 
