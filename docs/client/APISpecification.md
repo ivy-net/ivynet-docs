@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Ivynet API Specification (Draft)
 
-https://api.ivynet.dev/v1/
+<https://api.ivynet.dev/v1/>
 
 ## Status Codes
 
@@ -28,7 +28,7 @@ https://api.ivynet.dev/v1/
 `500` Internal Server Error Something went wrong<br />
 `503` Service Unavailable Your connection is being throttled or the service is down for maintenance<br />
 
-# Endpoints
+## Endpoints
 
 ## Client
 
@@ -449,7 +449,7 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
 
 Operator specific information like information about their delegation, currently registered avs count,
 
-### Get AVS Rewards Rate
+### Get Delegated Stake
 
 **Endpoint:** `/operator/stake/{operator_address}`
 

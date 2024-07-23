@@ -71,7 +71,7 @@ This will start the ivynet daemon over a unix domain socket, located at `${HOME}
 
 `ivynet avs select <AVS> <CHAIN>`
 
-This will select your chosen AVS on the daemon. Having select be separated from setup allows multiple AVS's to be prepared for. 
+This will select your chosen AVS on the daemon. Having select be separated from setup allows multiple AVS's to be prepared for.
 
 Example:
 `ivynet avs select eigenda holesky`
@@ -86,7 +86,7 @@ This will direct the daemon to boot up the previously selected AVS node.
 
 `ivynet avs optin <AVS> <CHAIN>`
 
-After your node is fully running, you're not actually validating the AVS. Instead, you have to register onchain in order for the AVS to start passing your node information. An operator never wants to opt in to validating an AVS before the node is fully deployed, however, because this could lead to slashing risk. 
+After your node is fully running, you're not actually validating the AVS. Instead, you have to register onchain in order for the AVS to start passing your node information. An operator never wants to opt in to validating an AVS before the node is fully deployed, however, because this could lead to slashing risk.
 
 Example:
 `ivynet avs optin eigenda holesky`
