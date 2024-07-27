@@ -6,6 +6,10 @@ sidebar_position: 3
 
 The following is documentation of the various commands that can be called from the Ivynet CLI:
 
+Mandatory Arguments: `<ARG>` <br />
+Optional Arguments: `[ARG]` <br />
+Options: `--option` <br />
+
 ## Init
 
 Initialize the `ivyconfig.toml` file and perform first-time setup of the ivynet cli.
@@ -20,7 +24,28 @@ Manage the `ivyconfig.toml` file (located in `~/.ivynet/`), which is used for ba
 **Usage:**
 `ivynet config <OP>`
 
-//TODO: all commands and their explanation
+- `import-key <PRIVATE_KEY> [KEYNAME] [PASSWORD]`
+  - Import and save as your default Ethereum private key with a password
+- `create-key [KEYNAME] [PASSWORD] --store`
+  - Create an Ethereum private key to use with Ivynet and optionally store it with a name and password
+- `get-default-public`
+  - Get the current default saved keypair's Ethereum address
+- `get-default-private`
+  - Get the current default saved private key
+- `set-rpc <CHAIN> <RPC_URL>`
+  - Set default URLs to use when connecting to 'mainnet', 'holesky', and 'local' RPC urls
+- `get-rpc <CHAIN>`
+  - Get the current default RPC URL for 'mainnet', 'holesky', or 'local'
+- `set-metadata [METADATA_URI] [LOGO_URI] [FAVICON_URI]`
+  - Set metadata for EigenLayer Operator
+- `get-metadata`
+  - Get local metadata
+- `get-config`
+  - Get all config data
+- `get-sys-info`
+  - Get system information
+- `register --email <EMAIL> --password <PASSWORD>`
+  - Register node on IvyNet server
 
 ## Operator
 

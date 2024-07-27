@@ -5,7 +5,7 @@ sidebar_position: 1
 # IvyNet Overview
 
 ### The Problem
-The operational complexity of providing computing power to networks within restaking ecosystems has grown significantly relative to the status quo of Proof-of-Stake Layer 1 blockchains. Node operators are already having problems with the complexities introduced with restaking, including having to be constantly aware of minor upgrades, slashing risks, profitability, and many other intricacies on many orders of magnitude more systems. Simply put, with restaking's ability to lower the barriers of entry to building decentralized systems, many more hybrid-chains and dapp-chains will come online, and the complexity will quickly become unmanageable without an appropriate scaling solution.
+The operational complexity of providing computing power to networks within restaking ecosystems has grown significantly relative to the status quo of Proof-of-Stake Layer 1 blockchains. Node operators are already having problems with the complexities introduced with restaking, including having to be constantly aware of minor upgrades, slashing risks, profitability, and many other intricacies on many orders of magnitude more systems. Simply put, with restaking's ability to lower the barriers of entry to building decentralized systems, many more hybrid-chains, dapp-chains, and super dapps will come online, and the complexity will quickly become unmanageable without an appropriate scaling solution.
 
 
 ### The Solution - IvyNet

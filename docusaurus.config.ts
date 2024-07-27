@@ -83,7 +83,7 @@ const config: Config = {
                     activeBasePath: 'docs/devnet/',
                 },
                 // Enable for future blog posts - standards blogs
-                { to: '/blog', label: 'Blog', position: 'right' },
+                // { to: '/blog', label: 'Blog', position: 'right' },
                 {
                     href: 'https://github.com/ivy-net/',
                     label: 'GitHub',

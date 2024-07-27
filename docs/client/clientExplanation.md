@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Ivynet Platform Introduction
+# Introduction
 
 IvyNet is designed to simplify monitoring, deployment, and profitability operations for node operators, allowing them to focus on managing their hardware, virtual environments, and delegated stake while retaining full control of the entire process. 
 
