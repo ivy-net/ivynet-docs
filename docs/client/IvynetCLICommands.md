@@ -54,7 +54,19 @@ Manage the eigenlayer operator. This namespace includes both query actions for o
 **Usage:**
 `ivynet operator <OP> <CHAIN> <OTHER_FIELDS>`
 
-//TODO: all commands and their explanation
+- `get`
+  - `details`
+    - Get operator details for loaded operator with an optional `<<ADDRESS>>` argument for operator lookups
+  - `shares`
+    - Get an operator's total shares per strategy - including 0 share strategies - with an optional `<<ADDRESS>>` argument for operator lookups
+  - `delegatable-shares`
+    - Get an operator's total delegatable shares per strategy usable for restaking with an optional `<<ADDRESS>>` argument for operator lookups
+
+- `set`
+  - `ecdsa-keyfile`
+    - Set the operator's ECDSA keyfile to be used in the Ivynet Client
+  - `bls-keyfile`
+    - Set the operator's BLS keyfile to be used in AVS operations
 
 ## Avs
 
