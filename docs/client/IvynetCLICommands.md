@@ -56,11 +56,11 @@ Manage the eigenlayer operator. This namespace includes both query actions for o
 
 - `get`
   - `details`
-    - Get operator details for loaded operator with an optional `<<ADDRESS>>` argument for operator lookups
+    - Get operator details for loaded operator with `[ADDRESS]` argument for operator lookups
   - `shares`
-    - Get an operator's total shares per strategy - including 0 share strategies - with an optional `<<ADDRESS>>` argument for operator lookups
+    - Get an operator's total shares per strategy - including 0 share strategies - with `[ADDRESS]` argument for operator lookups
   - `delegatable-shares`
-    - Get an operator's total delegatable shares per strategy usable for restaking with an optional `<<ADDRESS>>` argument for operator lookups
+    - Get an operator's total delegatable shares per strategy usable for restaking with `[ADDRESS]` argument for operator lookups
 
 - `set`
   - `ecdsa-keyfile`
