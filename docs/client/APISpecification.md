@@ -414,7 +414,10 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
         "disk": 60000000000, //60gb
         "bandwidth": 5000000000, //5gbps - not specified by lagrange, taken from EigenLayer node classes
     },
-    "stake": {}, //TODO: Quorum stuff - unsure about breakdown
+    "stake": { //EigenDA example - 2 quorums
+        "0": 1000000000000000000, //Eigen Token needed with decimals
+        "1": 13000000000000000000 // LST restaked or native restaked ETH
+    },
     "allowlist": true,
   }
 }

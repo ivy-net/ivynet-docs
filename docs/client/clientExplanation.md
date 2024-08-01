@@ -6,7 +6,7 @@ sidebar_position: 1
 
 IvyNet is designed to simplify monitoring, deployment, and profitability operations for node operators, allowing them to focus on managing their hardware, virtual environments, and delegated stake while retaining full control of the entire process. 
 
-**TODO: More formal diagram - placeholder**
+<!-- **TODO: More formal diagram - placeholder** -->
 
 ![Docs Version Dropdown](./imgs/IvyNetPlatformOverciew.png)
 
@@ -28,6 +28,6 @@ The user interface is an easy to use webpage that gives a complete overview of y
 * **Actively Validated Services (AVS) Overview**: View all available AVS options and their deployment requirements tailored to your delegated stake. Look for new nodes to run on your idle hardware, or gather requirements for new servers to deploy.
 * **Profitability Metrics**: Analyze historical and projected profitability metrics to optimize profitability to make sure you're maximizing your return on compute.
 
-**TODO: Picture of mock interface?**
+<!-- **TODO: Picture of mock interface?** -->
 
 IvyNet is built to make node operator's lives easier while retaining as much control as the operator demands, whether that is approval on every single decision the client makes, to automated switching of deployed nodes to a new AVS for higher profitability. 

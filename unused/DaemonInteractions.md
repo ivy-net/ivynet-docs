@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Interacting with the Ivy Daemon
 
-TODO: Go over this doc
+<!-- Unincluded for now. No reason explain these endpoints for now. -->
 
 The Ivynet service exposes a GRPC interface for interacting with the daemon, which can be used either via the Ivynet CLI or through GRPC actions directly. Examples are presented using [GRPCurl](https://github.com/fullstorydev/grpcurl)
 
