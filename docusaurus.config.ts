@@ -5,10 +5,10 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
     title: 'IvyNet',
     tagline: 'Easy and reliable restaking middleware',
-    favicon: 'img/favicon.ico',
+    favicon: 'img/ivy_favicon.png',
 
     // Set the production url of your site here
-    url: 'https://your-docusaurus-site.example.com',
+    url: 'https://docs.ivynet.dev',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
@@ -38,7 +38,7 @@ const config: Config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/ivy-net',
                 },
                 blog: //false,
                 {
@@ -46,7 +46,7 @@ const config: Config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                        'https://github.com/ivy-net',
                 },
                 theme: {
                     customCss: './src/css/custom.css',
@@ -61,7 +61,7 @@ const config: Config = {
             title: 'IvyNet Docs',
             logo: {
                 alt: 'IvyNet Logo',
-                src: 'img/logo.svg',
+                src: 'img/ivylogodark.png',
             },
             items: [
                 {
@@ -111,8 +111,8 @@ const config: Config = {
                             href: 'https://ivynet.dev',
                         },
                         {
-                            label: 'Twitter - Coming Soon',
-                            href: 'https://ivynet.dev/',
+                            label: 'X/Twitter',
+                            href: 'https://x.com/ivynet_dev/',
                         },
                     ],
                 },
