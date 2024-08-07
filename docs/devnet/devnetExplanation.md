@@ -12,6 +12,7 @@ That is especially true when working on Modular POS Network solutions.
 There are layers of smart contracts involved.
 Every Modular POS application requires a set of restaking protocol smart contracts deployed first.
 Additionally, those solutions have important off-chain components which also need to be deployed.
+Testing a complex product with components and dependencies developed at various tempos is a hard task, especially if done without a private environment bound to a CI/CD pipeline.
 
 ## IV1
 
