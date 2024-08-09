@@ -7,7 +7,7 @@ sidebar_position: 2
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5OjIVZAWAfA?si=F7cevth7rrhXowbk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br />
 
-MVP coming soon! Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our alpha testing group.
+MVP coming soon! Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our closed alpha group.
 
 ## Setup and Configuration
 
