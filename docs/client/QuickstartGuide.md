@@ -17,38 +17,38 @@ The following assumes that the ivynet has been installed and is available in the
 
 `ivynet init`
 
-Initialize the Ivnet directory and configuration file. The configuration file can be found at `${HOME}/.ivynet/ivyconfig.toml` and can be configured manually or through `ivynet init` interactive mode. Sensible defaults are provided for newly generated `ivyconfig.toml` files created via 'empty' mode.
+Initialize the Ivynet directory and configuration file. The configuration file can be found at `${HOME}/.ivynet/ivy-config.toml` and can be configured manually or through `ivynet init` interactive mode. Sensible defaults are provided for newly generated `ivy-config.toml` files created via 'empty' mode.
 
 ### Configure a private key
 
 If not already done through interactive mode in the `init` command, configure the private key for the ECDSA account that will be used to sign transactions.
 
-**Import a private key:**
+**Import a private ecdsa key:**
 
-`ivynet config import-key <PRIVATE_KEY> [KEYNAME] [PASSWORD]`
+`ivynet key import ecdsa <PRIVATE_KEY> [KEYNAME] [PASSWORD]`
 
-This will import the private key into the `ivyconfig.toml` file and create public and private keystore files in the `.ivynet` directory. Private and public keystore files are named `${KEYNAME}.json` and `${KEYNAME}.txt` respectively, and the private keystore file is encrypted with the provided password. Additionally, a `${KEYNAME}.legacy.json` file is created for backwards compatibility with AVS types which expect legacy keystore formats.
+This will import the private key into the `ivy-config.toml` file and create public and private keystore files in the `.ivynet` directory. Private and public keystore files are named `${KEYNAME}.json` and `${KEYNAME}.txt` respectively, and the private keystore file is encrypted with the provided password. Additionally, a `${KEYNAME}.legacy.json` file is created for backwards compatibility with AVS types which expect legacy keystore formats.
 
 Example:
-`ivynet config import-key 0x00..01 mykey mypassword`
+`ivynet key import ecdsa 0x00..01 mykey mypassword`
 
 **Alternatively, create a new keypair:**
 
-`ivynet config create-key <STORE> [KEYNAME] [PASSWORD]`
+`ivynet key create ecdsa <STORE> [KEYNAME] [PASSWORD]`
 
 Where `[KEYNAME]` and `[PASSWORD]` behave as above, and `[STORE]` is a boolean flag which store the keypair with the above format if true, or simply return the private and public keypair to the console if false.
 
 Example:
-`ivynet config create-key --store mykey mypassword`
+`ivynet key create ecdsa --store mykey mypassword`
 
 ### Configure RPC endpoints
 
-If not already done through interactive mode in the `init` command, configure the RPC endpoints for supported networks (currently Mainnet and Holesky). This can be done by editing the `mainnet_rpc_url` and `holesky_rpc_url` fields in the `ivyconfig.toml` file, or by running the following commands:
+If not already done through interactive mode in the `init` command, configure the RPC endpoints for supported networks (currently Mainnet and Holesky). This can be done by editing the `mainnet_rpc_url` and `holesky_rpc_url` fields in the `ivy-config.toml` file, or by running the following commands:
 
-`ivynet config set-rpc <CHAIN> <RPC_URL>`
+`ivynet config set rpc <CHAIN> <RPC_URL>`
 
 Example:
-`ivynet config set-rpc mainnet https://rpc.flashbots.net`
+`ivynet config set rpc mainnet https://rpc.flashbots.net`
 
 Valid CHAIN values are `mainnet` and `holesky`.
 
@@ -82,9 +82,9 @@ Example:
 
 This will direct the daemon to boot up the previously selected AVS node.
 
-### Opt In
+### Register
 
-`ivynet avs optin <AVS> <CHAIN>`
+`ivynet avs register`
 
 After your node is fully running, you're not actually validating the AVS. Instead, you have to register onchain in order for the AVS to start passing your node information. An operator never wants to opt in to validating an AVS before the node is fully deployed, however, because this could lead to slashing risk.
 
