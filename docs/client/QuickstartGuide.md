@@ -78,9 +78,9 @@ Example:
 
 ### Start your AVS
 
-`ivynet avs start`
+`ivynet avs start` or `ivynet avs start --avs <AVS> --chain <CHAIN>`
 
-This will direct the daemon to boot up the previously selected AVS node.
+This will direct the daemon to boot up the previously selected AVS node, or bypass the select step to boot up immediately. 
 
 ### Opt In
 
@@ -90,3 +90,9 @@ After your node is fully running, you're not actually validating the AVS. Instea
 
 Example:
 `ivynet avs optin eigenda holesky`
+
+### OPTIONAL: Attach to existing deployment
+
+`ivynet avs attach` or `ivynet avs attach --avs <AVS> --chain <CHAIN>`
+
+This command will allow you to attach to an existing deployment. Upon attachment, it will check for appropriate node size based on your stake, check your avs version is up to date, and will allow for health metrics and error monitoring. Unfortunately, we do not have the ability to modify, ie update, existing custom deployments (yet).

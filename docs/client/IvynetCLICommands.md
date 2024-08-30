@@ -82,6 +82,7 @@ Supported operations:
 - `register`: Register for the specified AVS. This will use the stored keypair from the `ivyconfig.toml` file to register as part of the active set of operators for the AVS.
 - `unregister`: Unregister from the specified AVS. This will use the stored keypair from the `ivyconfig.toml` file drop out of the active set of operators for the AVS.
 - `start`: Start the specified AVS. This will run the AVS in the background in a docker container.
+- `attach`: Attach to a specified avs. This will allow the node to be seen on the interface, but doesn't allow for avs upgrades as Ivynet cannot yet upgrade personalized node setups.
 - `stop`: Stop the specified AVS. This will stop the AVS and close its docker container.
 
 Supported AVSes:

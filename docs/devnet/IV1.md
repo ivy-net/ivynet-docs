@@ -1,26 +1,15 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Introduction to IV1
+# IV1 - EigenLayer
 
-## Challenges of Modular POS Networks development
-Foundry and HardHat are great development environments for preparing Ethereum smart contracts.
-Public TestNets are a good tool to share your work with others.
-But jumping from a developer's laptop into a public network might not be the right move.
-That is especially true when working on Modular POS Network solutions.
-There are layers of smart contracts involved.
-Every Modular POS application requires a set of restaking protocol smart contracts deployed first.
-Additionally, those solutions have important off-chain components which also need to be deployed.
-Testing a complex product with components and dependencies developed at various tempos is a hard task, especially if done without a private environment bound to a CI/CD pipeline.
-
-## IV1
-
-[IV1](https://github.com/ivy-net/iv1) is the local Ethereum test/dev network dedicated to EigenLayer and other restaking protocols in the future.
+[IV1](https://github.com/ivy-net/iv1) is a local Ethereum test/dev network dedicated to EigenLayer.
 It is based on the [POS DevNet](https://github.com/ivy-net/eth-pos-devnet) repository but extended by an automatic deployment of the EigenLayer contracts.
 The repository also contains a library of AVS (EigenLayer Modular POS Network) scenarios.
 
 ## Scenarios review
+
 The simplest scenario deploys the POS DevNet and adds EigenLayer smart contracts.
 The contracts are deployed from a prearranged Docker image.
 This method is cleaner than messing with the genesis block of an Anvil-based network.
