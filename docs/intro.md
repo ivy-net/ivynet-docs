@@ -9,6 +9,6 @@ The operational complexity of providing computing power to networks within resta
 
 
 ### The Solution - IvyNet
-IvyNet is a compute restaking middleware designed to empower decentralized node operators in maximizing the value of their resources within shared cryptoeconomic security systems, most notably, restaking protocols. With a focus on filling in the gap between node operators and the decentralized services they'll be running, IvyNet can increase productivity for node operators while allowing them to no longer put man hours into non-differentitating processes like deploying a specific AVS. Instead, they'll be able to focus on what sets their operators apart.
+IvyNet is a restaking middleware designed to empower decentralized node operators in maximizing the value of their resources within shared cryptoeconomic security systems, most notably, restaking protocols. With a focus on filling in the gap between node operators and the decentralized services they'll be running, IvyNet can increase productivity for node operators while allowing them to no longer put man hours into non-differentiating processes like deploying a specific AVS. Instead, they'll be able to focus on what sets their operators apart.
 
-For an in depth explanation of the problem and how we're solving it, please read our [whitepaper](https://docsend.com/view/y8rinpf4i5uujntu)!
+For an in depth explanation of the problem and how we're solving it, stay tuned for the release of our whitepaper!
