@@ -77,7 +77,7 @@ const config: Config = {
                     activeBasePath: 'docs/client/',
                 },
                 {
-                    to: "docs/devnet/devnetExplanation",
+                    to: "docs/devnet/Introduction",
                     label: "Devnet",
                     position: "left",
                     activeBasePath: 'docs/devnet/',
