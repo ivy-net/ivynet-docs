@@ -6,102 +6,158 @@ sidebar_position: 3
 
 The following is documentation of the various commands that can be called from the Ivynet CLI:
 
-Mandatory Arguments: `<ARG>` <br />
-Optional Arguments: `[ARG]` <br />
-Options: `--option` <br />
+Mandatory Arguments: `<ARG>`  
+Optional Arguments: `[ARG]`  
+Options: `--option`  
+
+## Global Options
+
+The following options can be used with any command:
+
+- `--network <CHAIN>`: The network to connect to: mainnet, holesky, local (default: "holesky")
+- `--server-url <URL>`: IvyNet servers Uri for communication (default: "https://api1.test.ivynet.dev:50050" in production, "http://localhost:50050" in debug)
+- `--server-ca <PATH>`: IvyNet server certificate path
+- `--log-level <LEVEL>`: Set the verbosity level for logs (default: INFO)
 
 ## Init
 
 Initialize the `ivyconfig.toml` file and perform first-time setup of the ivynet cli.
 
-**Usage:**
+**Usage:**  
 `ivynet init`
 
 ## Config
 
-Manage the `ivyconfig.toml` file (located in `~/.ivynet/`), which is used for base configuraction for the CLI and downstream AVS instances. This allows for piecemeal modification of the setup step done on init.
+Manage the `ivyconfig.toml` file (located in `~/.ivynet/`), which is used for base configuration for the CLI and downstream AVS instances.
 
-**Usage:**
-`ivynet config <OP>`
+**Usage:**  
+`ivynet config <COMMAND>`
 
-- `import-key <PRIVATE_KEY> [KEYNAME] [PASSWORD]`
-  - Import and save as your default Ethereum private key with a password
-- `create-key [KEYNAME] [PASSWORD] --store`
-  - Create an Ethereum private key to use with Ivynet and optionally store it with a name and password
-- `get-default-public`
-  - Get the current default saved keypair's Ethereum address
-- `get-default-private`
-  - Get the current default saved private key
-- `set-rpc <CHAIN> <RPC_URL>`
+Commands:
+
+- `set rpc <CHAIN> <RPC_URL>`
   - Set default URLs to use when connecting to 'mainnet', 'holesky', and 'local' RPC urls
-- `get-rpc <CHAIN>`
-  - Get the current default RPC URL for 'mainnet', 'holesky', or 'local'
-- `set-metadata [METADATA_URI] [LOGO_URI] [FAVICON_URI]`
+- `set metadata [METADATA_URI] [LOGO_URI] [FAVICON_URI]`
   - Set metadata for EigenLayer Operator
-- `get-metadata`
+- `set server_url <URL>`
+  - Set backend server connection url
+- `set server_ca <PATH>`
+  - Set backend server certificate
+- `set identity_key <KEY>`
+  - Set backend connection identity key
+- `get rpc <CHAIN>`
+  - Get the current default RPC URL for 'mainnet', 'holesky', or 'local'
+- `get metadata`
   - Get local metadata
-- `get-config`
+- `get config`
   - Get all config data
-- `get-sys-info`
+- `get sys-info`
   - Get system information
-- `register --email <EMAIL> --password <PASSWORD>`
-  - Register node on IvyNet server
+- `get backend`
+  - Get backend connection information
 
-## Operator
+## Key
 
-Manage the eigenlayer operator. This namespace includes both query actions for operator status of various accounts, as well as management of the operator status of the account's Ethereum address. For write actions, including register, this namespace will use the ECDSA keypair stored in the `ivyconfig.toml` file to sign transactions.
+Manage ECDSA and BLS keys for the operator.
 
-**Usage:**
-`ivynet operator <OP> <CHAIN> <OTHER_FIELDS>`
+**Usage:**  
+`ivynet key <COMMAND>`
 
+Commands:
+
+- `import`
+  - Import an existing ECDSA or BLS key
+  - Supports importing from folder, file, private key, or mnemonic (ECDSA only)
+- `create`
+  - Create a new ECDSA or BLS private key
 - `get`
+  - Get information about stored keys
 
-  - `details`
-    - Get operator details for loaded operator with `[ADDRESS]` argument for operator lookups
-  - `shares`
-    - Get an operator's total shares per strategy - including 0 share strategies - with `[ADDRESS]` argument for operator lookups
-  - `delegatable-shares`
-    - Get an operator's total delegatable shares per strategy usable for restaking with `[ADDRESS]` argument for operator lookups
-
-- `set`
-  - `ecdsa-keyfile`
-    - Set the operator's ECDSA keyfile to be used in the Ivynet Client
-  - `bls-keyfile`
-    - Set the operator's BLS keyfile to be used in AVS operations
-
-## Avs
+## AVS
 
 Setup, run, and manage AVS instances.
 
-**Usage:**
-`ivynet avs <OP> <AVS> <CHAIN>`
+**Usage:**  
+`ivynet avs <COMMAND> [OPTIONS]`
 
-Supported operations:
+Commands:
 
-- `setup`: Run the setup script for the specified AVS. This includes downloading files necessary for the AVS to run, as well as setting up the AVS environment variables.
-- `select`: Select the AVS to run in the background service
-- `register`: Register for the specified AVS. This will use the stored keypair from the `ivyconfig.toml` file to register as part of the active set of operators for the AVS.
-- `unregister`: Unregister from the specified AVS. This will use the stored keypair from the `ivyconfig.toml` file drop out of the active set of operators for the AVS.
-- `start`: Start the specified AVS. This will run the AVS in the background in a docker container.
-- `attach`: Attach to a specified avs. This will allow the node to be seen on the interface, but doesn't allow for avs upgrades as Ivynet cannot yet upgrade personalized node setups.
-- `stop`: Stop the specified AVS. This will stop the AVS and close its docker container.
+- `setup <AVS> <CHAIN>`: Run the setup script for the specified AVS
+- `select <AVS> <CHAIN>`: Select the AVS to run in the background service
+- `register`: Register for the specified AVS
+- `unregister`: Unregister from the current AVS
+- `start [AVS] [CHAIN]`: Start the specified AVS (or current if not specified)
+- `attach [AVS] [CHAIN]`: Attach to a specified AVS
+- `stop`: Stop the current AVS
+- `info`: Get information about the current AVS status
 
-Supported AVSes:
+Supported AVSes in DEMO:
 
 - `eigenda` - EigenDA
-- `altlayer` - AltLayer MACH (Whitelist)
-- `lagrange` - LaGrange ZK Prover (Whitelist)
 
-Supported chains:
+Supported chains in DEMO:
 
-- `mainnet` - Ethereum Mainnet
+<!-- - `mainnet` - Ethereum Mainnet -->
 - `holesky` - Holesky Testnet
 
-Registration steps: <br />
-`ivynet operator register holesky` - Register the operator for Eigenlayer on the holesky chain <br />
-`ivynet avs register eigenda holesky` - Register for the Eigenda AVS on the holesky chain
+## Serve
 
-**Usual AVS Deployment Flow:**
+Start the Ivynet service.
 
-`setup` -> `select` -> `start` -> `register`
-Opt in only after you've got the node fully deployed and running
+**Usage:**  
+`ivynet serve [OPTIONS]`
+
+Options:
+
+- `--avs <AVS>`: AVS to start with (requires --chain)
+- `--chain <CHAIN>`: Chain to use (requires --avs)
+
+## Register
+
+Register this node on IvyNet server.
+
+**Usage:**  
+`ivynet register --email <EMAIL> --password <PASSWORD>`
+
+Options:
+
+- `--email <EMAIL>`: Email address registered at IvyNet portal
+- `--password <PASSWORD>`: Password to IvyNet account
+
+## Operator
+
+View and manage operator information.
+
+**Usage:**  
+`ivynet operator get <COMMAND>`
+
+Commands:
+
+- `details`: Get operator details
+- `shares`: Get operator's total shares per strategy
+- `delegatable-shares`: Get operator's delegatable shares per strategy
+
+## Common Workflows
+
+### AVS Registration Flow:
+
+1. Initialize Ivynet:  
+   `ivynet init`
+2. Configure RPC and keys:  
+   `ivynet config set rpc holesky <RPC_URL>`
+3. Setup the AVS:  
+   `ivynet avs setup eigenda holesky`
+4. Select and start the AVS:  
+   `ivynet avs select eigenda holesky`  
+   `ivynet avs start`
+5. Register the AVS:  
+   `ivynet avs register eigenda holesky`
+
+### Typical AVS Deployment Flow:
+
+```bash
+ivynet avs setup <AVS> <CHAIN>
+ivynet avs select <AVS> <CHAIN>
+ivynet avs start
+ivynet avs register <AVS> <CHAIN>
+```
