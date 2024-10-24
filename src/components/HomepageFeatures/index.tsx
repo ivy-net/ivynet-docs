@@ -10,20 +10,20 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
     {
-        title: 'Easy to Use',
+        title: 'End to End Observability',
         Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
         description: (
             <>
-                The IvyNet client is built to make managing AVS's easy. Remove the non-differentiating process of deploying an AVS, and focus on building your business.
+               The IvyNet client is built to make managing any decentralized service easy. Always have complete confidence your nodes are running correctly
             </>
         ),
     },
     {
-        title: 'Bring Your Own Stake and Hardware',
+        title: 'AI Ops Problem Solving',
         Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
         description: (
             <>
-                We don't run infrastructure, nor do we have a delegated stake of our own. This means we can be unbiased and create the best possible solution for every node operator.
+                Use Ivynet's AI to harness the power of your metrics to predict and diagnose problems on your nodes. Identify problems and implement solutions before bad things happen, not after.
             </>
         ),
     },
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
         Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
         description: (
             <>
-                While the IvyNet client focuses on reliability and ease of use, you retain full control over your node. This means every decision is made by you, on your hardware, with your stake.
+                While the IvyNet client focuses on reliability and ease of use, you retain full control over your node and deployments. This means every decision is made by you, on your hardware, with your stake.
             </>
         ),
     },
