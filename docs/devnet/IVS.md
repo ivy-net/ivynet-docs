@@ -10,6 +10,7 @@ It is based on the [POS DevNet](https://github.com/ivy-net/eth-pos-devnet) repos
 ## Scenarios review
 
 The only scenario currently available is Symbiotic smart contract deployment, but more scenarios are under active development. Check back soon for more updates!
+
 <!-- The contracts are deployed from a prearranged Docker image.
 This method is cleaner than messing with the genesis block of an Anvil-based network.
 It is a blank slate enabling testing deployments of the AVS smart contracts and other components of the solution in a private Proof of Stake network.

@@ -50,10 +50,16 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
   "result": {
     "total_machines": 100,
     "healthy_machines": 94,
-    "unhealthy_machines": ["machine_id1", "machine_id8", "machine_id45", "machine_id65", "machine_id89"],
+    "unhealthy_machines": [
+      "machine_id1",
+      "machine_id8",
+      "machine_id45",
+      "machine_id65",
+      "machine_id89"
+    ],
     "idle_machines": ["machine_id5"],
     "updateable_machines": ["machine_id65", "machine_id89"],
-    "erroring_machines": ["machine_id1", "machine_id8", "machine_id45"],
+    "erroring_machines": ["machine_id1", "machine_id8", "machine_id45"]
   }
 }
 ```
@@ -73,10 +79,10 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
   "error": [],
   "result": {
     "machines": [
-        {
-            "machine_id": "machine_id3",
-            "status": "Healthy",
-        }
+      {
+        "machine_id": "machine_id3",
+        "status": "Healthy"
+      }
     ]
   }
 }
@@ -94,22 +100,22 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 
 ```json
 {
-    "error": [],
-    "result": {
-        "machine_id": "machine_id3",
-        "status": "Healthy",
-        "metrics": {
-            "cpu_usage": 55.2,
-            "memory_usage": 60.4,
-            "disk_usage": 70.8,
-            "uptime": 123456,
-            "deployed_avs": "eigenda",
-            "deployed_avs_chain": "mainnet",
-            "operator_pub_key": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
-            "errors": [],
-            },
-        "last_checked": "2024-07-18T12:34:56Z"
-        }
+  "error": [],
+  "result": {
+    "machine_id": "machine_id3",
+    "status": "Healthy",
+    "metrics": {
+      "cpu_usage": 55.2,
+      "memory_usage": 60.4,
+      "disk_usage": 70.8,
+      "uptime": 123456,
+      "deployed_avs": "eigenda",
+      "deployed_avs_chain": "mainnet",
+      "operator_pub_key": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
+      "errors": []
+    },
+    "last_checked": "2024-07-18T12:34:56Z"
+  }
 }
 ```
 
@@ -117,22 +123,22 @@ or
 
 ```json
 {
-    "error": [],
-    "result": {
-        "machine_id": "machine_id8",
-        "status": "Error",
-        "metrics": {
-            "cpu_usage": 55.2,
-            "memory_usage": 60.4,
-            "disk_usage": 70.8,
-            "uptime": 123456,
-            "deployed_avs": "eigenda",
-            "deployed_avs_chain": "holesky",
-            "operator_pub_key": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
-            "errors": ["UNREGISTERED_OPERATOR"],
-            },
-        "last_checked": "2024-07-18T12:34:56Z"
-        }
+  "error": [],
+  "result": {
+    "machine_id": "machine_id8",
+    "status": "Error",
+    "metrics": {
+      "cpu_usage": 55.2,
+      "memory_usage": 60.4,
+      "disk_usage": 70.8,
+      "uptime": 123456,
+      "deployed_avs": "eigenda",
+      "deployed_avs_chain": "holesky",
+      "operator_pub_key": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
+      "errors": ["UNREGISTERED_OPERATOR"]
+    },
+    "last_checked": "2024-07-18T12:34:56Z"
+  }
 }
 ```
 
@@ -169,7 +175,13 @@ or
 {
   "error": [],
   "result": {
-    "unhealthy_machines": ["machine_id1", "machine_id8", "machine_id45", "machine_id65", "machine_id89"]
+    "unhealthy_machines": [
+      "machine_id1",
+      "machine_id8",
+      "machine_id45",
+      "machine_id65",
+      "machine_id89"
+    ]
   }
 }
 ```
@@ -235,46 +247,46 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
   "error": [],
   "result": {
     "deployable_avs": [
-        {
-            "avs_name": "EigenDA",
-            "avs_id": "eigenda",
-            "networks": ["mainnet", "holesky"],
-        },
-        {
-            "avs_name": "Lagrange ZK Prover Network",
-            "avs_id": "lagrange_zk",
-            "networks": ["mainnet", "holesky"],
-        },
-        {
-            "avs_name": "Lagrange State Committees",
-            "avs_id": "lagrange_sc",
-            "networks": ["mainnet", "holesky"],
-        },
-        {
-            "avs_name": "Cyber MACH",
-            "avs_id": "altlayer_mach_cyber",
-            "networks": ["mainnet", "holesky"],
-        },
-        {
-            "avs_name": "AltLayer MACH",
-            "avs_id": "altlayer_mach",
-            "networks": ["mainnet", "holesky"],
-        },
-        {
-            "avs_name": "Xterio MACH",
-            "avs_id": "altlayer_mach_xterio",
-            "networks": ["mainnet", "holesky"],
-        },
-        {
-            "avs_name": "OpenLayer",
-            "avs_id": "openlayer",
-            "networks": ["mainnet", "holesky"],
-        },
-        {
-            "avs_name": "incredible_squaring",
-            "avs_id": "incredible_squaring",
-            "networks": ["local"],
-        },
+      {
+        "avs_name": "EigenDA",
+        "avs_id": "eigenda",
+        "networks": ["mainnet", "holesky"]
+      },
+      {
+        "avs_name": "Lagrange ZK Prover Network",
+        "avs_id": "lagrange_zk",
+        "networks": ["mainnet", "holesky"]
+      },
+      {
+        "avs_name": "Lagrange State Committees",
+        "avs_id": "lagrange_sc",
+        "networks": ["mainnet", "holesky"]
+      },
+      {
+        "avs_name": "Cyber MACH",
+        "avs_id": "altlayer_mach_cyber",
+        "networks": ["mainnet", "holesky"]
+      },
+      {
+        "avs_name": "AltLayer MACH",
+        "avs_id": "altlayer_mach",
+        "networks": ["mainnet", "holesky"]
+      },
+      {
+        "avs_name": "Xterio MACH",
+        "avs_id": "altlayer_mach_xterio",
+        "networks": ["mainnet", "holesky"]
+      },
+      {
+        "avs_name": "OpenLayer",
+        "avs_id": "openlayer",
+        "networks": ["mainnet", "holesky"]
+      },
+      {
+        "avs_name": "incredible_squaring",
+        "avs_id": "incredible_squaring",
+        "networks": ["local"]
+      }
     ]
   }
 }
@@ -295,25 +307,25 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
   "error": [],
   "result": {
     "deployed_avs": [
-        {
-            "avs_name": "EigenDA",
-            "avs_id": "eigenda",
-            "network": "mainnet",
-            "avs_version": "0.7.4",
-            "machine_id": "machine_id1",
-            "operator": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
-            "registered": true
-        },
-        {
-            "avs_name": "Lagrange ZK Prover Network",
-            "avs_id": "lagrange_zk",
-            "network": "holesky",
-            "avs_version": "0.4.3",
-            "machine_id": "machine_id2",
-            "operator": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
-            "registered": false
-        },
-        // More deployed instances
+      {
+        "avs_name": "EigenDA",
+        "avs_id": "eigenda",
+        "network": "mainnet",
+        "avs_version": "0.7.4",
+        "machine_id": "machine_id1",
+        "operator": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
+        "registered": true
+      },
+      {
+        "avs_name": "Lagrange ZK Prover Network",
+        "avs_id": "lagrange_zk",
+        "network": "holesky",
+        "avs_version": "0.4.3",
+        "machine_id": "machine_id2",
+        "operator": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
+        "registered": false
+      }
+      // More deployed instances
     ]
   }
 }
@@ -334,14 +346,14 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
   "error": [],
   "result": {
     "registered_avs": [
-        {
-            "avs_name": "EigenDA",
-            "avs_id": "eigenda",
-            "network": "mainnet",
-            "machine_id": "machine_id1",
-            "operator": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
-            "registered": true
-        },
+      {
+        "avs_name": "EigenDA",
+        "avs_id": "eigenda",
+        "network": "mainnet",
+        "machine_id": "machine_id1",
+        "operator": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
+        "registered": true
+      }
     ]
   }
 }
@@ -379,13 +391,13 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
   "error": [],
   "result": {
     "updateable_avs": [
-        {
-            "avs_id": "eigenda",
-            "network": "mainnet",
-            "avs_version": "0.6.9",
-            "machine_id": "machine_id1",
-        },
-        // More updateable instances
+      {
+        "avs_id": "eigenda",
+        "network": "mainnet",
+        "avs_version": "0.6.9",
+        "machine_id": "machine_id1"
+      }
+      // More updateable instances
     ]
   }
 }
@@ -408,17 +420,18 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
   "error": [],
   "result": {
     "physical": {
-        "node_class": "4XL",
-        "cores": 16,
-        "memory": 180000000000, //180 gb
-        "disk": 60000000000, //60gb
-        "bandwidth": 5000000000, //5gbps - not specified by lagrange, taken from EigenLayer node classes
+      "node_class": "4XL",
+      "cores": 16,
+      "memory": 180000000000, //180 gb
+      "disk": 60000000000, //60gb
+      "bandwidth": 5000000000 //5gbps - not specified by lagrange, taken from EigenLayer node classes
     },
-    "stake": { //EigenDA example - 2 quorums
-        "0": 1000000000000000000, //Eigen Token needed with decimals
-        "1": 13000000000000000000 // LST restaked or native restaked ETH
+    "stake": {
+      //EigenDA example - 2 quorums
+      "0": 1000000000000000000, //Eigen Token needed with decimals
+      "1": 13000000000000000000 // LST restaked or native restaked ETH
     },
-    "allowlist": true,
+    "allowlist": true
   }
 }
 ```

@@ -34,19 +34,19 @@ Return:
 ```json
 {
   /**
-    * Whether the AVS is currently running
-    * @type {boolean}
-    */
+   * Whether the AVS is currently running
+   * @type {boolean}
+   */
   "running": true,
   /**
-    * The type of AVS that is currently running
-    * @type {string}
-    */
+   * The type of AVS that is currently running
+   * @type {string}
+   */
   "avsType": "eigenda",
   /**
-    * The chain that the AVS is currently running on
-    * @type {string}
-    */
+   * The chain that the AVS is currently running on
+   * @type {string}
+   */
   "chain": "holeksy"
 }
 ```
@@ -126,7 +126,7 @@ CLI:
 
 GRPCurl:
 
-```grpcurl -unix -plaintext -authority "localhost" ~/.ivynet/ivynet.ipc avs.Avs/OptOut```
+`grpcurl -unix -plaintext -authority "localhost" ~/.ivynet/ivynet.ipc avs.Avs/OptOut`
 
 ### The Operator Namespace
 
@@ -142,30 +142,30 @@ Return:
 ```json
 {
   /**
-    * The Ethereum address of the operator
-    * @type {string}
-    */
+   * The Ethereum address of the operator
+   * @type {string}
+   */
   "operator": "0x00000000000000000000000000000000DeaDBeef",
   /**
-    * Whether the operator is registered on the Eigenlayer network
-    * @type {boolean}
-    */
+   * Whether the operator is registered on the Eigenlayer network
+   * @type {boolean}
+   */
   "is_registered": true,
   /**
-    * The earnings receiver for the operator. Currently deprecated by the Eigenlayer network but maintained for backwards compatibility.
-    * @type {string}
-    */
+   * The earnings receiver for the operator. Currently deprecated by the Eigenlayer network but maintained for backwards compatibility.
+   * @type {string}
+   */
   "__deprecated_earnings_receiver": "0x0000000000000000000000000000000000000000",
   /**
-    * The address of the operator's delegation approver. This is the address that can approve or deny delegation requests.
-    * @type {string}
-    */
+   * The address of the operator's delegation approver. This is the address that can approve or deny delegation requests.
+   * @type {string}
+   */
   "delegation_approver": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
   /**
-    * The number of blocks that this operator's delegated stakers must wait before opting out of their delegation.
-    * @type {number}
-    */
-  "staker_opt_out_window_blocks": 10,
+   * The number of blocks that this operator's delegated stakers must wait before opting out of their delegation.
+   * @type {number}
+   */
+  "staker_opt_out_window_blocks": 10
 }
 ```
 

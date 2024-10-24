@@ -80,7 +80,7 @@ Example:
 
 `ivynet avs start` or `ivynet avs start --avs <AVS> --chain <CHAIN>`
 
-This will direct the daemon to boot up the previously selected AVS node, or bypass the select step to boot up immediately. 
+This will direct the daemon to boot up the previously selected AVS node, or bypass the select step to boot up immediately.
 
 ### Register
 

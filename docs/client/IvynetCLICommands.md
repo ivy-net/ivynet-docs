@@ -55,6 +55,7 @@ Manage the eigenlayer operator. This namespace includes both query actions for o
 `ivynet operator <OP> <CHAIN> <OTHER_FIELDS>`
 
 - `get`
+
   - `details`
     - Get operator details for loaded operator with `[ADDRESS]` argument for operator lookups
   - `shares`
