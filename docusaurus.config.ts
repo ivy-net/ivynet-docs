@@ -3,136 +3,134 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-    title: 'IvyNet',
-    tagline: 'Easy and reliable restaking middleware',
-    favicon: 'img/ivy_favicon.png',
+  title: 'IvyNet',
+  tagline: 'A smart coordination layer for the convergence of web2 and web3',
+  favicon: 'img/ivy_favicon.png',
 
-    // Set the production url of your site here
-    url: 'https://docs.ivynet.dev',
-    // Set the /<baseUrl>/ pathname under which your site is served
-    // For GitHub pages deployment, it is often '/<projectName>/'
-    baseUrl: '/',
+  // Set the production url of your site here
+  url: 'https://docs.ivynet.dev',
+  // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/',
 
-    // GitHub pages deployment config.
-    // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'ivy-net', // Usually your GitHub org/user name.
-    projectName: 'ivynet-docs', // Usually your repo name.
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: 'ivy-net', // Usually your GitHub org/user name.
+  projectName: 'ivynet-docs', // Usually your repo name.
 
-    onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
-    // Even if you don't use internationalization, you can use this field to set
-    // useful metadata like html lang. For example, if your site is Chinese, you
-    // may want to replace "en" with "zh-Hans".
-    i18n: {
-        defaultLocale: 'en',
-        locales: ['en'],
-    },
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
 
-    presets: [
-        [
-            'classic',
-            {
-                docs: {
-                    sidebarPath: './sidebars.ts',
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/ivy-net',
-                },
-                blog: //false,
-                {
-                    showReadingTime: true,
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/ivy-net',
-                },
-                theme: {
-                    customCss: './src/css/custom.css',
-                },
-            } satisfies Preset.Options,
-        ],
+  presets: [
+    [
+      'classic',
+      {
+        docs: {
+          sidebarPath: './sidebars.ts',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl: 'https://github.com/ivy-net',
+        },
+        //false,
+        blog: {
+          showReadingTime: true,
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl: 'https://github.com/ivy-net',
+        },
+        theme: {
+          customCss: './src/css/custom.css',
+        },
+      } satisfies Preset.Options,
     ],
+  ],
 
-    themeConfig: {
-        image: 'img/docusaurus-social-card.jpg',
-        navbar: {
-            title: 'IvyNet Docs',
-            logo: {
-                alt: 'IvyNet Logo',
-                src: 'img/ivylogodark.png',
+  themeConfig: {
+    image: 'img/docusaurus-social-card.jpg',
+    navbar: {
+      title: 'IvyNet Docs',
+      logo: {
+        alt: 'IvyNet Logo',
+        src: 'img/ivylogodark.png',
+      },
+      items: [
+        {
+          to: 'docs/intro',
+          label: 'Overview',
+          position: 'left',
+          activeBasePath: '/docs/',
+        },
+        {
+          to: 'docs/client/clientExplanation',
+          label: 'Client',
+          position: 'left',
+          activeBasePath: 'docs/client/',
+        },
+        {
+          to: 'docs/devnet/Introduction',
+          label: 'Devnet',
+          position: 'left',
+          activeBasePath: 'docs/devnet/',
+        },
+        // Enable for future blog posts - standards blogs
+        // { to: '/blog', label: 'Blog', position: 'right' },
+        {
+          href: 'https://github.com/ivy-net/',
+          label: 'GitHub',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Website',
+          items: [
+            {
+              label: 'Ivynet.dev',
+              to: 'https://ivynet.dev',
             },
-            items: [
-                {
-                    to: "docs/intro",
-                    label: "Overview",
-                    position: "left",
-                    activeBasePath: '/docs/',
-                },
-                {
-                    to: "docs/client/clientExplanation",
-                    label: "Client",
-                    position: "left",
-                    activeBasePath: 'docs/client/',
-                },
-                {
-                    to: "docs/devnet/Introduction",
-                    label: "Devnet",
-                    position: "left",
-                    activeBasePath: 'docs/devnet/',
-                },
-                // Enable for future blog posts - standards blogs
-                // { to: '/blog', label: 'Blog', position: 'right' },
-                {
-                    href: 'https://github.com/ivy-net/',
-                    label: 'GitHub',
-                    position: 'right',
-                },
-            ],
+          ],
         },
-        footer: {
-            style: 'dark',
-            links: [
-                {
-                    title: 'Website',
-                    items: [
-                        {
-                            label: 'Ivynet.dev',
-                            to: 'https://ivynet.dev',
-                        },
-                    ],
-                },
-                {
-                    title: 'Community',
-                    items: [
-                        {
-                            label: 'Discord - Coming Soon',
-                            href: 'https://ivynet.dev',
-                        },
-                        {
-                            label: 'X/Twitter',
-                            href: 'https://x.com/ivynet_dev/',
-                        },
-                    ],
-                },
-                {
-                    title: 'More',
-                    items: [
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/ivy-net/',
-                        },
-                    ],
-                },
-            ],
-            copyright: `Copyright © ${new Date().getFullYear()} Address Labs Inc. Built with Docusaurus.`,
+        {
+          title: 'Community',
+          items: [
+            {
+              label: 'Discord - Coming Soon',
+              href: 'https://ivynet.dev',
+            },
+            {
+              label: 'X/Twitter',
+              href: 'https://x.com/ivynet_dev/',
+            },
+          ],
         },
-        prism: {
-            theme: prismThemes.github,
-            darkTheme: prismThemes.dracula,
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/ivy-net/',
+            },
+          ],
         },
-    } satisfies Preset.ThemeConfig,
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Address Labs Inc. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  } satisfies Preset.ThemeConfig,
 };
 
 export default config;
