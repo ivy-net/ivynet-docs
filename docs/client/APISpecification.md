@@ -2,9 +2,13 @@
 sidebar_position: 6
 ---
 
-# Ivynet API Specification (Draft)
+# Ivynet API Specification (Demo)
 
-https://api.ivynet.dev/v1/
+https://api1.test.ivynet.dev/
+
+## Swagger
+
+**https://api1.test.ivynet.dev/swagger-ui/**
 
 ## Status Codes
 
@@ -18,10 +22,7 @@ https://api.ivynet.dev/v1/
 
 `400` Bad Request Returns JSON with the error message<br />
 `401` Unauthorized Couldn't authenticate your request<br />
-`402` 2FA Token required Re-try request with user’s 2FA token as CB-2FA-Token header <br />
-`403` Invalid scope User hasn't authorized necessary scope<br />
 `404` Not Found No such object<br />
-`429` Too Many Requests Your connection is being rate limited<br />
 
 ### Server Errors
 
@@ -49,9 +50,8 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
   "error": [],
   "result": {
     "total_machines": 100,
-    "healthy_machines": 94,
+    "healthy_machines": ["machine_id1", "...etc"],
     "unhealthy_machines": [
-      "machine_id1",
       "machine_id8",
       "machine_id45",
       "machine_id65",
@@ -59,33 +59,57 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
     ],
     "idle_machines": ["machine_id5"],
     "updateable_machines": ["machine_id65", "machine_id89"],
-    "erroring_machines": ["machine_id1", "machine_id8", "machine_id45"]
+    "erroring_machines": ["machine_id8", "machine_id45"]
   }
 }
 ```
 
 ### Get All Client Machines
 
-**Endpoint:** `/client/`
+**Endpoint:** `/client`
 
 **Method:** `GET`
 
-**Description:** Retrieves basic information for each deployed client instance
+**Description:** Retrieves information for each deployed client instance
 
 **Response:**
 
 ```json
-{
-  "error": [],
-  "result": {
-    "machines": [
-      {
-        "machine_id": "machine_id3",
-        "status": "Healthy"
-      }
-    ]
+[
+  {
+    "error": [],
+    "result": {
+      "machine_id": "0x59e5d5eb84edeba88d8a4109f94d0cd49b47f6de",
+      "name": "your-hostname-auto-assigned-and-changeable",
+      "status": "Healthy",
+      "metrics": {
+        "cpu_usage": 0.0,
+        "memory_info": {
+          "usage": 31713816576.0,
+          "free": 2309165056.0,
+          "status": "Warning"
+        },
+        "disk_info": {
+          "usage": 352359101440.0,
+          "free": 1677106334720.0,
+          "status": "Healthy"
+        },
+        "uptime": 27093,
+        "deployed_avs": {
+          "name": "eigenda",
+          "chain": "holesky",
+          "version": "0.8.4",
+          "active_set": "true",
+          "operator_id": "0xbb7fe0c234cd07e2440b515621ab31d263f76e1e",
+          "performance_score": 100.0,
+          "updateable": false
+        },
+        "error": []
+      },
+      "last_checked": "2024-10-21T21:03:00.195332"
+    }
   }
-}
+]
 ```
 
 ### Get Machine Info
@@ -94,7 +118,7 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 
 **Method:** `GET`
 
-**Description:** Retrieves AVS information, health status (including idle and error), and hardware metrics for a specific machine.
+**Description:** Retrieves same information as `/client` but for a specific ID.
 
 **Response:**
 
@@ -102,42 +126,34 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 {
   "error": [],
   "result": {
-    "machine_id": "machine_id3",
-    "status": "Healthy",
+    "machine_id": "0x0de1c0b493092b3eeb81c5fc2caee26a546ff5e8",
+    "name": "your-hostname-auto-assigned-and-changeable",
+    "status": "Idle",
     "metrics": {
-      "cpu_usage": 55.2,
-      "memory_usage": 60.4,
-      "disk_usage": 70.8,
-      "uptime": 123456,
-      "deployed_avs": "eigenda",
-      "deployed_avs_chain": "mainnet",
-      "operator_pub_key": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
-      "errors": []
+      "cpu_usage": 0.0,
+      "memory_info": {
+        "usage": 34294882304.0,
+        "free": 3112935424.0,
+        "status": "Warning"
+      },
+      "disk_info": {
+        "usage": 356483736576.0,
+        "free": 1672981699584.0,
+        "status": "Healthy"
+      },
+      "uptime": 40628,
+      "deployed_avs": {
+        "name": null,
+        "chain": null,
+        "version": null,
+        "active_set": null,
+        "operator_id": null,
+        "performance_score": 0.0,
+        "updateable": null
+      },
+      "error": []
     },
-    "last_checked": "2024-07-18T12:34:56Z"
-  }
-}
-```
-
-or
-
-```json
-{
-  "error": [],
-  "result": {
-    "machine_id": "machine_id8",
-    "status": "Error",
-    "metrics": {
-      "cpu_usage": 55.2,
-      "memory_usage": 60.4,
-      "disk_usage": 70.8,
-      "uptime": 123456,
-      "deployed_avs": "eigenda",
-      "deployed_avs_chain": "holesky",
-      "operator_pub_key": "0x0a3e3d83c99b27ca7540720b54105c79cd58dbdd",
-      "errors": ["UNREGISTERED_OPERATOR"]
-    },
-    "last_checked": "2024-07-18T12:34:56Z"
+    "last_checked": "2024-10-22T00:48:35.674008"
   }
 }
 ```
@@ -153,12 +169,17 @@ or
 **Response:**
 
 ```json
-{
-  "error": [],
-  "result": {
-    "idle_machines": ["machine_id5"]
-  }
-}
+[
+  "0x59e5d5eb84edeba88d8a4109f94d0cd49b47f6de",
+  "0x84a161ee229d69abeae7c93c6ce8789ecc371497",
+  "0xc9369f47aa9d19723fa4ef8e449a0c6b9ec9f43b",
+  "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+  "0xd7a85c2eb6f148cba5a14f96e606acdd2d11911f",
+  "0x52959f3ca4a5383fd50dcf39f4122076e42ebc38",
+  "0x6d140ebd309d3382026c07c570a8493f962d1693",
+  "0x0de1c0b493092b3eeb81c5fc2caee26a546ff5e8",
+  "0x546cb7ac68763640d2727a1531aa142716e220cd"
+]
 ```
 
 ### Get All Unhealthy Machines
@@ -172,18 +193,10 @@ or
 **Response:**
 
 ```json
-{
-  "error": [],
-  "result": {
-    "unhealthy_machines": [
-      "machine_id1",
-      "machine_id8",
-      "machine_id45",
-      "machine_id65",
-      "machine_id89"
-    ]
-  }
-}
+[
+  "0x59e5d5eb84edeba88d8a4109f94d0cd49b47f6de",
+  "0x84a161ee229d69abeae7c93c6ce8789ecc371497"
+]
 ```
 
 ### Get All Erroring Machines
@@ -197,21 +210,179 @@ or
 **Response:**
 
 ```json
-{
-  "error": [],
-  "result": {
-    "erroring_machines": ["machine_id1", "machine_id8", "machine_id45"]
-  }
-}
+[
+  "0x6d140ebd309d3382026c07c570a8493f962d1693",
+  "0x0de1c0b493092b3eeb81c5fc2caee26a546ff5e8",
+  "0x546cb7ac68763640d2727a1531aa142716e220cd"
+]
 ```
 
-### Get All Updateable Machines
+### Get Machine's Metrics (Condensed)
+
+**Endpoint:** `/client/{machine_id}/metrics`
+
+**Method:** `GET`
+
+**Description:** Gets system metrics and some avs metrics like performance score
+
+**Response:**
+
+```json
+[
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "ram_usage",
+    "value": 13517897728.0,
+    "attributes": null,
+    "created_at": "2024-10-24T21:52:21.613245"
+  },
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "running",
+    "value": 1.0,
+    "attributes": {
+      "operator_id": "0x76f6d8a8f4e51772b974589ab13cc04d193f9dd2",
+      "avs": "eigenda",
+      "chain": "holesky",
+      "active_set": "false",
+      "version": "0.8.4"
+    },
+    "created_at": "2024-10-24T21:52:21.613245"
+  },
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "cpu_usage",
+    "value": 0.0,
+    "attributes": null,
+    "created_at": "2024-10-24T21:52:21.613245"
+  },
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "uptime",
+    "value": 30265.0,
+    "attributes": null,
+    "created_at": "2024-10-24T21:52:21.613245"
+  },
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "eigen_performance_score",
+    "value": 100.0,
+    "attributes": {
+      "avs_name": "da-node"
+    },
+    "created_at": "2024-10-24T21:52:21.613245"
+  },
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "disk_usage",
+    "value": 370393510912.0,
+    "attributes": null,
+    "created_at": "2024-10-24T21:52:21.613245"
+  }
+]
+```
+
+or with no avs running
+
+```json
+NoRunningAvsFound("No running AVS found when searching for condensed metrics")
+```
+
+### Get Machine's Metrics
+
+**Endpoint:** `/client/{machine_id}/metrics/all`
+
+**Method:** `GET`
+
+**Description:** Gets all metrics
+
+**Response:**
+
+```json
+[
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "ram_usage",
+    "value": 13517897728.0,
+    "attributes": null,
+    "created_at": "2024-10-24T21:52:21.613245"
+  },
+  "..."
+]
+```
+
+or with no avs running
+
+```json
+NoRunningAvsFound("No running AVS found when searching for condensed metrics")
+```
+
+### Get Machine's Logs
+
+**Endpoint:** `/client/{machine_id}/logs`
+
+**Method:** `GET`
+
+**Optional Parameters:**
+
+log_level - Valid values: debug, info, warning, error
+
+from - timestamp value in milliseconds
+to - timestamp value in milliseconds
+
+**Description:** Gets logs with parameters including DATETIME to and from, as well as debug level. Valid values: debug, info, warning, error
+
+**Response:**
+
+```json
+[
+  {
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "name": "ram_usage",
+    "value": 13517897728.0,
+    "attributes": null,
+    "created_at": "2024-10-24T21:52:21.613245"
+  },
+  "..."
+]
+```
+
+or with no avs running
+
+```json
+NoRunningAvsFound("No running AVS found when searching for condensed metrics")
+```
+
+### Get Machine's AVS Data
+
+**Endpoint:** `/client/{machine_id}/data`
+
+**Method:** `GET`
+
+**Description:** Gets AVS data from a machine
+
+**Response:**
+
+```json
+[
+  {
+    "serial_id": 434,
+    "node_id": "0xa06b983c77bbaf7784b3218b2d7c18486d7578c4",
+    "avs_name": "EigenDA",
+    "avs_version": "0.8.4",
+    "active_set": false,
+    "operator_id": "0x76f6d8a8f4e51772b974589ab13cc04d193f9dd2"
+  }
+]
+```
+
+<!-- ### Get All Updateable Machines
 
 **Endpoint:** `/client/updateable`
 
 **Method:** `GET`
 
-**Description:** Retrieves IDs of all machines which need an update to their Ivynet client
+**Description:** Retrieves IDs of all machines which need an update to their AVS
 
 **Response:**
 
@@ -222,15 +393,15 @@ or
     "updateable_machines": ["machine_id65", "machine_id89"]
   }
 }
-```
+``` -->
 
 <!-- TODO: future: update an ivynet client -->
 <!-- TODO: future: new avs deployment -->
 <!-- TODO: future: update an avs deployment -->
 
-## AVS
+<!-- ## AVS -->
 
-AVS Specific information like what AVS's are being run, what AVS's can be run, registration information, etc.
+<!-- AVS Specific information like what AVS's are being run, what AVS's can be run, registration information, etc.
 
 ### Get All Deployable AVS's
 
@@ -290,8 +461,8 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
     ]
   }
 }
-```
-
+``` -->
+<!--
 ### Get All Deployed AVS's
 
 **Endpoint:** `/avs/deployed/`
@@ -329,9 +500,9 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
     ]
   }
 }
-```
+``` -->
 
-### Get All Registered AVS's
+<!-- ### Get All Registered AVS's
 
 **Endpoint:** `/avs/registered/`
 
@@ -357,9 +528,9 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
     ]
   }
 }
-```
+``` -->
 
-### Get Registration Status
+<!-- ### Get Registration Status
 
 **Endpoint:** `/avs/registered/{avs_id}`
 
@@ -374,9 +545,9 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
   "error": [],
   "result": true
 }
-```
+``` -->
 
-### Get AVS Deployments Needing Updates
+<!-- ### Get AVS Deployments Needing Updates
 
 **Endpoint:** `/avs/updateable/`
 
@@ -401,9 +572,9 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
     ]
   }
 }
-```
+``` -->
 
-### Get AVS Hardware Requirements
+<!-- ### Get AVS Hardware Requirements
 
 **Endpoint:** `/avs/requirements/{avs_id}&{operator_address}`
 
@@ -434,9 +605,9 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
     "allowlist": true
   }
 }
-```
+``` -->
 
-### Get AVS Rewards Rate
+<!-- ### Get AVS Rewards Rate
 
 **Endpoint:** `/avs/rewards/{avs_id}&{currency}&{operator_address}`
 
@@ -456,12 +627,12 @@ AVS Specific information like what AVS's are being run, what AVS's can be run, r
     "ethereum": 0.50885
   }
 }
-```
+``` -->
 
 <!-- TODO: future: avs historical rewards -->
 <!-- TODO: future: avs historical slashing risk -->
 
-## Operator
+<!-- ## Operator
 
 Operator specific information like information about their delegation, currently registered avs count,
 
@@ -551,6 +722,6 @@ Operator specific information like information about their delegation, currently
     }
   }
 }
-```
+``` -->
 
 <!-- TODO: registered avs count -->
