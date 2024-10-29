@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Quickstart Guide
@@ -12,6 +12,12 @@ MVP coming soon! Contact us on [telegram](https://t.me/h_comfort) if you'd like 
 ## Setup and Configuration
 
 The following assumes that the ivynet has been installed and is available in the PATH, and that the user's ECDSA account has already registered as an operator on the Eigenlayer network. [If not, go here!](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
+
+Dependencies
+
+- docker and docker compose (or docker-compose)
+- libssl
+- linux distro
 
 ### Initialize Ivynet
 
