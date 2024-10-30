@@ -124,7 +124,7 @@ Options:
 - `--email <EMAIL>`: Email address registered at IvyNet portal
 - `--password <PASSWORD>`: Password to IvyNet account
 
-## Operator
+<!-- ## Operator
 
 View and manage operator information.
 
@@ -135,7 +135,7 @@ Commands:
 
 - `details`: Get operator details
 - `shares`: Get operator's total shares per strategy
-- `delegatable-shares`: Get operator's delegatable shares per strategy
+- `delegatable-shares`: Get operator's delegatable shares per strategy -->
 
 ## Common Workflows
 
@@ -159,5 +159,5 @@ Commands:
 ivynet avs setup <AVS> <CHAIN>
 ivynet avs select <AVS> <CHAIN>
 ivynet avs start
-ivynet avs register <AVS> <CHAIN>
+ivynet avs register
 ```
