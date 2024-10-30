@@ -10,6 +10,10 @@ https://api1.test.ivynet.dev/
 
 **https://api1.test.ivynet.dev/swagger-ui/**
 
+## Authorization
+
+Refer to swagger above for use of the authorize endpoint, or use basic auth (email/password) per request.
+
 ## Status Codes
 
 ### Success Messages
