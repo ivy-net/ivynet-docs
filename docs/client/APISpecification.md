@@ -199,7 +199,7 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 ]
 ```
 
-### Get All Erroring Machines
+<!-- ### Get All Erroring Machines
 
 **Endpoint:** `/client/errors`
 
@@ -215,7 +215,7 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
   "0x0de1c0b493092b3eeb81c5fc2caee26a546ff5e8",
   "0x546cb7ac68763640d2727a1531aa142716e220cd"
 ]
-```
+``` -->
 
 ### Get Machine's Metrics (Condensed)
 
