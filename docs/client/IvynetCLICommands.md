@@ -90,6 +90,7 @@ Commands:
 - `attach [AVS] [CHAIN]`: Attach to a specified AVS
 - `stop`: Stop the current AVS
 - `info`: Get information about the current AVS status
+- `inspect`: Get logs from an AVS with an interactive menu
 
 Supported AVSes in DEMO:
 
