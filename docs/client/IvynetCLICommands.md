@@ -93,7 +93,7 @@ Commands:
 
 Supported AVSes in DEMO:
 
-- `eigenda` - EigenDA
+- `eigenda` - EigenDA with Quorum 0: Staked Eth/LSTs
 
 Supported chains in DEMO:
 
