@@ -114,7 +114,7 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 
 ### Get Machine Info
 
-**Endpoint:** `/client/info/{machine_id}`
+**Endpoint:** `/client/{MACHINE_ID}`
 
 **Method:** `GET`
 
@@ -219,7 +219,7 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 
 ### Get Machine's Metrics (Condensed)
 
-**Endpoint:** `/client/{machine_id}/metrics`
+**Endpoint:** `/client/{MACHINE_ID}/metrics`
 
 **Method:** `GET`
 
@@ -290,7 +290,7 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 ### Get Machine's Metrics
 
-**Endpoint:** `/client/{machine_id}/metrics/all`
+**Endpoint:** `/client/{MACHINE_ID}/metrics/all`
 
 **Method:** `GET`
 
@@ -319,7 +319,7 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 ### Get Machine's Logs
 
-**Endpoint:** `/client/{machine_id}/logs`
+**Endpoint:** `/client/{MACHINE_ID}/logs`
 
 **Method:** `GET`
 
@@ -355,7 +355,7 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 ### Get Machine's AVS Data
 
-**Endpoint:** `/client/{machine_id}/data`
+**Endpoint:** `/client/{MACHINE_ID}/data`
 
 **Method:** `GET`
 
