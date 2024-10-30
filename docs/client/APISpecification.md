@@ -10,6 +10,10 @@ https://api1.test.ivynet.dev/
 
 **https://api1.test.ivynet.dev/swagger-ui/**
 
+## Authorization
+
+Refer to swagger above for use of the authorize endpoint, or use basic auth (email/password) per request.
+
 ## Status Codes
 
 ### Success Messages
@@ -114,7 +118,7 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 
 ### Get Machine Info
 
-**Endpoint:** `/client/info/{machine_id}`
+**Endpoint:** `/client/{MACHINE_ID}`
 
 **Method:** `GET`
 
@@ -199,7 +203,7 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
 ]
 ```
 
-### Get All Erroring Machines
+<!-- ### Get All Erroring Machines
 
 **Endpoint:** `/client/errors`
 
@@ -215,11 +219,11 @@ Endpoints that focus on a specific machine and its deployed AVS. These endpoints
   "0x0de1c0b493092b3eeb81c5fc2caee26a546ff5e8",
   "0x546cb7ac68763640d2727a1531aa142716e220cd"
 ]
-```
+``` -->
 
 ### Get Machine's Metrics (Condensed)
 
-**Endpoint:** `/client/{machine_id}/metrics`
+**Endpoint:** `/client/{MACHINE_ID}/metrics`
 
 **Method:** `GET`
 
@@ -290,7 +294,7 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 ### Get Machine's Metrics
 
-**Endpoint:** `/client/{machine_id}/metrics/all`
+**Endpoint:** `/client/{MACHINE_ID}/metrics/all`
 
 **Method:** `GET`
 
@@ -319,7 +323,7 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 ### Get Machine's Logs
 
-**Endpoint:** `/client/{machine_id}/logs`
+**Endpoint:** `/client/{MACHINE_ID}/logs`
 
 **Method:** `GET`
 
@@ -355,7 +359,7 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 ### Get Machine's AVS Data
 
-**Endpoint:** `/client/{machine_id}/data`
+**Endpoint:** `/client/{MACHINE_ID}/data`
 
 **Method:** `GET`
 

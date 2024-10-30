@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Quickstart Guide
@@ -12,6 +12,12 @@ MVP coming soon! Contact us on [telegram](https://t.me/h_comfort) if you'd like 
 ## Setup and Configuration
 
 The following assumes that the ivynet has been installed and is available in the PATH, and that the user's ECDSA account has already registered as an operator on the Eigenlayer network. [If not, go here!](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
+
+Dependencies
+
+- docker and docker compose (or docker-compose)
+- libssl
+- linux distro
 
 ### Initialize Ivynet
 
@@ -92,3 +98,19 @@ After your node is fully running, you're not actually validating the AVS. Make s
 
 Example:
 `ivynet avs register eigenda holesky`
+
+### Inspect
+
+`ivynet avs inspect`
+
+Inspect the logs of the AVS instance on the local filesystem. This command will prompt the user to traverse the local file tree to locate the desired logfile. Local logs are stored in the `./ivynet/logs` directory according to the container name they are associated with and stored as a file with a `YYYY-MM-DD.log` naming convention.
+
+After selecting a valid logfile, this command will tail the last 100 lines of the log.
+
+Example:
+
+`ivynet avs inspect` for an already selected avs
+
+or
+
+`ivynet avs inspect --avs eigenda --chain holesky`
