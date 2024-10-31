@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Ivynet CLI Commands List
@@ -90,10 +90,11 @@ Commands:
 - `attach [AVS] [CHAIN]`: Attach to a specified AVS
 - `stop`: Stop the current AVS
 - `info`: Get information about the current AVS status
+- `inspect`: Get logs from an AVS with an interactive menu
 
 Supported AVSes in DEMO:
 
-- `eigenda` - EigenDA
+- `eigenda` - EigenDA with Quorum 0: Staked Eth/LSTs
 
 Supported chains in DEMO:
 
@@ -124,7 +125,7 @@ Options:
 - `--email <EMAIL>`: Email address registered at IvyNet portal
 - `--password <PASSWORD>`: Password to IvyNet account
 
-## Operator
+<!-- ## Operator
 
 View and manage operator information.
 
@@ -135,7 +136,7 @@ Commands:
 
 - `details`: Get operator details
 - `shares`: Get operator's total shares per strategy
-- `delegatable-shares`: Get operator's delegatable shares per strategy
+- `delegatable-shares`: Get operator's delegatable shares per strategy -->
 
 ## Common Workflows
 
@@ -159,5 +160,5 @@ Commands:
 ivynet avs setup <AVS> <CHAIN>
 ivynet avs select <AVS> <CHAIN>
 ivynet avs start
-ivynet avs register <AVS> <CHAIN>
+ivynet avs register
 ```
