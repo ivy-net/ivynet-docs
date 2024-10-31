@@ -9,12 +9,12 @@ sidebar_position: 3
 
 MVP coming soon! Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our closed alpha group.
 
-
 ## Prerequisites and dependencies
 
 The following document assumes that:
+
 - a contemporary Linux distribution (e.g. Debian 12, Ubuntu 24.04, RHEL 9) with libssl and libcrypto libraries is ready to use
-- docker and docker-compose are installed
+- docker and docker-compose (or docker compose) are installed
 - user operating ivynet can control docker, e.g. is a member of the docker group
 - the ivynet has been installed and is available in the PATH
 - and that the user's ECDSA account has already registered as an operator on the Eigenlayer network. [If not, go here!](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
@@ -27,7 +27,7 @@ The following document assumes that:
 
 Initialize the ivynet directory, build a configuration file, and register your node with the backend. The configuration file can be found at `${HOME}/.ivynet/ivy-config.toml` and can be configured manually or through `ivynet init` interactive mode. Sensible defaults are provided for newly generated `ivy-config.toml` files created via 'empty' mode.
 
-The command will ask for the backend credentials (email address and password, e.g. the ones used to created the organisation).
+The command will ask for backend credentials (email address and password, e.g. the ones used to created the organisation) in order to register your machine to the organization.
 
 ### Configure Keys
 
@@ -64,7 +64,7 @@ Valid CHAIN values are `mainnet` and `holesky`.
 
 `ivynet serve`
 
-This will start the ivynet daemon over a UNIX domain socket, located at `${HOME}/.ivynet/ivynet.ipc`. The daemon will run in the background.
+This will start the ivynet daemon over a UNIX domain socket, located at `${HOME}/.ivynet/ivynet.ipc`.
 
 ### Setup the AVS type you wish to run
 
@@ -92,6 +92,8 @@ This command will allow you to attach to already configured and started AVS. Upo
 
 ## Alternative: use ivynet to start AVS
 
+<div style={{marginLeft: "2em"}}>
+
 ### Start the AVS
 
 ivynet has ability to configure and start selected AVS's.
@@ -99,6 +101,8 @@ ivynet has ability to configure and start selected AVS's.
 `ivynet avs start` or `ivynet avs start --avs <AVS> --chain <CHAIN>`
 
 This will direct the daemon to boot up the previously selected AVS node, or bypass the select step to boot up immediately.
+
+</div>
 
 ### Register
 
