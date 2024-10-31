@@ -9,15 +9,24 @@ sidebar_position: 2
 
 MVP coming soon! Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our closed alpha group.
 
-## Setup and Configuration
 
-The following assumes that the ivynet has been installed and is available in the PATH, and that the user's ECDSA account has already registered as an operator on the Eigenlayer network. [If not, go here!](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
+## Prerequisites
+
+The following document assumes that:
+- docker is installed
+- user operating ivynet can control docker, e.g. is a member of the docker group
+- the ivynet has been installed and is available in the PATH
+- and that the user's ECDSA account has already registered as an operator on the Eigenlayer network. [If not, go here!](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
+
+## Setup and Configuration
 
 ### Initialize Ivynet
 
 `ivynet init`
 
-Initialize the Ivynet directory, build a configuration file, and register your node. The configuration file can be found at `${HOME}/.ivynet/ivy-config.toml` and can be configured manually or through `ivynet init` interactive mode. Sensible defaults are provided for newly generated `ivy-config.toml` files created via 'empty' mode.
+Initialize the ivynet directory, build a configuration file, and register your node with the backend. The configuration file can be found at `${HOME}/.ivynet/ivy-config.toml` and can be configured manually or through `ivynet init` interactive mode. Sensible defaults are provided for newly generated `ivy-config.toml` files created via 'empty' mode.
+
+The command will ask for the backend credentials (email address and password, e.g. the ones used to created the organisation).
 
 ### Configure Keys
 
@@ -37,16 +46,24 @@ This also guides the user through an interactive dialogue and builds out a key f
 
 ### Configure RPC endpoints
 
-If not already done through interactive mode in the `init` command, configure the RPC endpoints for supported networks (currently Mainnet and Holesky). This can be done by editing the `mainnet_rpc_url` and `holesky_rpc_url` fields in the `ivy-config.toml` file, or by running the following commands:
+_This is an optional step_
+
+Public RPC endpoints are set automatically through interactive or empty config setup. However, they can be changed. For example, if any throttling errors pop up, its best to move to a private endpoint.
+
+The RPC can be changed by editing the `mainnet_rpc_url` and `holesky_rpc_url` fields in the `ivy-config.toml` file, or by running the following commands:
 
 `ivynet config set rpc <CHAIN> <RPC_URL>`
-
-Public RPC endpoints are set automatically through interactive or empty config setup. If any throttling errors pop up, its best to move to a private endpoint.
 
 Example:
 `ivynet config set rpc mainnet https://rpc.flashbots.net`
 
 Valid CHAIN values are `mainnet` and `holesky`.
+
+### Start the Ivynet Daemon
+
+`ivynet serve`
+
+This will start the ivynet daemon over a unix domain socket, located at `${HOME}/.ivynet/ivynet.ipc`. The daemon will run in the background.
 
 ### Setup the AVS type you wish to run
 
@@ -57,13 +74,7 @@ This will download the necessary files and set up the environment variables for 
 Example:
 `ivynet avs setup eigenda holesky`
 
-### Start the Ivynet Daemon
-
-`ivynet serve`
-
-This will start the ivynet daemon over a unix domain socket, located at `${HOME}/.ivynet/ivynet.ipc`. The daemon will run in the background.
-
-### Select Your AVS
+### Select the AVS
 
 `ivynet avs select <AVS> <CHAIN>`
 
@@ -72,13 +83,17 @@ This will select your chosen AVS on the daemon. Having select be separated from 
 Example:
 `ivynet avs select eigenda holesky`
 
-### OPTIONAL: Attach to existing deployment
+### Attach to existing AVS
 
 `ivynet avs attach` or `ivynet avs attach --avs <AVS> --chain <CHAIN>` to skip the selection step.
 
-This command will allow you to attach to an existing deployment. Upon attachment, it will check for appropriate node size based on your stake, check your avs version is up to date, and will allow for health metrics and error monitoring. Unfortunately, we do not have the ability to modify, ie update, existing custom deployments (yet).
+This command will allow you to attach to alredy configured and started AVS. Upon attachment, it will check for appropriate node size based on your stake, check your avs version is up to date, and will allow for health metrics and error monitoring. Unfortunately, we do not have the ability to modify, ie update, existing custom deployments (yet).
+
+## Alternative
 
 ### Start your AVS
+
+ivynet has ability to configure and start selected AVS's.
 
 `ivynet avs start` or `ivynet avs start --avs <AVS> --chain <CHAIN>`
 
@@ -92,3 +107,5 @@ After your node is fully running, you're not actually validating the AVS. Make s
 
 Example:
 `ivynet avs register eigenda holesky`
+
+Note that currently the command support registration only to the quorum "0".
