@@ -10,26 +10,31 @@ An update on where Ivynet is at, where we're going, and what we want your feedba
 
 ### Where we're at
 
-**Ivynet Client:** Currently, the Ivynet client is built under the assumption that people would be splitting AVS's into multiple different virtualized environments (because of security, ease of management, etc). We now realize that, especially because AVS's are not currently paying operators, many are running multiple AVS's on a single baremetal server. However, Ivynet only supports 1 AVS per virtual operating system as of ONLY this demo version. Our very next release will have this functionality updated to support as many AVS instances as an operator can fit on their server.
+**Ivynet Client:** Currently, the IvyNet client assumes that users are running AVSs across multiple virtualized environments for security, management ease, etc.
+However, we’ve realized that since AVS operators aren’t yet compensated, many are running multiple AVSs on a single bare-metal server.
+At this stage, IvyNet supports only one AVS per virtual operating system in this demo version.
+Our next release will allow operators to run multiple AVS instances on a single server.
 
-**API and Interface:** Focused heavily on getting metrics/logs/sys_info from your node, and not as focused on getting information about new AVS's
+**API and Interface:** Our primary focus has been on gathering metrics, logs, and system information from your node, with less emphasis on AVS discovery.
 
 ### Where we're going
 
-**Ivynet Client:** As mentioned above, multiple clients running on a single virtual environment (while keeping the option to only run a single one) as well as more direct interaction with the containers themselves instead of docker compose. Also, a larger focus on observability instead of building out new deployments for the near future, as most operators seem to have a decent handle on building our their AVS instances already.
+**Ivynet Client:** In upcoming updates, we’re expanding support for running multiple clients on a single virtual environment (while keeping single-client functionality).
+We’re also adding direct interaction with containers, moving away from Docker Compose.
+For the near term, we’ll focus more on observability features rather than new deployments, as most operators are successfully building out their own AVS instances.
 
-**Interface and API:** More building out of AVS discoverability functionality, AVS stats, etc., as well as introducing an AI Ops tool to help you actively diagnose problems straight from your logs and metrics!
+**Interface and API:** We’re enhancing AVS discoverability, statistics, and introducing an AI Ops tool to diagnose issues directly from your logs and metrics.
 
 ## Feedback Wanted
 
-If you're reading this, you're probably already in a telegram group with us, because in case you're not, contact us [here on telegram](https://t.me/soho_dot) if you have feature requests or feedback!
+If you’re reading this, you’re likely already in a Telegram group with us. But if you’re not, feel free to contact us [here on telegram](https://t.me/soho_dot) to share feature requests or feedback!
 
-Primarly, what we're looking for is:
+Here’s what we’d love to know:
 
-- How did you feel about ease of use for the separate parts of Ivynet? Client, API, Interface
-- Is there anything we could improve from a usability perspective on any parts of Ivynet?
-- What features do we not have that would make a measureable quality of life improvement for you as an operator?
-- Any other helpful feedback you have!
+- How easy is it to use the various parts of IvyNet (Client, API, Interface)?
+- Are there usability improvements we could make to any part of IvyNet?
+- Are there any features we don’t yet offer that would make a measurable improvement to your experience as an operator?
+- Any other feedback you’d like to share!
 
 <!-- ### Test Scenarios
 
