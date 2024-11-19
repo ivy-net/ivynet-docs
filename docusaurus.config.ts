@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'IvyNet',
-  tagline: 'A smart coordination layer for the convergence of web2 and web3',
+  tagline: 'A unified machine intelligence layer for web3 hardware operators',
   favicon: 'img/ivy_favicon.png',
 
   // Set the production url of your site here

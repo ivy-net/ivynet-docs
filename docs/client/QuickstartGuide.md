@@ -29,22 +29,6 @@ Initialize the ivynet directory, build a configuration file, and register your n
 
 The command will ask for backend credentials (email address and password, e.g. the ones used to created the organisation) in order to register your machine to the organization.
 
-### Configure Keys
-
-If not already done through interactive mode in the `init` command, configure the operator key that will be used to deploy and monitor an AVS. By default, ivynet will import any keys already in the `${HOME}/.ivynet` into the keychain. Keep in mind, the Ivynet cli does not actually have access to any private keys unless a dialogue on the cli explicitly asks for it where an input box will appear and ask for the password.
-
-**Import a private ecdsa key:**
-
-`ivynet key import`
-
-This command will take you through an interactive dialogue to import BLS/ECDSA keyfiles and stores them in the `${HOME}/.ivynet` directory. Keystore files are named `${KEYNAME}.bls.json` and `${KEYNAME}.ecdsa.json` respectively. The legacy keystore is the keystore that has a public key built into the json file, and thus does not need any decryption in order for monitoring of the address (like AVS active set) to take place.
-
-**Alternatively, create a new keypair:**
-
-`ivynet key create`
-
-This also guides the user through an interactive dialogue and builds out a key for you.
-
 ### Configure RPC endpoints
 
 _This is an optional step_
