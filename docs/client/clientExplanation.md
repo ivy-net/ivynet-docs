@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-IvyNet is designed to simplify monitoring, deployment, and profitability operations for node operators, allowing them to focus on managing their hardware, virtual environments, and delegated stake while retaining full control of the entire process.
+IvyNet is designed to simplify devops, compliance, and business development activities for node operators, allowing them to focus on managing their hardware, virtual environments, and delegated stake while retaining full control of the entire process.
 
 <!-- **TODO: More formal diagram - placeholder** -->
 
@@ -12,27 +12,25 @@ IvyNet is designed to simplify monitoring, deployment, and profitability operati
 
 ## Client
 
-The client consists offers a suite of tools for node operators to manage their operations efficiently while retaining control. Key features include:
+The client consists of a shared suite of tools for node operators to manage their operations efficiently across deployments while retaining control. Key features include:
 
-- **Automated Deployments and Updates**: Streamline the deployment process and ensure your systems are always up-to-date.
-- **Key Management**: Build and encrypt ECDSA and BLS keys for your nodes. Keys are never passed beyond the environment they're built in.
-- **Metrics Monitoring**: Monitor the health of your nodes continuously to ensure optimal performance and quickly address any errors that pop up.
-- **Logging**: Logs are taken straight from the services you have running and put into a database for easy querying from the interface or our API.
+- **Metrics Monitoring**: Continuously monitor system, performance, and health metrics of your nodes to ensure optimal productivity across deployments.
+- **Network Adherance**: Keep your systems up to date and ensure your nodes remain in the active sets.
+- **Logging**: Collect logs directly from your running services and store them in a database for easy querying via the interface or API.
 
 The client operates as a daemon on all deployed machines, with a command line interface for user interactions.
 
 ## User Interface
 
-The user interface is an easy to use webpage that gives a complete overview of your deployed and idle nodes. Features include:
+The user interface is an easy to use webpage that helps optimize middle and back office tasks with a complete overview of your deployed and idle nodes. Features include:
 
-- **Metrics Monitoring and History**: Access detailed metrics and historical data to analyze the performance of your nodes over time.
-- **AVS Overview**: View all available AVS options and their deployment requirements tailored to your delegated stake. Look for new nodes to run on your idle hardware, or gather requirements for new deployments.
-- **Profitability Metrics**: Analyze historical and projected profitability metrics to optimize profitability to make sure you're maximizing your return on compute.
-- **AI Diagnoses**: Use a helpful Ivynet AI to diagnose the problems in your nodes
-
+- **Metrics History**:  Access detailed historical metrics and data to analyze performance and generate operational, compliance, and business development reports.
+- **Enhanced Metrics**: Benefit from network-specific inputs, data, and benchmarks to improve quality assurance and maintain competitiveness.
+- **AI Diagnoses**: Use IvyNet's AI-powered diagnostics to identify issues in your nodes and receive actionable error-handling suggestions for quick resolution.
+- **Organization Management**: Assign roles and manage access permissions for members of your organization.
 <!-- **TODO: Picture of mock interface?** -->
 
-IvyNet is built to make node operator's lives easier by offering as much information as possible to the operator.
+IvyNet is built to make node operators' lives easier by offering as much information as possible to the operator.
 
 ## API
 
