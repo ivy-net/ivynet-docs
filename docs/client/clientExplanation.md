@@ -14,7 +14,7 @@ IvyNet is designed to simplify devops, compliance, and business development acti
 
 The client consists of a shared suite of tools for node operators to manage their operations efficiently across deployments while retaining control. Key features include:
 
-- **Metrics Monitoring**: Continuously Monitor system, performance, and health metrics of your nodes to ensure optimal productivity across deployments.
+- **Metrics Monitoring**: Continuously monitor system, performance, and health metrics of your nodes to ensure optimal productivity across deployments.
 - **Network Adherance**: Keep your systems up to date and ensure your nodes remain in the active sets.
 - **Logging**: Collect logs directly from your running services and store them in a database for easy querying via the interface or API.
 
