@@ -8,7 +8,7 @@ IvyNet is designed to simplify devops, compliance, and business development acti
 
 <!-- **TODO: More formal diagram - placeholder** -->
 
-![Docs Version Dropdown](./imgs/IvyNetPlatformOverciew.png)
+![Docs Version Dropdown](./imgs/overview.png)
 
 ## Client
 

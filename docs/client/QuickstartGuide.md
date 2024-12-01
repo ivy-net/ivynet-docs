@@ -1,13 +1,10 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Quickstart Guide
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5OjIVZAWAfA?si=F7cevth7rrhXowbk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<br />
-
-MVP coming soon! Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our closed alpha group.
+Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our alpha group.
 
 ## Prerequisites and dependencies
 
@@ -21,96 +18,54 @@ The following document assumes that:
 
 ## Setup and Configuration
 
-### Initialize Ivynet
+Definitions:
 
-`ivynet init`
+- Node:
+  - This is currently any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation (and maybe Symbiotic as well, though we've not yet tested there). In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
+- Machine
+  - This is the server (baremetal or virtual) running the Ivynet client
+- Client
+  - The software itself, separated from the machine in order to accomodate future container management softwares like Kubernetes.
 
-Initialize the ivynet directory, build a configuration file, and register your node with the backend. The configuration file can be found at `${HOME}/.ivynet/ivy-config.toml` and can be configured manually or through `ivynet init` interactive mode. Sensible defaults are provided for newly generated `ivy-config.toml` files created via 'empty' mode.
+### Scan for active Nodes
 
-The command will ask for backend credentials (email address and password, e.g. the ones used to created the organisation) in order to register your machine to the organization.
+`ivynet scan` - This command will scan for any AVS's metrics endpoints, and add them into a file at `~/.ivynet/monitor-config.toml`
 
-### Configure RPC endpoints
+NOTE: This command scans for active /metrics endpoints, so if the endpoint isn't up yet (because a test instance was just spun up), then no monitorable endpoints will show up until the /metrics endpoint is functional.
 
-_This is an optional step_
+### Monitor those Nodes
 
-Public RPC endpoints are set automatically through interactive or empty configuration setup. However, they can be changed. For example, if any throttling errors pop up, its best to move to a private endpoint.
+`ivynet monitor` - This command will build an `~/.ivynet/ivynet-config.toml` file with your node information. Two things happen at first bootup:
 
-The RPC can be changed by editing the `mainnet_rpc_url` and `holesky_rpc_url` fields in the `ivy-config.toml` file, or by running the following commands:
+- You are asked to sign in - this uses a randomly generated ECDSA key to register your node to the backend. If you accidentally delete this, you can just reregister, but the backend has no access to this private key (or any other key for that matter). This will break continuity of metrics once history is added in the future.
+- It uses the previously run scan command's monitor-config to start monitoring endpoints for your metrics and logs. It then sends these to our backend, allowing you to view them through the API or interface.
 
-`ivynet config set rpc <CHAIN> <RPC_URL>`
+ In the future, our AI Ops tool will be able to diagnose any problems in your logs, and your metrics will be visible to you in any timespan or granularity you desire. Also, alerts can be built on top of them.
 
-Example:
-`ivynet config set rpc mainnet https://rpc.flashbots.net`
+## Alpha Codebase Notes
 
-Valid CHAIN values are `mainnet` and `holesky`.
+An update on where Ivynet is at, where we're going, and what we want your feedback on!
 
-### Start the Ivynet Daemon
+### Where we're at
 
-`ivynet serve`
+**Ivynet Client:** Previously, the IvyNet client assumed that users were running AVSs across multiple virtualized environments for security, management ease, etc.
+However, since AVS operators aren’t yet compensated, many are running multiple AVSs on a single bare-metal server. As such, we've now built for that, and assume multiple containers might be on one server, baremetal or otherwise.
 
-This will start the ivynet daemon over a UNIX domain socket, located at `${HOME}/.ivynet/ivynet.ipc`.
+**API and Interface:** Our primary focus has been on gathering metrics, logs, and system information from your node, with less emphasis on AVS discovery.
 
-### Setup the AVS type you wish to run
+### Where we're going
 
-`ivynet avs setup <AVS> <CHAIN>`
+**Ivynet Client:** For the near term, we’ll focus more on observability features rather than new deployments, as most operators are successfully building out their own AVS instances.
 
-This will download the necessary files and set up the environment variables for the AVS, as well as create all necessary directories and files for the AVS to run. Setup, configuration files, and executables are stored in the `.eigenlayer/${AVS_NAME}` or `.symbiotic/${AVS_NAME}` directories, though additional files may be created elsewhere as a component of the individual AVS setup process, and may vary between AVS types.
+**Interface and API:** Our next near-term release is metrics history (and data scaping endpoints to support that). In the longer term future, we'll enhancing AVS discoverability, statistics, and introducing an AI Ops tool to diagnose issues directly from your logs and metrics.
 
-Example:
-`ivynet avs setup eigenda holesky`
+## Feedback Wanted
 
-### Select the AVS
+If you’re reading this, you’re likely already in a Telegram group with us. But if you’re not, feel free to contact us [here on telegram](https://t.me/soho_dot) to share feature requests or feedback!
 
-`ivynet avs select <AVS> <CHAIN>`
+Here’s what we’d love to know:
 
-This will select your chosen AVS on the daemon. Having select be separated from setup allows multiple AVS's to be prepared for.
-
-Example:
-`ivynet avs select eigenda holesky`
-
-### Attach to existing AVS
-
-`ivynet avs attach` or `ivynet avs attach --avs <AVS> --chain <CHAIN>` to skip the selection step.
-
-This command will allow you to attach to already configured and started AVS. Upon attachment, it will check for appropriate node size based on your stake, check your avs version is up to date, and will allow for health metrics and error monitoring. Unfortunately, we do not have the ability to modify, ie update, existing custom deployments (yet).
-
-## Alternative: use ivynet to start AVS
-
-<div style={{marginLeft: "2em"}}>
-
-### Start the AVS
-
-ivynet has ability to configure and start selected AVS's.
-
-`ivynet avs start` or `ivynet avs start --avs <AVS> --chain <CHAIN>`
-
-This will direct the daemon to boot up the previously selected AVS node, or bypass the select step to boot up immediately.
-
-</div>
-
-### Register
-
-`ivynet avs register`
-
-After your node is fully running, you're not actually validating the AVS. Make sure to register onchain in order for the AVS to start passing your node information. An operator never wants to opt in to validating an AVS before the node is fully deployed, however, because this could lead to slashing risk.
-
-Example:
-`ivynet avs register eigenda holesky`
-
-Note that currently the command support registration only to the quorum "0" (ETH, LSTs).
-
-### Inspect
-
-`ivynet avs inspect`
-
-Inspect the logs of the AVS instance on the local filesystem. This command will prompt the user to traverse the local file tree to locate the desired logfile. Local logs are stored in the `./ivynet/logs` directory according to the container name they are associated with and stored as a file with a `YYYY-MM-DD.log` naming convention.
-
-After selecting a valid logfile, this command will tail the last 100 lines of the log.
-
-Example:
-
-`ivynet avs inspect` for an already selected avs
-
-or
-
-`ivynet avs inspect --avs eigenda --chain holesky`
+- How easy is it to use the various parts of IvyNet (Client, API, Interface)?
+- Are there usability improvements we could make to any part of IvyNet?
+- Are there any features we don’t yet offer that would make a measurable improvement to your experience as an operator?
+- Any other feedback you’d like to share!

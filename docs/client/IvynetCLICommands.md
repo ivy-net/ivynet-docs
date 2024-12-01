@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Ivynet CLI Commands List
 
-The following is documentation of the various commands that can be called from the Ivynet CLI:
+The following is documentation of all commands that can be called from the Ivynet CLI:
 
 Mandatory Arguments: `<ARG>`  
 Optional Arguments: `[ARG]`  
@@ -19,12 +19,15 @@ The following options can be used with any command:
 - `--server-ca <PATH>`: IvyNet server certificate path
 - `--log-level <LEVEL>`: Set the verbosity level for logs (default: INFO)
 
-## Init
-
-Initialize the `ivyconfig.toml` file and perform first-time setup of the ivynet cli.
+## Observability
 
 **Usage:**  
-`ivynet init`
+`ivynet scan` - This command will scan for any AVS's metrics endpoints, and add them into a file at `~/.ivynet/monitor-config.toml`
+
+
+**Usage:**  
+`ivynet monitor`
+
 
 ## Config
 
@@ -35,20 +38,20 @@ Manage the `ivyconfig.toml` file (located in `~/.ivynet/`), which is used for ba
 
 Commands:
 
-- `set rpc <CHAIN> <RPC_URL>`
+<!-- - `set rpc <CHAIN> <RPC_URL>`
   - Set default URLs to use when connecting to 'mainnet', 'holesky', and 'local' RPC urls
 - `set metadata [METADATA_URI] [LOGO_URI] [FAVICON_URI]`
   - Set metadata for EigenLayer Operator
 - `set server_url <URL>`
   - Set backend server connection url
 - `set server_ca <PATH>`
-  - Set backend server certificate
-- `set identity_key <KEY>`
-  - Set backend connection identity key
-- `get rpc <CHAIN>`
+  - Set backend server certificate -->
+<!-- - `get rpc <CHAIN>`
   - Get the current default RPC URL for 'mainnet', 'holesky', or 'local'
 - `get metadata`
-  - Get local metadata
+  - Get local metadata -->
+- `set identity_key <KEY>`
+  - Set backend connection identity key
 - `get config`
   - Get all config data
 - `get sys-info`
@@ -56,7 +59,9 @@ Commands:
 - `get backend`
   - Get backend connection information
 
-## Key
+
+<!-- Commented out until deployments brought back in -->
+<!-- ## Key
 
 Manage ECDSA and BLS keys for the operator.
 
@@ -71,14 +76,14 @@ Commands:
 - `create`
   - Create a new ECDSA or BLS private key
 - `get`
-  - Get information about stored keys
+  - Get information about stored keys -->
 
 ## AVS
 
-Setup, run, and manage AVS instances.
+Setup, run, and manage node instances. For now, we've paused integration on deployment integrations and we're focusing on observability. We will be expanding to EigenLayer AVS, Symbiotic AVS, and top L1s in the future. 
 
 **Usage:**  
-`ivynet avs <COMMAND> [OPTIONS]`
+`ivynet node <COMMAND> [OPTIONS]`
 
 Commands:
 
@@ -87,74 +92,41 @@ Commands:
 - `register`: Register for the specified AVS
 - `unregister`: Unregister from the current AVS
 - `start [AVS] [CHAIN]`: Start the specified AVS (or current if not specified)
-- `attach [AVS] [CHAIN]`: Attach to a specified AVS
 - `stop`: Stop the current AVS
 - `info`: Get information about the current AVS status
 - `inspect`: Get logs from an AVS with an interactive menu
 
-Supported AVSes in DEMO:
+Supported Nodes:
 
 - `eigenda` - EigenDA with Quorum 0: Staked Eth/LSTs
 
-Supported chains in DEMO:
+Supported Chains:
 
 <!-- - `mainnet` - Ethereum Mainnet -->
 - `holesky` - Holesky Testnet
-
-## Serve
-
-Start the Ivynet service.
-
-**Usage:**  
-`ivynet serve [OPTIONS]`
-
-Options:
-
-- `--avs <AVS>`: AVS to start with (requires --chain)
-- `--chain <CHAIN>`: Chain to use (requires --avs)
 
 ## Register
 
 Register this node on IvyNet server.
 
 **Usage:**  
-`ivynet register --email <EMAIL> --password <PASSWORD>`
+`ivynet register`
 
-Options:
+<!-- Options:
 
 - `--email <EMAIL>`: Email address registered at IvyNet portal
-- `--password <PASSWORD>`: Password to IvyNet account
-
-<!-- ## Operator
-
-View and manage operator information.
-
-**Usage:**  
-`ivynet operator get <COMMAND>`
-
-Commands:
-
-- `details`: Get operator details
-- `shares`: Get operator's total shares per strategy
-- `delegatable-shares`: Get operator's delegatable shares per strategy -->
+- `--password <PASSWORD>`: Password to IvyNet account -->
 
 ## Common Workflows
 
-### AVS Registration Flow:
+### Monitor Flow:
 
-1. Initialize Ivynet:  
-   `ivynet init`
-2. Configure RPC and keys:  
-   `ivynet config set rpc holesky <RPC_URL>`
-3. Setup the AVS:  
-   `ivynet avs setup eigenda holesky`
-4. Select and start the AVS:  
-   `ivynet avs select eigenda holesky`  
-   `ivynet avs start`
-5. Register the AVS:  
-   `ivynet avs register eigenda holesky`
+```bash
+ivynet avs scan
+ivynet avs monitor
+```
 
-### Typical AVS Deployment Flow:
+### Deployment Flow:
 
 ```bash
 ivynet avs setup <AVS> <CHAIN>
