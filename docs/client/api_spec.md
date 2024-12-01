@@ -162,7 +162,56 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 #### Response
 
 ```json
-
+{
+"machine_id": "b4ea1e76-f4ab-4d36-a374-840a69fe0a95",
+"name": "US-East-Eigen-AVS-1",
+"status": "Unhealthy",
+"system_metrics": {
+    "cores": 24.0,
+    "cpu_usage": 0.0,
+    "memory_info": {
+    "usage": 13781446656.0,
+    "free": 45015527424.0,
+    "status": "Healthy"
+    },
+    "disk_info": {
+    "usage": 419884315648.0,
+    "free": 1609581120512.0,
+    "status": "Healthy"
+    }
+},
+"avs_list": [
+    {
+    "machine_id": "b4ea1e76-f4ab-4d36-a374-840a69fe0a95",
+    "avs_name": "eigenda-native-node",
+    "avs_type": "EigenDA",
+    "avs_version": "0.8.4",
+    "chain": "holesky",
+    "version_hash": "sha256:6650119a385f2447ca60f03080f381cf4f10ad7f920a2ce27fe0d973ac43e993",
+    "operator_address": "0x123...",
+    "active_set": false,
+    "created_at": "2024-11-28T15:41:59.629501",
+    "updated_at": "2024-11-28T15:41:59.629501",
+    "uptime": 1765.0,
+    "performance_score": 100.0,
+    "update_status": "Unknown",
+    "errors": [
+        "UnregisteredFromActiveSet",
+    ]
+    }
+],
+"errors": [
+    {
+    "NodeError": {
+        "name": "/eigenda-native-node",
+        "node_type": "EigenDA",
+        "errors": [
+        "UnregisteredFromActiveSet",
+        ]
+    }
+    }
+]
+}
 ```
 
 ### Delete Machine
@@ -172,12 +221,6 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Removes a machine from the system  
 **Example:** `DELETE /machine/123e4567-e89b-12d3-a456-426614174000`
 
-#### Response
-
-```json
-
-```
-
 ### Set Machine Name
 
 **Endpoint:** `/machine/{machine_id}`  
@@ -185,12 +228,6 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Parameters:** `name` (query)  
 **Description:** Sets a custom name for a machine  
 **Example:** `POST /machine/123e4567-e89b-12d3-a456-426614174000?name=production-1`
-
-#### Response
-
-```json
-
-```
 
 ### Get Machine Node Data
 
@@ -202,12 +239,32 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 #### Response
 
 ```json
-
+[
+  {
+    "machine_id": "21152637-fabd-4261-b72b-d43d76c02ff9",
+    "avs_name": "/eigenda-native-node",
+    "avs_type": "EigenDA",
+    "avs_version": "0.0.0",
+    "chain": "holesky",
+    "version_hash": "sha256:6650119a385f2447ca60f03080f381cf4f10ad7f920a2ce27fe0d973ac43e993",
+    "operator_address": null,
+    "active_set": false,
+    "created_at": "2024-12-01T15:11:10.141019",
+    "updated_at": "2024-12-01T15:36:11.850349",
+    "uptime": 74153.0,
+    "performance_score": 0.0,
+    "update_status": "Unknown",
+    "errors": [
+      "CrashedNode",
+      "NoOperatorId"
+    ]
+  }
+]
 ```
 
 ## AVS Management
 
-### Update AVS
+### Update an AVS's chain and/or Operator Key for active set monitoring
 
 **Endpoint:** `/machine/{machine_id}/{avs_name}`  
 **Method:** `PUT`  
@@ -215,13 +272,7 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Updates AVS configuration  
 **Example:** `PUT /machine/123e4567-e89b-12d3-a456-426614174000/eigenda?chain=mainnet&operator_address=0x123...`
 
-#### Response
-
-```json
-
-```
-
-### Get AVS Metrics
+### Get AVS Metrics (Condensed)
 
 **Endpoint:** `/machine/{machine_id}/{avs_name}/metrics`  
 **Method:** `GET`  
@@ -249,7 +300,7 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get AVS Logs
 
-**Endpoint:** `/machine/{machine_id}/{avs_name}/logs`  
+**Endpoint:** `/machine/{machine_id}/{avs_name}/logs`
 **Method:** `GET`  
 **Parameters:** `log_level` (optional), `from` (optional), `to` (optional)  
 **Description:** Retrieves logs for a specific AVS  
