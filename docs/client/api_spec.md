@@ -266,64 +266,95 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Update an AVS's chain and/or Operator Key for active set monitoring
 
-**Endpoint:** `/machine/{machine_id}/{avs_name}`  
+**Endpoint:** `/machine/{machine_id}`  
 **Method:** `PUT`  
-**Parameters:** `chain` (optional), `operator_address` (optional)  
-**Description:** Updates AVS configuration  
-**Example:** `PUT /machine/123e4567-e89b-12d3-a456-426614174000/eigenda?chain=mainnet&operator_address=0x123...`
+**Parameters:** `avs_name`, `chain` (optional), `operator_address` (optional)
+**Description:** Updates AVS configuration
+**Example:** `PUT /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node&chain=mainnet&operator_address=0x123...`
 
 ### Get AVS Metrics (Condensed)
 
-**Endpoint:** `/machine/{machine_id}/{avs_name}/metrics`  
-**Method:** `GET`  
-**Description:** Gets condensed metrics for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/eigenda/metrics`
+**Endpoint:** `/machine/{machine_id}/metrics`  
+**Method:** `GET`
+**Parameters** `avs_name`
+**Description:** Gets condensed metrics for a specific AVS
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node`
 
 #### Response
 
 ```json
-
+[
+  {
+    "machine_id": "2d65d5bb-df5d-4882-b7a9-0e7e3f04eacb",
+    "avs_name": "/eigenda-native-node",
+    "name": "eigen_performance_score",
+    "value": 100.0,
+    "attributes": {
+      "avs_name": "da-node"
+    },
+    "created_at": "2024-12-01T18:55:40.794273"
+  },
+  {
+    "machine_id": "2d65d5bb-df5d-4882-b7a9-0e7e3f04eacb",
+    "avs_name": "/eigenda-native-node",
+    "name": "node_reachability_status",
+    "value": 0.0,
+    "attributes": {
+      "service": "retrieval"
+    },
+    "created_at": "2024-12-01T18:55:40.794273"
+  },
+  {
+    "machine_id": "2d65d5bb-df5d-4882-b7a9-0e7e3f04eacb",
+    "avs_name": "/eigenda-native-node",
+    "name": "node_reachability_status",
+    "value": 0.0,
+    "attributes": {
+      "service": "dispersal"
+    },
+    "created_at": "2024-12-01T18:55:40.794273"
+  }
+]
 ```
 
 ### Get All AVS Metrics
 
-**Endpoint:** `/machine/{machine_id}/{avs_name}/metrics/all`  
+**Endpoint:** `/machine/{machine_id}/metrics/all`  
 **Method:** `GET`  
+**Parameters** `avs_name`
 **Description:** Gets all metrics for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/eigenda/metrics/all`
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/metrics/all?avs_name=eigenda`
 
 #### Response
 
-```json
-
-```
+Same as above, just with more metrics
 
 ### Get AVS Logs
 
-**Endpoint:** `/machine/{machine_id}/{avs_name}/logs`
+**Endpoint:** `/machine/{machine_id}/logs`
 **Method:** `GET`  
-**Parameters:** `log_level` (optional), `from` (optional), `to` (optional)  
+**Parameters:** `avs_name`, `log_level` (optional), `from` (optional), `to` (optional)  
 **Description:** Retrieves logs for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/eigenda/logs?log_level=error&from=1635724800&to=1635811200`
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/logs?avs_name=eigenda&log_level=error&from=1635724800&to=1635811200`
 
-#### Response
+<!-- #### Response
 
 ```json
 
-```
+``` -->
 
 ## Public Key Management
 
 ### Get All Keys
 
 **Endpoint:** `/pubkey`  
-**Method:** `GET`  
-**Description:** Retrieves all operator public keys for the organization  
+**Method:** `GET`
+**Description:** Retrieves all operator public keys for the organization
 
 #### Response
 
 ```json
-
+["0x000000000000000000000000000000000000dEaD"]
 ```
 
 ### Create Key
@@ -334,12 +365,6 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Add a new operator public key to monitor  
 **Example:** `POST /pubkey?public_key=0x123...&name=main-key`
 
-#### Response
-
-```json
-
-```
-
 ### Update Key Name
 
 **Endpoint:** `/pubkey`  
@@ -348,11 +373,6 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Updates the name of an existing operator public key  
 **Example:** `PUT /pubkey?public_key=0x123...`
 
-#### Response
-
-```json
-
-```
 
 ### Delete Key
 
@@ -362,24 +382,36 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Removes an operator key  
 **Example:** `DELETE /pubkey?public_key=0x123...`
 
-#### Response
-
-```json
-
-```
-
 ## Client Management
 
 ### Get All Clients
 
 **Endpoint:** `/client`  
 **Method:** `GET`  
-**Description:** Lists all clients and their associated machines  
+**Description:** Lists all clients and their associated machines (separately to help with container orchestration in the future) 
 
 #### Response
 
 ```json
-
+[
+  [
+    {
+      "client_id": "0x41357be4cd76bd57bb692d0fda7a5b5ec5b879ee",
+      "organization_id": 1,
+      "created_at": "2024-12-01T18:55:40.699992",
+      "updated_at": "2024-12-01T18:55:40.699992"
+    },
+    [
+      {
+        "machine_id": "2d65d5bb-df5d-4882-b7a9-0e7e3f04eacb",
+        "name": "darthvader",
+        "client_id": "0x41357be4cd76bd57bb692d0fda7a5b5ec5b879ee",
+        "created_at": "2024-12-01T18:55:40.708849",
+        "updated_at": "2024-12-01T18:55:40.708849"
+      }
+    ]
+  ]
+]
 ```
 
 ### Get Client Machines
@@ -392,7 +424,23 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 #### Response
 
 ```json
-
+[
+  {
+    "client_id": "0x41357be4cd76bd57bb692d0fda7a5b5ec5b879ee",
+    "organization_id": 1,
+    "created_at": "2024-12-01T18:55:40.699992",
+    "updated_at": "2024-12-01T18:55:40.699992"
+  },
+  [
+    {
+      "machine_id": "2d65d5bb-df5d-4882-b7a9-0e7e3f04eacb",
+      "name": "darthvader",
+      "client_id": "0x41357be4cd76bd57bb692d0fda7a5b5ec5b879ee",
+      "created_at": "2024-12-01T18:55:40.708849",
+      "updated_at": "2024-12-01T18:55:40.708849"
+    }
+  ]
+]
 ```
 
 ## AVS View
@@ -406,19 +454,28 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 #### Response
 
 ```json
-
-```
-
-### Get Status Overview of AVS's
-
-**Endpoint:** `/info/avs/version`  
-**Method:** `GET`  
-**Description:** Gets version information for all supported AVSes  
-
-#### Response
-
-```json
-
+[
+  {
+    "machine_id": "2d65d5bb-df5d-4882-b7a9-0e7e3f04eacb",
+    "avs_name": "/eigenda-native-node",
+    "avs_type": "EigenDA",
+    "avs_version": "0.8.4",
+    "chain": null,
+    "version_hash": "sha256:6650119a385f2447ca60f03080f381cf4f10ad7f920a2ce27fe0d973ac43e993",
+    "operator_address": null,
+    "active_set": false,
+    "created_at": "2024-12-01T18:55:40.944938",
+    "updated_at": "2024-12-01T19:05:41.938524",
+    "uptime": 87564.0,
+    "performance_score": 100.0,
+    "update_status": "Unknown",
+    "errors": [
+      "UnregisteredFromActiveSet",
+      "NoChainInfo",
+      "NoOperatorId"
+    ]
+  }
+]
 ```
 
 ## Information
@@ -427,23 +484,25 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 **Endpoint:** `/info/avs/version/{avs}`  
 **Method:** `GET`  
-**Description:** Gets version information for a specific AVS
+**Description:** Gets version information for a specific AVS - could return multiple objects that differ by chain
 **Example:** `GET /info/avs/version/eigenda`
 
 #### Response
 
 ```json
-
+[
+  {
+    "node_type": "EigenDA",
+    "chain": "holesky",
+    "latest_version": "0.8.5",
+    "breaking_change_version": "0.8.0",
+    "breaking_change_datetime": "2024-10-11T05:00:00"
+  }
+]
 ```
 
 ### Get All AVS Versions
 
 **Endpoint:** `/info/avs/version`  
 **Method:** `GET`  
-**Description:** Gets version information for all supported AVSes  
-
-#### Response
-
-```json
-
-```
+**Description:** Gets version information for all supported AVSes
