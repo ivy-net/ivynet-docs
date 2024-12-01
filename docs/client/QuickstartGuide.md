@@ -31,6 +31,8 @@ Definitions:
 
 `ivynet scan` - This command will scan for any AVS's metrics endpoints, and add them into a file at `~/.ivynet/monitor-config.toml`
 
+NOTE: This command scans for active /metrics endpoints, so if the endpoint isn't up yet (because a test instance was just spun up), then no monitorable endpoints will show up until the /metrics endpoint is functional.
+
 ### Monitor those Nodes
 
 `ivynet monitor` - This command will build an `~/.ivynet/ivynet-config.toml` file with your node information. Two things happen at first bootup:

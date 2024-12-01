@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Ivynet API Specification (Demo)
+# Ivynet 0.3 Alpha API Docs
 
 https://api1.test.ivynet.dev/
 
@@ -35,93 +35,122 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 # Endpoints
 
-## Organization
-
-### Create Organization
-
-**Endpoint:** `/organization`  
-**Method:** `POST`  
-**Description:** Creates a new organization  
-**Example:** `POST /organization`
-
-### Get Organization
-
-**Endpoint:** `/organization/{id}`  
-**Method:** `GET`  
-**Description:** Retrieves organization details  
-**Example:** `GET /organization/123`
-
-### Get Organization Machines
-
-**Endpoint:** `/organization/machines`  
-**Method:** `GET`  
-**Description:** Lists all machines in an organization  
-**Example:** `GET /organization/machines`
-
-### Get Organization AVSes
-
-**Endpoint:** `/organization/avses`  
-**Method:** `GET`  
-**Description:** Lists all AVSes in an organization  
-**Example:** `GET /organization/avses`
-
-### Invite User
-
-**Endpoint:** `/organization/invite`  
-**Method:** `POST`  
-**Description:** Invites a user to the organization  
-**Example:** `POST /organization/invite`
-
-### Confirm Organization
-
-**Endpoint:** `/organization/confirm/{id}`  
-**Method:** `POST`  
-**Description:** Confirms an organization's verification  
-**Example:** `POST /organization/confirm/123e4567-e89b-12d3-a456-426614174000`
-
-### Add Operator Key
-
-**Endpoint:** `/organization/keys`  
-**Method:** `POST`  
-**Description:** Adds a new operator key to the organization  
-**Example:** `POST /organization/keys`
-
 ## Machine Management
 
 ### Get All Machines
 
 **Endpoint:** `/machine`  
 **Method:** `GET`  
-**Description:** Retrieves information for all machines  
-**Example:** `GET /machine`
+**Description:** Retrieves information for all machines
+
+#### Response
+
+```json
+[
+  {
+    "machine_id": "b4ea1e76-f4ab-4d36-a374-840a69fe0a95",
+    "name": "US-East-Eigen-AVS-1",
+    "status": "Unhealthy",
+    "system_metrics": {
+      "cores": 24.0,
+      "cpu_usage": 0.0,
+      "memory_info": {
+        "usage": 13781446656.0,
+        "free": 45015527424.0,
+        "status": "Healthy"
+      },
+      "disk_info": {
+        "usage": 419884315648.0,
+        "free": 1609581120512.0,
+        "status": "Healthy"
+      }
+    },
+    "avs_list": [
+      {
+        "machine_id": "b4ea1e76-f4ab-4d36-a374-840a69fe0a95",
+        "avs_name": "eigenda-native-node",
+        "avs_type": "EigenDA",
+        "avs_version": "0.8.4",
+        "chain": "holesky",
+        "version_hash": "sha256:6650119a385f2447ca60f03080f381cf4f10ad7f920a2ce27fe0d973ac43e993",
+        "operator_address": "0x123...",
+        "active_set": false,
+        "created_at": "2024-11-28T15:41:59.629501",
+        "updated_at": "2024-11-28T15:41:59.629501",
+        "uptime": 1765.0,
+        "performance_score": 100.0,
+        "update_status": "Unknown",
+        "errors": [
+          "UnregisteredFromActiveSet",
+        ]
+      }
+    ],
+    "errors": [
+      {
+        "NodeError": {
+          "name": "/eigenda-native-node",
+          "node_type": "EigenDA",
+          "errors": [
+            "UnregisteredFromActiveSet",
+          ]
+        }
+      }
+    ]
+  }
+]
+```
 
 ### Get Machine Status
 
 **Endpoint:** `/machine/status`  
 **Method:** `GET`  
 **Description:** Gets overview of healthy and unhealthy machines  
-**Example:** `GET /machine/status`
+
+#### Response
+
+```json
+{
+  "total_machines": 5,
+  "healthy_machines": ["21152637-fabd-4261-b72b-d43d76c02ff9", "d1f25fbe-4163-4b8c-9c75-61da44091da9"],
+  "unhealthy_machines": ["6994f6ce-8e8e-4ee0-81ec-0756a4ae3bbe", "f021e11f-c908-45e7-8bb3-9a192422f38c", "f06d8d7e-26b7-40cf-abf3-cf354d265c9d"]
+}
+```
 
 ### Get Idle Machines
 
 **Endpoint:** `/machine/idle`  
 **Method:** `GET`  
 **Description:** Lists all idle machines  
-**Example:** `GET /machine/idle`
+
+#### Response
+
+```json
+["3082db55-4916-41d9-8057-3a0ee5493817"]
+```
 
 ### Get Unhealthy Machines
 
 **Endpoint:** `/machine/unhealthy`  
-**Method:** `POST`  
+**Method:** `GET`  
 **Description:** Lists all unhealthy machines  
-**Example:** `POST /machine/unhealthy`
+
+#### Response
+
+```json
+["6994f6ce-8e8e-4ee0-81ec-0756a4ae3bbe", "f021e11f-c908-45e7-8bb3-9a192422f38c", "f06d8d7e-26b7-40cf-abf3-cf354d265c9d"]
+```
 
 ### Get Healthy Machines
 
 **Endpoint:** `/machine/healthy`  
-**Method:** `POST`  
+**Method:** `GET`  
 **Description:** Lists all healthy machines  
-**Example:** `POST /machine/healthy`
+
+#### Response
+
+```json
+["21152637-fabd-4261-b72b-d43d76c02ff9", "d1f25fbe-4163-4b8c-9c75-61da44091da9"]
+```
 
 ### Get Machine Info
 
@@ -130,12 +159,24 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Gets detailed information about a specific machine  
 **Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000`
 
+#### Response
+
+```json
+
+```
+
 ### Delete Machine
 
 **Endpoint:** `/machine/{machine_id}`  
 **Method:** `DELETE`  
 **Description:** Removes a machine from the system  
 **Example:** `DELETE /machine/123e4567-e89b-12d3-a456-426614174000`
+
+#### Response
+
+```json
+
+```
 
 ### Set Machine Name
 
@@ -145,12 +186,24 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Sets a custom name for a machine  
 **Example:** `POST /machine/123e4567-e89b-12d3-a456-426614174000?name=production-1`
 
+#### Response
+
+```json
+
+```
+
 ### Get Machine Node Data
 
 **Endpoint:** `/machine/{machine_id}/info`  
 **Method:** `GET`  
 **Description:** Retrieves all node information for a machine  
 **Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/info`
+
+#### Response
+
+```json
+
+```
 
 ## AVS Management
 
@@ -162,6 +215,12 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Updates AVS configuration  
 **Example:** `PUT /machine/123e4567-e89b-12d3-a456-426614174000/eigenda?chain=mainnet&operator_address=0x123...`
 
+#### Response
+
+```json
+
+```
+
 ### Get AVS Metrics
 
 **Endpoint:** `/machine/{machine_id}/{avs_name}/metrics`  
@@ -169,12 +228,24 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Gets condensed metrics for a specific AVS  
 **Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/eigenda/metrics`
 
+#### Response
+
+```json
+
+```
+
 ### Get All AVS Metrics
 
 **Endpoint:** `/machine/{machine_id}/{avs_name}/metrics/all`  
 **Method:** `GET`  
 **Description:** Gets all metrics for a specific AVS  
 **Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/eigenda/metrics/all`
+
+#### Response
+
+```json
+
+```
 
 ### Get AVS Logs
 
@@ -184,30 +255,53 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Retrieves logs for a specific AVS  
 **Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/eigenda/logs?log_level=error&from=1635724800&to=1635811200`
 
+#### Response
+
+```json
+
+```
+
 ## Public Key Management
 
 ### Get All Keys
 
 **Endpoint:** `/pubkey`  
 **Method:** `GET`  
-**Description:** Retrieves all operator keys for the organization  
-**Example:** `GET /pubkey`
+**Description:** Retrieves all operator public keys for the organization  
+
+#### Response
+
+```json
+
+```
 
 ### Create Key
 
 **Endpoint:** `/pubkey`  
 **Method:** `POST`  
 **Parameters:** `public_key`, `name`  
-**Description:** Creates a new operator key  
+**Description:** Add a new operator public key to monitor  
 **Example:** `POST /pubkey?public_key=0x123...&name=main-key`
+
+#### Response
+
+```json
+
+```
 
 ### Update Key Name
 
 **Endpoint:** `/pubkey`  
 **Method:** `PUT`  
 **Parameters:** `public_key`  
-**Description:** Updates the name of an existing operator key  
+**Description:** Updates the name of an existing operator public key  
 **Example:** `PUT /pubkey?public_key=0x123...`
+
+#### Response
+
+```json
+
+```
 
 ### Delete Key
 
@@ -217,6 +311,12 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Removes an operator key  
 **Example:** `DELETE /pubkey?public_key=0x123...`
 
+#### Response
+
+```json
+
+```
+
 ## Client Management
 
 ### Get All Clients
@@ -224,7 +324,12 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Endpoint:** `/client`  
 **Method:** `GET`  
 **Description:** Lists all clients and their associated machines  
-**Example:** `GET /client`
+
+#### Response
+
+```json
+
+```
 
 ### Get Client Machines
 
@@ -233,18 +338,61 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 **Description:** Lists all machines associated with a specific client  
 **Example:** `GET /client/0x123...`
 
+#### Response
+
+```json
+
+```
+
+## AVS View
+
+### Get all AVS's
+
+**Endpoint:** `/avs`
+**Method:** `GET`  
+**Description:** Gets info on all AVS's  
+
+#### Response
+
+```json
+
+```
+
+### Get Status Overview of AVS's
+
+**Endpoint:** `/info/avs/version`  
+**Method:** `GET`  
+**Description:** Gets version information for all supported AVSes  
+
+#### Response
+
+```json
+
+```
+
 ## Information
 
 ### Get AVS Version
 
 **Endpoint:** `/info/avs/version/{avs}`  
 **Method:** `GET`  
-**Description:** Gets version information for a specific AVS  
+**Description:** Gets version information for a specific AVS
 **Example:** `GET /info/avs/version/eigenda`
+
+#### Response
+
+```json
+
+```
 
 ### Get All AVS Versions
 
 **Endpoint:** `/info/avs/version`  
 **Method:** `GET`  
 **Description:** Gets version information for all supported AVSes  
-**Example:** `GET /info/avs/version`
+
+#### Response
+
+```json
+
+```
