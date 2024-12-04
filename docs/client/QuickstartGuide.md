@@ -13,59 +13,59 @@ The following document assumes that:
 - a contemporary Linux distribution (e.g. Debian 12, Ubuntu 24.04, RHEL 9) with libssl and libcrypto libraries is ready to use
 - docker and docker-compose (or docker compose) are installed
 - user operating ivynet can control docker, e.g. is a member of the docker group
-- the ivynet has been installed and is available in the PATH
-- and that the user's ECDSA account has already registered as an operator on the Eigenlayer network. [If not, go here!](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
+- the user's ECDSA account has already registered as an operator on the Eigenlayer network. If not, go the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
+- all AVS's are deployed with docker
+
+## Installation
+
+*The installation of the ivynet client, as well as docker, can be done with the [Ansible role](https://github.com/ivy-net/ivynet-client-ansible).*
+
+* Get the binary file, e.g. from the `https://storage.googleapis.com/ivynet-share/ivynet-{version}` cloud bucket
+* Compare the hash of the downloaded file `sha256 ivynet-{version}` with the hash store in the bucket: `https://storage.googleapis.com/ivynet-share/ivynet-{version}.sha256`
+* Save the file as `ivynet` in a folder which is included in the PATH variable, or adjust the variable
 
 ## Setup and Configuration
 
-Definitions:
+The application does not required manual configuration.
 
-- Node:
-  - This is currently any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation (and maybe Symbiotic as well, though we've not yet tested there). In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
-- Machine
-  - This is the server (baremetal or virtual) running the Ivynet client
-- Client
-  - The software itself, separated from the machine in order to accomodate future container management softwares like Kubernetes.
+### Scan for active (Nodes) AVS's
 
-### Scan for active Nodes
+When application is ready, scan the system for running AVS's with
+```
+ivynet scan
+```
+The output of the command is the list of all potential AVS (a docker container with an expose port and `/metrics` endpoint available).
+Select which containers should be monitor pressing SPACE and ticking box next to them.
+Confirm the selection by pressing ENTER.
+The command will add all AVS's into the `~/.ivynet/monitor-config.toml` file.
 
-`ivynet scan` - This command will scan for any AVS's metrics endpoints, and add them into a file at `~/.ivynet/monitor-config.toml`
+### Monitor (Nodes) AVS's
 
-NOTE: This command scans for active /metrics endpoints, so if the endpoint isn't up yet (because a test instance was just spun up), then no monitorable endpoints will show up until the /metrics endpoint is functional.
+Now, start the monitor with
 
-### Monitor those Nodes
+```
+ivynet monitor
+```
+If the application is started for the first time, it will ask for ivynet website registration details (username and password).
+![Screenshot of ivynet asking for login details](./imgs/screens/registration.png)
 
-`ivynet monitor` - This command will build an `~/.ivynet/ivynet-config.toml` file with your node information. Two things happen at first bootup:
+These information are going to be stored in the `~/.ivynet/ivynet-config.toml` file along the node information.
 
-- You are asked to sign in - this uses a randomly generated ECDSA key to register your node to the backend. If you accidentally delete this, you can just reregister, but the backend has no access to this private key (or any other key for that matter). This will break continuity of metrics once history is added in the future.
-- It uses the previously run scan command's monitor-config to start monitoring endpoints for your metrics and logs. It then sends these to our backend, allowing you to view them through the API or interface.
+The line `Node properly registered with key 0x{ecsda_address}` confirm that registration is successful.
+Below it the list of all running docker container are going to be printed as visible on the screenshot below.
+![Screenshot of successful registration](./imgs/screens/monitor.png)
 
- In the future, our AI Ops tool will be able to diagnose any problems in your logs, and your metrics will be visible to you in any timespan or granularity you desire. Also, alerts can be built on top of them.
+## Further usage
 
-## Alpha Codebase Notes
+Navigate to the Ivynet website and confirm that information from the node are uploaded.
 
-An update on where Ivynet is at, where we're going, and what we want your feedback on!
+The ivynet application can be restarted detached from the remote terminal, for example by starting it in a UNIX multiplexers like `screen` or `tmux`.
+An alternative might to use the [start-stop-daemon](https://github.com/daleobrien/start-stop-daemon) tool or prepare a systemd script.
 
-### Where we're at
+start-stop-daemon example:
+```
+start-stop-daemon -b -x {ivynet_dir}/ivynet -S -- monitor
+```
 
-**Ivynet Client:** Previously, the IvyNet client assumed that users were running AVSs across multiple virtualized environments for security, management ease, etc.
-However, since AVS operators aren’t yet compensated, many are running multiple AVSs on a single bare-metal server. As such, we've now built for that, and assume multiple containers might be on one server, baremetal or otherwise.
-
-**API and Interface:** Our primary focus has been on gathering metrics, logs, and system information from your node, with less emphasis on AVS discovery.
-
-### Where we're going
-
-**Ivynet Client:** For the near term, we’ll focus more on observability features rather than new deployments, as most operators are successfully building out their own AVS instances.
-
-**Interface and API:** Our next near-term release is metrics history (and data scaping endpoints to support that). In the longer term future, we'll enhancing AVS discoverability, statistics, and introducing an AI Ops tool to diagnose issues directly from your logs and metrics.
-
-## Feedback Wanted
-
-If you’re reading this, you’re likely already in a Telegram group with us. But if you’re not, feel free to contact us [here on telegram](https://t.me/soho_dot) to share feature requests or feedback!
-
-Here’s what we’d love to know:
-
-- How easy is it to use the various parts of IvyNet (Client, API, Interface)?
-- Are there usability improvements we could make to any part of IvyNet?
-- Are there any features we don’t yet offer that would make a measurable improvement to your experience as an operator?
-- Any other feedback you’d like to share!
+Visit the [client documentation](./clientDocs.md) for more in-depth information.
+And when ready: *share the feedback!*
