@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Ivynet Client documentation
 
+The instruction how to start using Ivynet Client is located in the [Quckstart Guide](./QuickstartGuide.md).
+
 ## Definitions
 
 - Node:

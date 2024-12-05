@@ -13,7 +13,8 @@ The following document assumes that:
 - a contemporary Linux distribution (e.g. Debian 12, Ubuntu 24.04, RHEL 9) with libssl and libcrypto libraries is ready to use
 - docker and docker-compose (or docker compose) are installed
 - user operating ivynet can control docker, e.g. is a member of the docker group
-- the user's ECDSA account has already registered as an operator on the Eigenlayer network. If not, go the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
+- the user's ECDSA account has already registered as an operator on the Eigenlayer network.
+If not, go the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
 - all AVS's are deployed with docker
 
 ## Installation
@@ -68,4 +69,4 @@ start-stop-daemon -b -x {ivynet_dir}/ivynet -S -- monitor
 ```
 
 Visit the [client documentation](./clientDocs.md) for more in-depth information.
-And when ready: *share the feedback!*
+And when ready: **share the feedback!**
