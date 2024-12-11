@@ -21,8 +21,8 @@ If not, go the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator
 
 *The installation of the ivynet client, as well as docker, can be done with the [Ansible role](https://github.com/ivy-net/ivynet-client-ansible).*
 
-* Get the binary file, e.g. from the `https://storage.googleapis.com/ivynet-share/ivynet-{version}` cloud bucket
-* Compare the hash of the downloaded file `sha256 ivynet-{version}` with the hash store in the bucket: `https://storage.googleapis.com/ivynet-share/ivynet-{version}.sha256`
+* Get the latest binary file from the `https://storage.googleapis.com/ivynet-share/index.html` cloud bucket
+* Compare the hash of the downloaded file `sha256 ivynet-{version}` with the hash store in the bucket e.g.: `https://storage.googleapis.com/ivynet-share/ivynet-{version}.sha256`
 * Save the file as `ivynet` in a folder which is included in the PATH variable, or adjust the variable
 
 ## Setup and Configuration
