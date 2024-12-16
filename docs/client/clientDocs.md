@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Ivynet Client documentation
+# Ivynet Client Documentation
 
 The instructions on how to start using Ivynet Client are located in the [Quickstart Guide](./QuickstartGuide.md).
 
@@ -14,6 +14,33 @@ The instructions on how to start using Ivynet Client are located in the [Quickst
   - This is the server (baremetal or virtual) running the Ivynet client
 - Client:
   - The software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
+
+### Machine Error Definitions:
+
+- `Idle`
+  - This means the client is currently running but is not aware of any currently running AVS's. If you have recently changed AVS's, remember to rescan!
+- `SystemResourcesUsage`
+  - This means your resource usage, specifically memory and/or disk space, are used at greater than 90%. 
+- `NodeError(NodeErrorInfo)`
+  - This is a mirror of the below node error definitions.
+
+### Node Error Definitions:
+- `NoOperatorId`
+  - There is no operator address assigned to this AVS instance. This means we cannot get active set information.
+- `ActiveSetNoDeployment`
+  - You are registered in the active set, but your node is malfunctioning in some way and metrics are not being sent. Usually, the AVS container has crashed. This is a very high priority error. 
+- `UnregisteredFromActiveSet`
+  - The opposite of the above error: you have a node running (and operator address / chain information) but are not registered to be in the active set.
+- `LowPerformanceScore`
+  - This is defined as a performance score lower than 80/100. 
+- `NeedsUpdate`
+  - Your node needs an update. Refer to update_status for more information. 
+- `CrashedNode`
+  - The node is not running, but communication is still happening with the client. This same error scenario will also produce `ActiveSetNoDeployment` if your operator is a member of the active set. 
+- `IdleNodeNoCommunication`
+  - Metrics have not been sent in the last 15 minutes. 
+- `NoChainInfo`
+  - No chain information added to the AVS instance. We need this for active set AND latest version checking. 
 
 ## Usage
 
