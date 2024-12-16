@@ -21,7 +21,7 @@ If not, go the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator
 
 *The installation of the ivynet client, as well as docker, can be done with the [Ansible role](https://github.com/ivy-net/ivynet-client-ansible).*
 
-* Get the latest binary file from the `https://storage.googleapis.com/ivynet-share/index.html` cloud bucket
+* Get the latest binary file from the [cloud bucket](https://storage.googleapis.com/ivynet-share/index.html)
 * Compare the hash of the downloaded file `sha256 ivynet-{version}` with the hash store in the bucket e.g.: `https://storage.googleapis.com/ivynet-share/ivynet-{version}.sha256`
 * Save the file as `ivynet` in a folder which is included in the PATH variable, or adjust the variable
 
@@ -38,6 +38,10 @@ ivynet scan
 The output of the command is the list of all potential AVS (a docker container with an expose port and `/metrics` endpoint available).
 Select which containers should be monitor pressing SPACE and ticking box next to them.
 Confirm the selection by pressing ENTER.
+![Screenshot of scan results](./imgs/screens/scan1.png)
+Next step is to named each AVS.
+The name has to be unique per system with ivynet (e.g. VM).
+![Screenshot with added AVS's ](./imgs/screens/scan2.png)
 The command will add all AVS's into the `~/.ivynet/monitor-config.toml` file.
 
 ### Monitor (Nodes) AVS's
