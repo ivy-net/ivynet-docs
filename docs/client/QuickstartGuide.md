@@ -10,16 +10,16 @@ Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our
 
 The following document assumes that:
 
-- a contemporary Linux distribution (e.g. Debian 12, Ubuntu 24.04, RHEL 9) with libssl and libcrypto libraries is ready to use
-- docker and docker-compose (or docker compose) are installed
-- user operating ivynet can control docker, e.g. is a member of the docker group
-- the user's ECDSA account has already registered as an operator on the Eigenlayer network.
-If not, go the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
-- all AVS's are deployed with docker
+- A contemporary Linux distribution (e.g. Debian 12, Ubuntu 24.04, RHEL 9) with libssl and libcrypto libraries is ready to use
+- Docker and docker-compose (or docker compose) are installed
+- User operating ivynet can control Docker, e.g. is a member of the docker group
+- The user's ECDSA account has already registered as an operator on the Eigenlayer network.
+If not, go to the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
+- All AVS's are deployed with Docker
 
 ## Installation
 
-*The installation of the ivynet client, as well as docker, can be done with the [Ansible role](https://github.com/ivy-net/ivynet-client-ansible).*
+*The installation of the ivynet client, as well as Docker, can be done with the [Ansible role](https://github.com/ivy-net/ivynet-client-ansible).*
 
 * Get the latest binary file from the [cloud bucket](https://storage.googleapis.com/ivynet-share/index.html)
 * Compare the hash of the downloaded file `sha256 ivynet-{version}` with the hash store in the bucket e.g.: `https://storage.googleapis.com/ivynet-share/ivynet-{version}.sha256`
@@ -27,28 +27,28 @@ If not, go the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator
 
 ## Setup and Configuration
 
-The application does not required manual configuration.
+The application does not require manual configuration.
 
 ### Scan for active (Nodes) AVS's
 
-When application is ready, scan the system for running AVS's with
+After the client has been configured, scan the system for running AVS's with:
 ```
 ivynet scan
 ```
-The output of the command is the list of all potential AVS (a docker container with an expose port and `/metrics` endpoint available).
-Select which containers should be monitor pressing SPACE and ticking box next to them.
+The output of the command is the list of all potential AVS: a Docker container with an exposed port and `/metrics` endpoint available (No support yet for network mode host).
+Select which containers should be monitored by pressing SPACE and ticking the box next to them.
 Confirm the selection by pressing ENTER.
 ![Screenshot of scan results](./imgs/screens/scan1.png)
 
 Next step is to name each AVS.
 The name has to be unique per system with ivynet (e.g. VM).
 
-![Screenshot with added AVS's ](./imgs/screens/scan2.png)
+![Screenshot with added AVS's](./imgs/screens/scan2.png)
 The command will add all AVS's into the `~/.ivynet/monitor-config.toml` file.
 
 ### Monitor (Nodes) AVS's
 
-Now, start the monitor with
+Now, start the monitor with:
 
 ```
 ivynet monitor
@@ -56,18 +56,18 @@ ivynet monitor
 If the application is started for the first time, it will ask for ivynet website registration details (username and password).
 ![Screenshot of ivynet asking for login details](./imgs/screens/registration.png)
 
-These information are going to be stored in the `~/.ivynet/ivynet-config.toml` file along the node information.
+This information is going to be stored in the `~/.ivynet/ivynet-config.toml` file along with the node information.
 
-The line `Node properly registered with key 0x{ecsda_address}` confirm that registration is successful.
-Below it the list of all running docker container are going to be printed as visible on the screenshot below.
+The line `Node properly registered with key 0x{ecdsa_address}` confirms that registration is successful.
+Below it, the list of all running Docker containers will be printed as visible on the screenshot below.
 ![Screenshot of successful registration](./imgs/screens/monitor.png)
 
 ## Further usage
 
-Navigate to the Ivynet website and confirm that information from the node are uploaded.
+Navigate to the Ivynet website and confirm that information from the nodes are uploaded.
 
-The ivynet application can be restarted detached from the remote terminal, for example by starting it in a UNIX multiplexers like `screen` or `tmux`.
-An alternative might to use the [start-stop-daemon](https://github.com/daleobrien/start-stop-daemon) tool or prepare a systemd script.
+The ivynet application can be restarted detached from the remote terminal, for example by starting it in a UNIX multiplexer like `screen` or `tmux`.
+An alternative might be to use the [start-stop-daemon](https://github.com/daleobrien/start-stop-daemon) tool or prepare a systemd script.
 
 start-stop-daemon example:
 ```

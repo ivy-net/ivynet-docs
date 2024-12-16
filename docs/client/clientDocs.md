@@ -4,16 +4,16 @@ sidebar_position: 3
 
 # Ivynet Client documentation
 
-The instruction how to start using Ivynet Client is located in the [Quckstart Guide](./QuickstartGuide.md).
+The instructions on how to start using Ivynet Client are located in the [Quickstart Guide](./QuickstartGuide.md).
 
 ## Definitions
 
 - Node:
   - This is currently any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation (and maybe Symbiotic as well, though we've not yet tested there). In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
-- Machine
+- Machine:
   - This is the server (baremetal or virtual) running the Ivynet client
-- Client
-  - The software itself, separated from the machine in order to accomodate future container management softwares like Kubernetes.
+- Client:
+  - The software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
 
 ## Usage
 
