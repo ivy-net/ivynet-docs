@@ -39,8 +39,10 @@ The output of the command is the list of all potential AVS (a docker container w
 Select which containers should be monitor pressing SPACE and ticking box next to them.
 Confirm the selection by pressing ENTER.
 ![Screenshot of scan results](./imgs/screens/scan1.png)
-Next step is to named each AVS.
+
+Next step is to name each AVS.
 The name has to be unique per system with ivynet (e.g. VM).
+
 ![Screenshot with added AVS's ](./imgs/screens/scan2.png)
 The command will add all AVS's into the `~/.ivynet/monitor-config.toml` file.
 
