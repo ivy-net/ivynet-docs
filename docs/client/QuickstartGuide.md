@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Quickstart Guide
 
-Contact us on [telegram](https://t.me/h_comfort) if you'd like to be part of our alpha group.
+Contact us on [telegram](https://t.me/ivynetdotdev) if you have any questions!
 
 ## Prerequisites and dependencies
 
@@ -13,9 +13,10 @@ The following document assumes that:
 - A contemporary Linux distribution (e.g. Debian 12, Ubuntu 24.04, RHEL 9) with libssl and libcrypto libraries is ready to use
 - Docker and docker-compose (or docker compose) are installed
 - User operating ivynet can control Docker, e.g. is a member of the docker group
-- The user's ECDSA account has already registered as an operator on the Eigenlayer network.
-If not, go to the [Eigenlayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
+- The user's ECDSA account has already registered as an operator on the EigenLayer network.
+If not, go to the [EigenLayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
 - All AVS's are deployed with Docker
+- You have obtained an ivynet username and password. If not, contact us on [telegram](https://t.me/ivynetdotdev) and we will create an organization on your behalf. This process will soon be DIY.  
 
 ## Installation
 
@@ -62,9 +63,23 @@ The line `Node properly registered with key 0x{ecdsa_address}` confirms that reg
 Below it, the list of all running Docker containers will be printed as visible on the screenshot below.
 ![Screenshot of successful registration](./imgs/screens/monitor.png)
 
-## Further usage
+## Interface
 
-Navigate to the Ivynet website and confirm that information from the nodes are uploaded.
+Navigate to the [Ivynet website](https://metrics.ivynet.dev/login) and login.
+
+![Screenshot of login](./imgs/screens/login3.svg)
+
+Confirm that information from the nodes are uploaded.
+
+Be sure to add a public operator key and the corresponding chain to maximize metrics experience.
+
+![Screenshot of add key](./imgs/screens/key.svg)
+
+## APIs
+
+All Interface insights and more are accessible through [APIs](https://docs.ivynet.dev/docs/client/api_spec).
+
+## Further usage
 
 The ivynet application can be restarted detached from the remote terminal, for example by starting it in a UNIX multiplexer like `screen` or `tmux`.
 An alternative might be to use the [start-stop-daemon](https://github.com/daleobrien/start-stop-daemon) tool or prepare a systemd script.

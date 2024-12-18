@@ -12,7 +12,7 @@ IvyNet is designed to simplify devops, compliance, and business development acti
 
 ## Client
 
-The client consists of a shared suite of tools for node operators to manage their operations efficiently across deployments while retaining control. Key features include:
+The client consists of a shared suite of tools for node operators to manage their operations efficiently across deployments while retaining control. Key features will include:
 
 - **Metrics Monitoring**: Continuously monitor system, performance, and health metrics of your nodes to ensure optimal productivity across deployments.
 - **Network Adherance**: Keep your systems up to date and ensure your nodes remain in the active sets.
@@ -22,7 +22,7 @@ The client operates as a daemon on all deployed machines, with a command line in
 
 ## User Interface
 
-The user interface is an easy to use webpage that helps optimize middle and back office tasks with a complete overview of your deployed and idle nodes. Features include:
+The user interface is an easy to use webpage that helps optimize middle and back office tasks with a complete overview of your deployed and idle nodes. Features will include:
 
 - **Metrics History**:  Access detailed historical metrics and data to analyze performance and generate operational, compliance, and business development reports.
 - **Enhanced Metrics**: Benefit from network-specific inputs, data, and benchmarks to improve quality assurance and maintain competitiveness.
