@@ -9,27 +9,27 @@ The instructions on how to start using Ivynet Client are located in the [Quickst
 ## Definitions
 
 - **Node**:
-  - any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation.
+  - Any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation.
   In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
 - **Machine**:
-  - the server (baremetal or virtual) running the Ivynet client.
+  - The server (baremetal or virtual) running the Ivynet client.
 - **Client**:
-  - the software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
+  - The software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
 
 ## Errors
 ### Machine Error
 
 - `Idle`
-  - the Ivynet Client is running, but is not aware of any currently running AVS's.
+  - The Ivynet Client is running, but is not aware of any currently running AVS's.
   If you have recently changed AVS's, remember to rescan!
 - `NodeError(NodeErrorInfo)`
-  - a mirror of the below [Node Error](#node-error) scenario.
+  - A mirror of the below [Node Error](#node-error) scenario.
 - `SystemResourcesUsage`
-  - the machine resource usage, specifically memory and/or disk space, is greater than 90%.
+  - The machine resource usage, specifically memory and/or disk space, is greater than 90%.
 
 ### Node Error
 - `ActiveSetNoDeployment`
-  - the AVS is registered in the active set, but it is malfunctioning in some way and metrics are not being sent.
+  - The AVS is registered in the active set, but it is malfunctioning in some way and metrics are not being sent.
   Usually, the AVS container has crashed.
   **This is a very high priority error**.
 - `CrashedNode`
@@ -38,9 +38,9 @@ The instructions on how to start using Ivynet Client are located in the [Quickst
 - `IdleNodeNoCommunication`
   - Metrics have not been sent in the last 15 minutes.
 - `LowPerformanceScore`
-  - the performance score for the AVS is lower than 80/100.
+  - The performance score for the AVS is lower than 80/100.
 - `NeedsUpdate`
-  - the node needs an update.
+  - The node needs an update.
   Refer to the `update_status` in API (e.g. [/avs](api_spec#get-all-avss)) for more information.
 - `NoChainInfo`
   - No chain information added to the AVS instance.
