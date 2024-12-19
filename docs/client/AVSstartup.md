@@ -24,7 +24,7 @@ echo "Remove docker container:"
 docker ps -a | grep -q k3 && docker rm ${NAME}
 
 echo "=========="
-echo "Pull the image"
+echo "Pull the image:"
 docker pull ${IMAGE}
 
 echo "=========="
@@ -53,17 +53,17 @@ NAME=${1:-predicate}
 export ENV_FILE=./.env
 . $ENV_FILE
 
-echo "Killing docker container:"
+echo "Kill docker container:"
 docker ps | grep -q k3 && docker kill ${NAME}
 echo "Remove docker container:"
 docker ps -a | grep -q k3 && docker rm ${NAME}
 
 echo "=========="
-echo "Pulling the image"
+echo "Pull the image:"
 docker pull ${IMAGE}
 
 echo "=========="
-echo "Running the container:"
+echo "Run the container:"
 echo "${NAME}"
 docker run -d -p 19091:19091 -p 19090:19090 -p 19010:19010 --name ${NAME} --env-file ${ENV_FILE} -v "${DB_PATH}:/app/data/" -v "${PREDICATE_SIGNING_PRIVATE_KEY_STORE_PATH}:/app/signingkey.json" ${IMAGE} start --db-path /app/data/ --predicate-signing-private-key-store-path /app/signingkey.json
 
