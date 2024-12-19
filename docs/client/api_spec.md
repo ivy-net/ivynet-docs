@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Ivynet 0.3 Alpha API Docs
+# Ivynet 0.4 Alpha API Docs
 
 https://api1.test.ivynet.dev/
 
