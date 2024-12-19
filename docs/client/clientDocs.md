@@ -8,39 +8,48 @@ The instructions on how to start using Ivynet Client are located in the [Quickst
 
 ## Definitions
 
-- Node:
-  - This is currently any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation (and maybe Symbiotic as well, though we've not yet tested there). In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
-- Machine:
-  - This is the server (baremetal or virtual) running the Ivynet client
-- Client:
+- **Node**:
+  - Any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation.
+  In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
+- **Machine**:
+  - The server (baremetal or virtual) running the Ivynet client.
+- **Client**:
   - The software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
 
-### Machine Error Definitions:
+## Errors
+### Machine Error
 
 - `Idle`
-  - This means the client is currently running but is not aware of any currently running AVS's. If you have recently changed AVS's, remember to rescan!
-- `SystemResourcesUsage`
-  - This means your resource usage, specifically memory and/or disk space, are used at greater than 90%. 
+  - The Ivynet Client is running, but is not aware of any currently running AVS's.
+  If you have recently changed AVS's, remember to rescan!
 - `NodeError(NodeErrorInfo)`
-  - This is a mirror of the below node error definitions.
+  - A mirror of the below [Node Error](#node-error) scenario.
+- `SystemResourcesUsage`
+  - The machine resource usage, specifically memory and/or disk space, is greater than 90%.
 
-### Node Error Definitions:
-- `NoOperatorId`
-  - There is no operator address assigned to this AVS instance. This means we cannot get active set information.
+### Node Error
 - `ActiveSetNoDeployment`
-  - You are registered in the active set, but your node is malfunctioning in some way and metrics are not being sent. Usually, the AVS container has crashed. This is a very high priority error. 
-- `UnregisteredFromActiveSet`
-  - The opposite of the above error: you have a node running (and operator address / chain information) but are not registered to be in the active set.
-- `LowPerformanceScore`
-  - This is defined as a performance score lower than 80/100. 
-- `NeedsUpdate`
-  - Your node needs an update. Refer to update_status for more information. 
+  - The AVS is registered in the active set, but it is malfunctioning in some way and metrics are not being sent.
+  Usually, the AVS container has crashed.
+  **This is a very high priority error**.
 - `CrashedNode`
-  - The node is not running, but communication is still happening with the client. This same error scenario will also produce `ActiveSetNoDeployment` if your operator is a member of the active set. 
+  - The node is not running, but communication is still happening with the Ivynet Client.
+  This same scenario will also produce the `ActiveSetNoDeployment` error if the operator is a member of the active set.
 - `IdleNodeNoCommunication`
-  - Metrics have not been sent in the last 15 minutes. 
+  - Metrics have not been sent in the last 15 minutes.
+- `LowPerformanceScore`
+  - The performance score for the AVS is lower than 80/100.
+- `NeedsUpdate`
+  - The node needs an update.
+  Refer to the `update_status` in API (e.g. [/avs](api_spec#get-all-avss)) for more information.
 - `NoChainInfo`
-  - No chain information added to the AVS instance. We need this for active set AND latest version checking. 
+  - No chain information added to the AVS instance.
+  It is require to establish the status of active set and the latest version check.
+- `NoOperatorId`
+  - There is no operator address assigned to this AVS instance.
+  Ivynet cannot get an active set information.
+- `UnregisteredFromActiveSet`
+  - The node is running (and operator address / chain information are set), but the AVS is not registered to be in the active set.
 
 ## Usage
 
