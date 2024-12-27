@@ -4,9 +4,9 @@ sidebar_position: 5
 
 # How to start AVS in the bridge mode
 
-At the moment Ivynet Client can only track metrics from AVS's started in the default (bridge) docker network mode.
-Not every AVS has documentation how to do.
-Below a few examples on how to modify a startup script/procedure to start a container with metrics ports exposed for the Client.
+At the moment Ivynet Client can only track metrics from AVSs started in the default (bridge) docker network mode.
+Not every AVS has documentation on how to do this.
+Below are a few examples on how to modify a startup script/procedure to start a container with metrics ports exposed for the Client.
 
 ## K3
 
@@ -42,15 +42,15 @@ docker run \
   ${IMAGE} performer
 ```
 
-The script not only starts the AVS, exposes all used ports, names the container (default is 'k3'), but also sends it to background.
-The logs can be access with the `docker logs` command, e.g. if the default name is used:
+The script not only starts the AVS, exposes all used ports, and names the container (default is 'k3'), but also sends it to the background.
+The logs can be accessed with the `docker logs` command, e.g. if the default name is used:
 ```
 docker logs k3
 ```
 ## Predicate
 
-The Predicate AVS exposes metrics on port 9090, which is also used by other AVS's (e.g. EigenDA).
-Therefore the script not only expose the ports used by the program, but also change them, to avoid the clash.
+The Predicate AVS exposes metrics on port 9090, which is also used by other AVSs (e.g. EigenDA).
+Therefore the script not only exposes the ports used by the program but also changes them to avoid conflicts.
 
 ```
 #!/bin/bash
@@ -89,8 +89,8 @@ docker run \
 
 ```
 
-The script not only starts the AVS, exposes all the ports, names it (defaukt is 'predicate'), but also sends it to background.
-The logs can be access with the `docker logs` command, e.g. if the default name is use:
+The script not only starts the AVS, exposes all the ports, and names it (default is 'predicate'), but also sends it to the background.
+The logs can be accessed with the `docker logs` command, e.g. if the default name is used:
 ```
 docker logs predicate
 ```
