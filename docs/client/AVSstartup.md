@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
-# How to start AVS in bridge mode
+# How to start AVS in the bridge mode
 
 At the moment Ivynet Client can only track AVS's started in the default (bridge) docker network mode.
 Not every AVS has documentation how to do.
@@ -31,10 +31,18 @@ docker pull ${IMAGE}
 echo "=========="
 echo "Run the container:"
 echo "${NAME}"
-docker run -d --env-file .env --name ${NAME} -p 3000:3000 -p 4000:4000 -p 4001:4001 -p 9876:9876 ${IMAGE} performer
+docker run \
+  -d \
+  --env-file .env \
+  --name ${NAME} \
+  -p 3000:3000 \
+  -p 4000:4000 \
+  -p 4001:4001 \
+  -p 9876:9876 \
+  ${IMAGE} performer
 ```
 
-The script not only starts the AVS, names the container (default is 'k3'), but also sends it to background.
+The script not only starts the AVS, exposes all used ports, names the container (default is 'k3'), but also sends it to background.
 The logs can be access with the `docker logs` command, e.g. if the default name is used:
 ```
 docker logs k3
@@ -66,11 +74,22 @@ docker pull ${IMAGE}
 echo "=========="
 echo "Run the container:"
 echo "${NAME}"
-docker run -d -p 19010:9010 -p 19090:9090 -p 19091:9091 --name ${NAME} --env-file ${ENV_FILE} -v "${DB_PATH}:/app/data/" -v "${PREDICATE_SIGNING_PRIVATE_KEY_STORE_PATH}:/app/signingkey.json" ${IMAGE} start --db-path /app/data/ --predicate-signing-private-key-store-path /app/signingkey.json
+docker run \
+  -d \
+  -p 19010:9010 \
+  -p 19090:9090 \
+  -p 19091:9091 \
+  --name ${NAME} \
+  --env-file ${ENV_FILE} \
+  -v "${DB_PATH}:/app/data/" \
+  -v "${PREDICATE_SIGNING_PRIVATE_KEY_STORE_PATH}:/app/signingkey.json" \
+  ${IMAGE} start \
+    --db-path /app/data/ \
+    --predicate-signing-private-key-store-path /app/signingkey.json
 
 ```
 
-The script not only starts the AVS, names it (defaukt is 'predicate'), but also sends it to background.
+The script not only starts the AVS, exposes all the ports, names it (defaukt is 'predicate'), but also sends it to background.
 The logs can be access with the `docker logs` command, e.g. if the default name is use:
 ```
 docker logs predicate
