@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # How to start AVS in the bridge mode
 
-At the moment Ivynet Client can only track AVS's started in the default (bridge) docker network mode.
+At the moment Ivynet Client can only track metrics from AVS's started in the default (bridge) docker network mode.
 Not every AVS has documentation how to do.
 Below a few examples on how to modify a startup script/procedure to start a container with metrics ports exposed for the Client.
 
@@ -20,9 +20,9 @@ IMAGE=k3official/k3-labs-avs-operator-dev
 NAME=${1:-k3}
 
 echo "Kill docker container:"
-docker ps | grep -q k3 && docker kill ${NAME}
+docker ps | grep -q ${NAME} && docker kill ${NAME}
 echo "Remove docker container:"
-docker ps -a | grep -q k3 && docker rm ${NAME}
+docker ps -a | grep -q ${NAME} && docker rm ${NAME}
 
 echo "=========="
 echo "Pull the image:"
@@ -63,9 +63,9 @@ export ENV_FILE=./.env
 . $ENV_FILE
 
 echo "Kill docker container:"
-docker ps | grep -q k3 && docker kill ${NAME}
+docker ps | grep -q ${NAME} && docker kill ${NAME}
 echo "Remove docker container:"
-docker ps -a | grep -q k3 && docker rm ${NAME}
+docker ps -a | grep -q ${NAME} && docker rm ${NAME}
 
 echo "=========="
 echo "Pull the image:"
