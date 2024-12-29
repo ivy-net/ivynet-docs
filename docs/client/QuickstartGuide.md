@@ -30,13 +30,15 @@ If not, go to the [EigenLayer site](https://docs.eigenlayer.xyz/eigenlayer/opera
 
 The application does not require manual configuration.
 
-### Scan for active (Nodes) AVS's
+### Scan for active Nodes (AVS's) 
 
 After the client has been configured, scan the system for running AVS's with:
 ```
 ivynet scan
 ```
-The output of the command is the list of all potential AVS: a Docker container with an exposed port and `/metrics` endpoint available (No support yet for network mode host).
+
+The output is an interactive list of all AVS's that Ivynet finds in your local environment. These will be docker containers that have a known image repository on docker's image registry, `ghcr.io`, `gcr.io`, etc. Currently we support all EigenLayer mainnet AVS's. Then, the scanner will search though exposed ports for a working `/metrics` endpoint available at that port. (No metrics support yet for network mode host).
+
 Select which containers should be monitored by pressing SPACE and ticking the box next to them.
 Confirm the selection by pressing ENTER.
 ![Screenshot of scan results](./imgs/screens/scan1.png)
@@ -55,11 +57,13 @@ Now, start the monitor with:
 ivynet monitor
 ```
 If the application is started for the first time, it will ask for ivynet website registration details (username and password).
+
 ![Screenshot of ivynet asking for login details](./imgs/screens/registration.png)
 
 This information is going to be stored in the `~/.ivynet/ivynet-config.toml` file along with the node information.
 
 The first line (`Node properly registered with key 0x{ecdsa_address}`) confirms that registration is successful.
+
 The second one, including `Starting monitor listiner`, indicates that the monitor started will transfer data to the backend.
 
 ![Screenshot of successful registration](./imgs/screens/monitor.png)
