@@ -36,8 +36,8 @@ After the client has been configured, scan the system for running AVS's with:
 ```
 ivynet scan
 ```
-The output of the command is the list of all potential AVS: a Docker container with an exposed port and `/metrics` endpoint available (No support yet for network mode host).
-Select which containers should be monitored by pressing SPACE and ticking the box next to them.
+The output of the command is the list of all potential AVS that have a Docker container with an image name, or an exposed port and `/metrics` endpoint available (no support yet for network mode host).
+Select which containers should be monitored by pressing SPACE and ticking the box next to them. 
 Confirm the selection by pressing ENTER.
 ![Screenshot of scan results](./imgs/screens/scan1.png)
 
