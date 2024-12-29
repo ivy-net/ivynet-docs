@@ -22,7 +22,7 @@ The client operates as a daemon on all deployed machines, with a command line in
 
 ## User Interface
 
-The user interface is an easy to use webpage that helps optimize middle and back office tasks with a complete overview of your deployed and idle nodes. Features will include:
+The user interface is an easy to use webpage that provides actionable insights to your nodes deployments. Features will include:
 
 - **Metrics History**:  Access detailed historical metrics and data to analyze performance and generate operational, compliance, and business development reports.
 - **Enhanced Metrics**: Benefit from network-specific inputs, data, and benchmarks to improve quality assurance and maintain competitiveness.
