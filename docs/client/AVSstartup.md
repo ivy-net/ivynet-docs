@@ -2,11 +2,13 @@
 sidebar_position: 5
 ---
 
-# How to start AVS in the bridge mode
+# Metrics Setup
+
+## How to start an AVS in bridge mode
 
 At the moment Ivynet Client can only track metrics from AVSs started in the default (bridge) docker network mode.
-Not every AVS has documentation on how to do this.
-Below are a few examples on how to modify a startup script/procedure to start a container with metrics ports exposed for the Client.
+Not every AVS has documentation on how to set up these ports, as some start in host network mode.
+Below are a few examples on how to modify a startup script/procedure to start a container with metrics ports exposed.
 
 ## K3
 
@@ -47,6 +49,9 @@ The logs can be accessed with the `docker logs` command, e.g. if the default nam
 ```
 docker logs k3
 ```
+
+
+
 ## Predicate
 
 The Predicate AVS exposes metrics on port 9090, which is also used by other AVSs (e.g. EigenDA).
