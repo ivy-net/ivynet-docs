@@ -62,11 +62,11 @@ If the application is started for the first time, it will ask for ivynet website
 
 This information is going to be stored in the `~/.ivynet/ivynet-config.toml` file along with the node information.
 
-The line `Node properly registered with key 0x{ecdsa_address}` confirms that registration is successful.
+The first line (`Node properly registered with key 0x{ecdsa_address}`) confirms that registration is successful.
 
-<!-- //TODO: @Wawrzek or @Hoco
-Below it, the list of all running Docker containers will be printed as visible on the screenshot below.
-![Screenshot of successful registration](./imgs/screens/monitor.png) -->
+The second one, including `Starting monitor listiner`, indicates that the monitor started will transfer data to the backend.
+
+![Screenshot of successful registration](./imgs/screens/monitor.png)
 
 ## Interface
 
