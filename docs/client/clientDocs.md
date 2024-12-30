@@ -17,23 +17,23 @@ The instructions on how to start using Ivynet Client are located in the [Quickst
   - The software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
 
 ## Errors
+
 ### Machine Error
 
 - `Idle`
   - The Ivynet Client is running, but is not aware of any currently running AVS's.
   If you have recently changed AVS's, remember to rescan!
-- `NodeError(NodeErrorInfo)`
-  - A mirror of the below [Node Error](#node-error) scenario.
 - `SystemResourcesUsage`
   - The machine resource usage, specifically memory and/or disk space, is greater than 90%.
 
 ### Node Error
+
 - `ActiveSetNoDeployment`
   - The AVS is registered in the active set, but it is malfunctioning in some way and metrics are not being sent.
   Usually, the AVS container has crashed.
   **This is a very high priority error**.
 - `CrashedNode`
-  - The node is not running, but communication is still happening with the Ivynet Client.
+  - The node's latest communication was greater than 15 minutes ago. Either the AVS or the Ivynet client itself has crashed.
   This same scenario will also produce the `ActiveSetNoDeployment` error if the operator is a member of the active set.
 - `IdleNodeNoCommunication`
   - Metrics have not been sent in the last 15 minutes.
