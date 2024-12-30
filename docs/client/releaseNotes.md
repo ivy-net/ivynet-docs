@@ -22,5 +22,5 @@ Updated on December 30, 2024.
 - Node Coverage: Prioritized support for EigenLayer AVSs deployed on both Holseky and Mainnet, ensuring coverage for key production and testnet environments. Currently working on Symbiotic AVS nodes.
 - AVS Endpoint Availability: Not all AVSs expose metrics endpoints, so support may vary depending on AVS implementation.
 - Semantic Versioning: Not all AVSs use semantic versioning, so next-best alternatives pursued in these instances.
-- Bridge Mode: Metrics tracking for AVS nodes supported for default (bridge) mode. Not every AVS has documentation on how to set up these ports, as some start in host network mode. See Metrics Setup tab for mode detail. 
+- Bridge Mode: Metrics tracking for AVS nodes supported for default (bridge) mode. Not every AVS has documentation on how to set up these ports, as some start in host network mode. See Metrics Setup tab for more detail. 
 
