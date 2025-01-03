@@ -18,7 +18,8 @@ The K3 AVS exposes metrics on port 4000, so the script to start it can look like
 #!/bin/bash
 
 # Change the IMAGE for the mainnet
-IMAGE=k3official/k3-labs-avs-operator-dev
+VERSION=latest
+IMAGE=k3official/k3-labs-avs-operator-dev:{VERSION}
 NAME=${1:-k3}
 
 echo "Kill docker container:"
@@ -38,8 +39,8 @@ docker run \
   --env-file .env \
   --name ${NAME} \
   -p 3000:3000 \
-  -p 4000:4000 \
   -p 4001:4001 \
+  -p 4002:4002 \
   -p 9876:9876 \
   ${IMAGE} performer
 ```
