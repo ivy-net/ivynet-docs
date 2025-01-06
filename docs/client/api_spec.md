@@ -268,17 +268,17 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 **Endpoint:** `/machine/{machine_id}`  
 **Method:** `PUT`  
-**Parameters:** `avs_name`, `chain` (optional), `operator_address` (optional)
-**Description:** Updates AVS configuration
+**Parameters:** `avs_name`, `chain` (optional), `operator_address` (optional)  
+**Description:** Updates AVS configuration  
 **Example:** `PUT /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node&chain=mainnet&operator_address=0x123...`
 
 ### Get AVS Metrics (Condensed)
 
 **Endpoint:** `/machine/{machine_id}/metrics`  
-**Method:** `GET`
-**Parameters** `avs_name`
-**Description:** Gets condensed metrics for a specific AVS
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node`
+**Method:** `GET`  
+**Parameters** `avs_name`  
+**Description:** Gets condensed metrics for a specific AVS  
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node`  
 
 #### Response
 
@@ -321,9 +321,9 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 **Endpoint:** `/machine/{machine_id}/metrics/all`  
 **Method:** `GET`  
-**Parameters** `avs_name`
+**Parameters** `avs_name`  
 **Description:** Gets all metrics for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/metrics/all?avs_name=eigenda`
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/metrics/all?avs_name=eigenda`  
 
 #### Response
 
@@ -331,11 +331,11 @@ Same as above, just with more metrics
 
 ### Get AVS Logs
 
-**Endpoint:** `/machine/{machine_id}/logs`
+**Endpoint:** `/machine/{machine_id}/logs`  
 **Method:** `GET`  
 **Parameters:** `avs_name`, `log_level` (optional), `from` (optional), `to` (optional)  
 **Description:** Retrieves logs for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/logs?avs_name=eigenda&log_level=error&from=1635724800&to=1635811200`
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/logs?avs_name=eigenda&log_level=error&from=1635724800&to=1635811200`  
 
 <!-- #### Response
 
