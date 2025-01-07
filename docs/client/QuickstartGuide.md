@@ -28,7 +28,8 @@ If not, go to the [EigenLayer site](https://docs.eigenlayer.xyz/eigenlayer/opera
 
 ## Setup and Configuration
 
-The application does not require manual configuration.
+- Docker containers must have static names.  
+- Docker containers must have metrics ports exposed through bridge mode, not network mode host.  
 
 ### Scan for active Nodes (AVS's) 
 
