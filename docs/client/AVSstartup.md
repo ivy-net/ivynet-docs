@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
-# Metrics Setup
+# AVS startup scripts
 
 ## How to start an AVS in bridge mode
 
