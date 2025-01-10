@@ -33,6 +33,8 @@ This process will soon be DIY.
 - Docker containers must have static names.
 - Docker containers must have metrics ports exposed through bridge mode, not network mode host.
 
+Check AVS startup scripts example on this [page](./AVSstartup.md).
+
 ### Scan for active Nodes (AVS's)
 
 After the client has been configured, scan the system for running AVS's with:
