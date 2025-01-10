@@ -12,11 +12,11 @@ The instructions on how to start using Ivynet Client are located in the [Quickst
   - Any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation.
   In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
 - **Machine**:
-  - The server (baremetal or virtual) running the Ivynet client.
+  - The server (bare metal or virtual) running the Ivynet client.
 - **Client**:
   - The software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
 
-## Functionalties
+## Functionalities
 
 ### Scan for active Nodes
 
@@ -30,7 +30,7 @@ For a Node to be added to ivynet with automated scan following conditions have t
 
 ### Monitor AVS Active Set
 
-Ivynet observe blockchains to monitor if the operator continutes to be part of an active set.
+Ivynet observe blockchains to monitor if the operator continues to be part of an active set.
 
 For ivynet to monitor operator status in AVS active set following conditions have be met:
 - AVS is added to list of monitored AVS's on the client
@@ -50,10 +50,11 @@ For ivynet to upload logs following conditions have to be met:
 
 ### Monitor metrics
 
-Ivynet collects node prometheus metrics and sends them to the backend.
+Ivynet collects node Prometheus metrics and sends them to the backend.
 
 For ivynet to transmit metrics following conditions have to be met:
 - node runs as a docker container
+- node exposes metrics in the Prometheus format
 - node uses the default docker networking mode (bridge)
 - the node port where metrics are served is exposed
 - node entry is present in the `~/.ivynet/ivynet-config.toml` configuration file
