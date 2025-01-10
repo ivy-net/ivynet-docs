@@ -2,13 +2,13 @@
 sidebar_position: 7
 ---
 
-# Ivynet 0.4 Alpha API Docs
+# Ivynet API Docs
 
-https://api1.test.ivynet.dev/
+Use this URL: (https://api1.test.ivynet.dev/) to construct HTTP queries.
 
 ## Swagger
 
-**https://api1.test.ivynet.dev/swagger-ui/**
+The API definition are visualised with [Swagger](https://api1.test.ivynet.dev/swagger-ui/)
 
 ## Authorization
 
@@ -18,20 +18,20 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Success Messages
 
-`200` OK Successful request  
-`201` Created New object saved  
-`204` No content Object deleted  
+`200` OK Successful request
+`201` Created New object saved
+`204` No content Object deleted
 
 ### Client Errors
 
-`400` Bad Request Returns JSON with the error message  
-`401` Unauthorized Couldn't authenticate your request  
-`404` Not Found No such object  
+`400` Bad Request Returns JSON with the error message
+`401` Unauthorized Couldn't authenticate your request
+`404` Not Found No such object
 
 ### Server Errors
 
-`500` Internal Server Error Something went wrong  
-`503` Service Unavailable Your connection is being throttled or the service is down for maintenance  
+`500` Internal Server Error Something went wrong
+`503` Service Unavailable Your connection is being throttled or the service is down for maintenance
 
 # Endpoints
 
@@ -39,8 +39,8 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get All Machines
 
-**Endpoint:** `/machine`  
-**Method:** `GET`  
+**Endpoint:** `/machine`
+**Method:** `GET`
 **Description:** Retrieves information for all machines
 
 #### Response
@@ -102,9 +102,9 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get Machine Status
 
-**Endpoint:** `/machine/status`  
-**Method:** `GET`  
-**Description:** Gets overview of healthy and unhealthy machines  
+**Endpoint:** `/machine/status`
+**Method:** `GET`
+**Description:** Gets overview of healthy and unhealthy machines
 
 #### Response
 
@@ -118,9 +118,9 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get Idle Machines
 
-**Endpoint:** `/machine/idle`  
-**Method:** `GET`  
-**Description:** Lists all idle machines  
+**Endpoint:** `/machine/idle`
+**Method:** `GET`
+**Description:** Lists all idle machines
 
 #### Response
 
@@ -130,9 +130,9 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get Unhealthy Machines
 
-**Endpoint:** `/machine/unhealthy`  
-**Method:** `GET`  
-**Description:** Lists all unhealthy machines  
+**Endpoint:** `/machine/unhealthy`
+**Method:** `GET`
+**Description:** Lists all unhealthy machines
 
 #### Response
 
@@ -142,9 +142,9 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get Healthy Machines
 
-**Endpoint:** `/machine/healthy`  
-**Method:** `GET`  
-**Description:** Lists all healthy machines  
+**Endpoint:** `/machine/healthy`
+**Method:** `GET`
+**Description:** Lists all healthy machines
 
 #### Response
 
@@ -154,9 +154,9 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get Machine Info
 
-**Endpoint:** `/machine/{machine_id}`  
-**Method:** `GET`  
-**Description:** Gets detailed information about a specific machine  
+**Endpoint:** `/machine/{machine_id}`
+**Method:** `GET`
+**Description:** Gets detailed information about a specific machine
 **Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000`
 
 #### Response
@@ -216,24 +216,24 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Delete Machine
 
-**Endpoint:** `/machine/{machine_id}`  
-**Method:** `DELETE`  
-**Description:** Removes a machine from the system  
+**Endpoint:** `/machine/{machine_id}`
+**Method:** `DELETE`
+**Description:** Removes a machine from the system
 **Example:** `DELETE /machine/123e4567-e89b-12d3-a456-426614174000`
 
 ### Set Machine Name
 
-**Endpoint:** `/machine/{machine_id}`  
-**Method:** `POST`  
-**Parameters:** `name` (query)  
-**Description:** Sets a custom name for a machine  
+**Endpoint:** `/machine/{machine_id}`
+**Method:** `POST`
+**Parameters:** `name` (query)
+**Description:** Sets a custom name for a machine
 **Example:** `POST /machine/123e4567-e89b-12d3-a456-426614174000?name=production-1`
 
 ### Get Machine Node Data
 
-**Endpoint:** `/machine/{machine_id}/info`  
-**Method:** `GET`  
-**Description:** Retrieves all node information for a machine  
+**Endpoint:** `/machine/{machine_id}/info`
+**Method:** `GET`
+**Description:** Retrieves all node information for a machine
 **Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/info`
 
 #### Response
@@ -266,19 +266,19 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Update an AVS's chain and/or Operator Key for active set monitoring
 
-**Endpoint:** `/machine/{machine_id}`  
-**Method:** `PUT`  
-**Parameters:** `avs_name`, `chain` (optional), `operator_address` (optional)  
-**Description:** Updates AVS configuration  
+**Endpoint:** `/machine/{machine_id}`
+**Method:** `PUT`
+**Parameters:** `avs_name`, `chain` (optional), `operator_address` (optional)
+**Description:** Updates AVS configuration
 **Example:** `PUT /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node&chain=mainnet&operator_address=0x123...`
 
 ### Get AVS Metrics (Condensed)
 
-**Endpoint:** `/machine/{machine_id}/metrics`  
-**Method:** `GET`  
-**Parameters** `avs_name`  
-**Description:** Gets condensed metrics for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node`  
+**Endpoint:** `/machine/{machine_id}/metrics`
+**Method:** `GET`
+**Parameters** `avs_name`
+**Description:** Gets condensed metrics for a specific AVS
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000?avs_name=/eigenda-native-node`
 
 #### Response
 
@@ -319,11 +319,11 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Get All AVS Metrics
 
-**Endpoint:** `/machine/{machine_id}/metrics/all`  
-**Method:** `GET`  
-**Parameters** `avs_name`  
-**Description:** Gets all metrics for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/metrics/all?avs_name=eigenda`  
+**Endpoint:** `/machine/{machine_id}/metrics/all`
+**Method:** `GET`
+**Parameters** `avs_name`
+**Description:** Gets all metrics for a specific AVS
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/metrics/all?avs_name=eigenda`
 
 #### Response
 
@@ -331,11 +331,11 @@ Same as above, just with more metrics
 
 ### Get AVS Logs
 
-**Endpoint:** `/machine/{machine_id}/logs`  
-**Method:** `GET`  
-**Parameters:** `avs_name`, `log_level` (optional), `from` (optional), `to` (optional)  
-**Description:** Retrieves logs for a specific AVS  
-**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/logs?avs_name=eigenda&log_level=error&from=1635724800&to=1635811200`  
+**Endpoint:** `/machine/{machine_id}/logs`
+**Method:** `GET`
+**Parameters:** `avs_name`, `log_level` (optional), `from` (optional), `to` (optional)
+**Description:** Retrieves logs for a specific AVS
+**Example:** `GET /machine/123e4567-e89b-12d3-a456-426614174000/logs?avs_name=eigenda&log_level=error&from=1635724800&to=1635811200`
 
 <!-- #### Response
 
@@ -347,7 +347,7 @@ Same as above, just with more metrics
 
 ### Get All Keys
 
-**Endpoint:** `/pubkey`  
+**Endpoint:** `/pubkey`
 **Method:** `GET`
 **Description:** Retrieves all operator public keys for the organization
 
@@ -359,36 +359,36 @@ Same as above, just with more metrics
 
 ### Create Key
 
-**Endpoint:** `/pubkey`  
-**Method:** `POST`  
-**Parameters:** `public_key`, `name`  
-**Description:** Add a new operator public key to monitor  
+**Endpoint:** `/pubkey`
+**Method:** `POST`
+**Parameters:** `public_key`, `name`
+**Description:** Add a new operator public key to monitor
 **Example:** `POST /pubkey?public_key=0x123...&name=main-key`
 
 ### Update Key Name
 
-**Endpoint:** `/pubkey`  
-**Method:** `PUT`  
-**Parameters:** `public_key`  
-**Description:** Updates the name of an existing operator public key  
+**Endpoint:** `/pubkey`
+**Method:** `PUT`
+**Parameters:** `public_key`
+**Description:** Updates the name of an existing operator public key
 **Example:** `PUT /pubkey?public_key=0x123...`
 
 
 ### Delete Key
 
-**Endpoint:** `/pubkey`  
-**Method:** `DELETE`  
-**Parameters:** `public_key`  
-**Description:** Removes an operator key  
+**Endpoint:** `/pubkey`
+**Method:** `DELETE`
+**Parameters:** `public_key`
+**Description:** Removes an operator key
 **Example:** `DELETE /pubkey?public_key=0x123...`
 
 ## Client Management
 
 ### Get All Clients
 
-**Endpoint:** `/client`  
-**Method:** `GET`  
-**Description:** Lists all clients and their associated machines (separately to help with container orchestration in the future) 
+**Endpoint:** `/client`
+**Method:** `GET`
+**Description:** Lists all clients and their associated machines (separately to help with container orchestration in the future)
 
 #### Response
 
@@ -416,9 +416,9 @@ Same as above, just with more metrics
 
 ### Get Client Machines
 
-**Endpoint:** `/client/{id}`  
-**Method:** `GET`  
-**Description:** Lists all machines associated with a specific client  
+**Endpoint:** `/client/{id}`
+**Method:** `GET`
+**Description:** Lists all machines associated with a specific client
 **Example:** `GET /client/0x123...`
 
 #### Response
@@ -448,8 +448,8 @@ Same as above, just with more metrics
 ### Get all AVS's
 
 **Endpoint:** `/avs`
-**Method:** `GET`  
-**Description:** Gets info on all AVS's  
+**Method:** `GET`
+**Description:** Gets info on all AVS's
 
 #### Response
 
@@ -482,8 +482,8 @@ Same as above, just with more metrics
 
 ### Get AVS Version
 
-**Endpoint:** `/info/avs/version/{avs}`  
-**Method:** `GET`  
+**Endpoint:** `/info/avs/version/{avs}`
+**Method:** `GET`
 **Description:** Gets version information for a specific AVS - could return multiple objects that differ by chain
 **Example:** `GET /info/avs/version/eigenda`
 
@@ -503,6 +503,6 @@ Same as above, just with more metrics
 
 ### Get All AVS Versions
 
-**Endpoint:** `/info/avs/version`  
-**Method:** `GET`  
+**Endpoint:** `/info/avs/version`
+**Method:** `GET`
 **Description:** Gets version information for all supported AVSes
