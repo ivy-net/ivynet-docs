@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Ivynet Client Documentation
+# Ivynet Functionalities
 
 The instructions on how to start using Ivynet Client are located in the [Quickstart Guide](./QuickstartGuide.md).
 
