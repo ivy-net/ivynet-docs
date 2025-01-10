@@ -18,20 +18,20 @@ Refer to swagger above for use of the authorize endpoint, or use basic auth (ema
 
 ### Success Messages
 
-`200` OK Successful request
-`201` Created New object saved
-`204` No content Object deleted
+- `200` OK: Successful request
+- `201` Created: New object saved
+- `204` No content: Object deleted
 
 ### Client Errors
 
-`400` Bad Request Returns JSON with the error message
-`401` Unauthorized Couldn't authenticate your request
-`404` Not Found No such object
+- `400` Bad Request: Returns JSON with the error message
+- `401` Unauthorized: Couldn't authenticate your request
+- `404` Not Found: No such object
 
 ### Server Errors
 
-`500` Internal Server Error Something went wrong
-`503` Service Unavailable Your connection is being throttled or the service is down for maintenance
+- `500` Internal Server Error: Something went wrong
+- `503` Service Unavailable: Your connection is being throttled or the service is down for maintenance
 
 # Endpoints
 
