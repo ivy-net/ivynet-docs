@@ -43,19 +43,40 @@ ivynet scan
 ```
 
 The output is an interactive list of all AVS's that Ivynet finds in your local environment.
+
+This occurs in 3 steps.
+
+#### 1. Recognized AVS's.
+
+IvyNet will automatically recognize some of your AVSs.
+
 These will be docker containers that have a known image repository on docker's image registry, `ghcr.io`, `gcr.io`, etc.
-Currently we support all EigenLayer mainnet AVS's.
+Currently, we support all EigenLayer mainnet AVS's.
 Then, the scanner will search though exposed ports for a working `/metrics` endpoint available at that port.
 (No metrics support yet for network mode host).
 
 Select which containers should be monitored by pressing SPACE and ticking the box next to them.
+
+![Screenshot of scan results](./imgs/screens/scan.png)
+
 Confirm the selection by pressing ENTER.
-![Screenshot of scan results](./imgs/screens/scan1.png)
+
+#### 2. Manually Added AVS's.
+
+IvyNet will also see all running containers.
+
+Enter YES to see a list.
+
+![Screenshot of scan results](./imgs/screens/name.png)
+
+Same as above, select which containers should be monitored by pressing SPACE and confirm the selection by pressing ENTER.
+
+#### 3. Name AVS's. 
 
 Next step is to name each AVS.
 The name has to be unique per system with ivynet (e.g. VM).
 
-![Screenshot with added AVS's](./imgs/screens/scan2.png)
+![Screenshot with added AVS's](./imgs/screens/name3.png)
 The command will add all AVS's into the `~/.ivynet/monitor-config.toml` file.
 
 ### Monitor (Nodes) AVS's
@@ -67,15 +88,13 @@ ivynet monitor
 ```
 If the application is started for the first time, it will ask for ivynet website registration details (username and password).
 
-![Screenshot of ivynet asking for login details](./imgs/screens/registration.png)
-
 This information is going to be stored in the `~/.ivynet/ivynet-config.toml` file along with the node information.
 
 The first line (`Node properly registered with key 0x{ecdsa_address}`) confirms that registration is successful.
 
 The second one, including `Starting monitor listiner`, indicates that the monitor started will transfer data to the backend.
 
-![Screenshot of successful registration](./imgs/screens/monitor.png)
+![Screenshot of successful registration](./imgs/screens/monitor2.png)
 
 ## Interface
 
@@ -88,6 +107,11 @@ Confirm that information from the nodes are uploaded.
 Be sure to add a public operator key and the corresponding chain to maximize metrics experience.
 
 ![Screenshot of add key](./imgs/screens/key.svg)
+
+For manually added AVSs, be sure to add a node type to maximize insights.
+
+![Screenshot of add node](./imgs/screens/addtype2.png)
+
 
 ## APIs
 
