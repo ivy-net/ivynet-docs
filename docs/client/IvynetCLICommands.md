@@ -4,36 +4,52 @@ sidebar_position: 4
 
 # Ivynet CLI Commands List
 
-The following is documentation of all commands that can be called from the Ivynet CLI:
+The following convention is used in the description of the CLI commands:
 
-Mandatory Arguments: `<ARG>`  
-Optional Arguments: `[ARG]`  
-Options: `--option`  
+Mandatory Arguments: `<ARG>`
+Optional Arguments: `[ARG]`
+Options: `--option`
 
 ## Global Options
 
 The following options can be used with any command:
 
-- `--network <CHAIN>`: The network to connect to: mainnet, holesky, local (default: "holesky")
 - `--server-url <URL>`: IvyNet servers Uri for communication (default: "https://api1.test.ivynet.dev:50050" in production, "http://localhost:50050" in debug)
 - `--server-ca <PATH>`: IvyNet server certificate path
 - `--log-level <LEVEL>`: Set the verbosity level for logs (default: INFO)
+- `--no-backned`: Does not connect client to a backend
 
-## Observability
+## Commands
 
-**Usage:**  
-`ivynet scan` - This command will scan for any AVS's metrics endpoints, and add them into a file at `~/.ivynet/monitor-config.toml`
+### monitor
 
+starts ivynet client and sends data to the backend.
 
-**Usage:**  
-`ivynet monitor`
+The command does not have any special options.
 
+### scan
 
-## Config
+prepares information for the monitoring.
+In the first step this command scans running docker containers for any known AVS's, and let user to select which to monitor.
+Additionally, it allows users to specify any running container.
+All information are added into the `~/.ivynet/monitor-config.toml` file.
 
-Manage the `ivyconfig.toml` file (located in `~/.ivynet/`), which is used for base configuration for the CLI and downstream AVS instances.
+The command does not have any special options.
 
-**Usage:**  
+### register-node
+
+creates the connection identity key for a secure communication between the ivynet client and the backend server.
+The registration requires the username (email address) and the password used to create a fronted account.
+
+The command does not have any special options.
+
+### config
+
+manages the `ivyconfig.toml` file (located in `~/.ivynet/`), which is used for base configuration.
+
+Please use only subcommands listed below.
+
+**Usage:**
 `ivynet config <COMMAND>`
 
 Commands:
@@ -50,22 +66,32 @@ Commands:
   - Get the current default RPC URL for 'mainnet', 'holesky', or 'local'
 - `get metadata`
   - Get local metadata -->
-- `set identity_key <KEY>`
-  - Set backend connection identity key
+- `get backend`
+  - Get backend connection information
 - `get config`
   - Get all config data
 - `get sys-info`
   - Get system information
-- `get backend`
-  - Get backend connection information
+- `set identity_key <KEY>`
+  - Set backend connection identity key
 
+
+## Additional commands
+
+These commands are not part of the current ivynet workflow.
+Some of them are not implement or do not work at the moment.
+
+### key
+
+provides methods to manage cryptographic keys.
+Ivynet does not require any key to interact with AVS's, so these command are not essential for ivynet.
 
 <!-- Commented out until deployments brought back in -->
 <!-- ## Key
 
 Manage ECDSA and BLS keys for the operator.
 
-**Usage:**  
+**Usage:**
 `ivynet key <COMMAND>`
 
 Commands:
@@ -78,59 +104,11 @@ Commands:
 - `get`
   - Get information about stored keys -->
 
-## AVS
 
-Setup, run, and manage node instances. For now, we've paused integration on deployment integrations and we're focusing on observability. We will be expanding to EigenLayer AVS, Symbiotic AVS, and top L1s in the future. 
+### node
 
-**Usage:**  
-`ivynet node <COMMAND> [OPTIONS]`
+is not implement yet, please ignore
 
-Commands:
+### rename-node
 
-- `setup <AVS> <CHAIN>`: Run the setup script for the specified AVS
-- `select <AVS> <CHAIN>`: Select the AVS to run in the background service
-- `register`: Register for the specified AVS
-- `unregister`: Unregister from the current AVS
-- `start [AVS] [CHAIN]`: Start the specified AVS (or current if not specified)
-- `stop`: Stop the current AVS
-- `info`: Get information about the current AVS status
-- `inspect`: Get logs from an AVS with an interactive menu
-
-Supported Nodes:
-
-- `eigenda` - EigenDA with Quorum 0: Staked Eth/LSTs
-
-Supported Chains:
-
-<!-- - `mainnet` - Ethereum Mainnet -->
-- `holesky` - Holesky Testnet
-
-## Register
-
-Register this node on IvyNet server.
-
-**Usage:**  
-`ivynet register`
-
-<!-- Options:
-
-- `--email <EMAIL>`: Email address registered at IvyNet portal
-- `--password <PASSWORD>`: Password to IvyNet account -->
-
-## Common Workflows
-
-### Monitor Flow:
-
-```bash
-ivynet avs scan
-ivynet avs monitor
-```
-
-### Deployment Flow:
-
-```bash
-ivynet avs setup <AVS> <CHAIN>
-ivynet avs select <AVS> <CHAIN>
-ivynet avs start
-ivynet avs register
-```
+does not work.

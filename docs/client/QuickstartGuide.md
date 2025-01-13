@@ -16,7 +16,9 @@ The following document assumes that:
 - The user's ECDSA account has already registered as an operator on the EigenLayer network.
 If not, go to the [EigenLayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
 - All AVS's are deployed with Docker
-- You have obtained an ivynet username and password. If not, contact us on [telegram](https://t.me/ivynetdotdev) and we will create an organization on your behalf. This process will soon be DIY.  
+- You have obtained an ivynet username and password.
+If not, contact us on [telegram](https://t.me/ivynetdotdev) and we will create an organization on your behalf.
+This process will soon be DIY.
 
 ## Installation
 
@@ -28,17 +30,23 @@ If not, go to the [EigenLayer site](https://docs.eigenlayer.xyz/eigenlayer/opera
 
 ## Setup and Configuration
 
-- Docker containers must have static names.  
-- Docker containers must have metrics ports exposed through bridge mode, not network mode host.  
+- Docker containers must have static names.
+- Docker containers must have metrics ports exposed through bridge mode, not network mode host.
 
-### Scan for active Nodes (AVS's) 
+Check AVS startup scripts example on this [page](./AVSstartup.md).
+
+### Scan for active Nodes (AVS's)
 
 After the client has been configured, scan the system for running AVS's with:
 ```
 ivynet scan
 ```
 
-The output is an interactive list of all AVS's that Ivynet finds in your local environment. These will be docker containers that have a known image repository on docker's image registry, `ghcr.io`, `gcr.io`, etc. Currently we support all EigenLayer mainnet AVS's. Then, the scanner will search though exposed ports for a working `/metrics` endpoint available at that port. (No metrics support yet for network mode host).
+The output is an interactive list of all AVS's that Ivynet finds in your local environment.
+These will be docker containers that have a known image repository on docker's image registry, `ghcr.io`, `gcr.io`, etc.
+Currently we support all EigenLayer mainnet AVS's.
+Then, the scanner will search though exposed ports for a working `/metrics` endpoint available at that port.
+(No metrics support yet for network mode host).
 
 Select which containers should be monitored by pressing SPACE and ticking the box next to them.
 Confirm the selection by pressing ENTER.

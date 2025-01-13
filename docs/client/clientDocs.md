@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Ivynet Client Documentation
+# Ivynet Functionalities
 
 The instructions on how to start using Ivynet Client are located in the [Quickstart Guide](./QuickstartGuide.md).
 
@@ -12,58 +12,75 @@ The instructions on how to start using Ivynet Client are located in the [Quickst
   - Any AVS that offers a /metrics endpoint a la EigenLayer's metrics documentation.
   In the future, this scope will broaden to Symbiotic, L1s, L2s, etc.
 - **Machine**:
-  - The server (baremetal or virtual) running the Ivynet client.
+  - The server (bare metal or virtual) running the Ivynet client.
 - **Client**:
   - The software itself, separated from the machine in order to accommodate future container management software like Kubernetes.
 
-## Errors
+## Functionalities
 
-### Machine Error
+### Scan for active Nodes
 
-- `Idle`
-  - The Ivynet Client is running, but is not aware of any currently running AVS's.
-  If you have recently changed AVS's, remember to rescan!
-- `SystemResourcesUsage`
-  - The machine resource usage, specifically memory and/or disk space, is greater than 90%.
+The ivynet provides automated configuration of any known Nodes running on the machine along the client.
+It is executed with the first step of the `ivynet scan`.
+The results of the scan are added to the `~/.ivynet/monitor-config.toml` file.
 
-### Node Error
+For a Node to be added to ivynet with automated scan following conditions have to be met:
+- node runs as a docker container
+- node is on the [recognizable AVS list](#appendix-list-of-recognizable-avss)
 
-- `ActiveSetNoDeployment`
-  - The AVS is registered in the active set, but it is malfunctioning in some way and metrics are not being sent.
-  Usually, the AVS container has crashed.
-  **This is a very high priority error**.
-- `CrashedNode`
-  - The node's latest communication was greater than 15 minutes ago. Either the AVS or the Ivynet client itself has crashed.
-  This same scenario will also produce the `ActiveSetNoDeployment` error if the operator is a member of the active set.
-- `IdleNodeNoCommunication`
-  - Metrics have not been sent in the last 15 minutes.
-- `LowPerformanceScore`
-  - The performance score for the AVS is lower than 80/100.
-- `NeedsUpdate`
-  - The node needs an update.
-  Refer to the `update_status` in API (e.g. [/avs](api_spec#get-all-avss)) for more information.
-- `NoChainInfo`
-  - No chain information added to the AVS instance.
-  It is require to establish the status of active set and the latest version check.
-- `NoOperatorId`
-  - There is no operator address assigned to this AVS instance.
-  Ivynet cannot get an active set information.
-- `UnregisteredFromActiveSet`
-  - The node is running (and operator address / chain information are set), but the AVS is not registered to be in the active set.
+### Monitor AVS Active Set
 
-## Usage
+Ivynet observe blockchains to monitor if the operator continues to be part of an active set.
 
-## Scan for active Nodes
+For ivynet to monitor operator status in AVS active set following conditions have be met:
+- AVS is added to list of monitored AVS's on the client
+- client is connected to the backend
+- right chain is selected in the frontend
+- AVS is on the [recognizable AVS list](#appendix-list-of-recognizable-avss)
 
-`ivynet scan` - This command will scan for any AVS's metrics endpoints, and add them into a file at `~/.ivynet/monitor-config.toml`
+### Upload logs
 
-NOTE: This command scans for active /metrics endpoints, so if the endpoint isn't up yet (because a test instance was just spun up), then no monitorable endpoints will show up until the /metrics endpoint is functional.
+Ivynet uploads Node logs to the central server (backend).
+It uses docker API to get any logs from the standard and error outputs of containers.
 
-## Monitor those Nodes
+For ivynet to upload logs following conditions have to be met:
+- node runs as a docker container
+- node entry is present in the `~/.ivynet/ivynet-config.toml` configuration file
+- application sends logs to standard output/error
 
-`ivynet monitor` - This command will build an `~/.ivynet/ivynet-config.toml` file with your node information. Two things happen at first bootup:
+### Monitor metrics
 
-- You are asked to sign in - this uses a randomly generated ECDSA key to register your node to the backend. If you accidentally delete this, you can just reregister, but the backend has no access to this private key (or any other key for that matter). This will break continuity of metrics once history is added in the future.
-- It uses the previously run scan command's monitor-config to start monitoring endpoints for your metrics and logs. It then sends these to our backend, allowing you to view them through the API or interface.
+Ivynet collects node Prometheus metrics and sends them to the backend.
 
- In the future, our AI Ops tool will be able to diagnose any problems in your logs, and your metrics will be visible to you in any timespan or granularity you desire. Also, alerts can be built on top of them.
+For ivynet to transmit metrics following conditions have to be met:
+- node runs as a docker container
+- node exposes metrics in the Prometheus format
+- node uses the default docker networking mode (bridge)
+- the node port where metrics are served is exposed
+- node entry is present in the `~/.ivynet/ivynet-config.toml` configuration file
+
+## Appendix: List of recognizable AVS's
+
+- altlayer-mach
+- arpa-network-node-client
+- automata
+- ava-protocol
+- chainbase-network-v-1
+- chainbase-network-v-2
+- cyber-mach
+- dodo-chain-mach
+- eigen-da
+- e-oracle
+- gm-network-mach
+- hyperlane
+- k-3-labs-avs
+- k-3-labs-avs-holesky
+- lagrange-state-committee
+- lagrange-zk-worker-holesky
+- lagrange-zk-worker-mainnet
+- omni
+- open-layer-holesky
+- open-layer-mainnet
+- predicate
+- witness-chain
+- xterio-mach
