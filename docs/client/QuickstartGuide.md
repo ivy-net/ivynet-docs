@@ -108,7 +108,7 @@ Be sure to add a public operator key and the corresponding chain to maximize met
 
 ![Screenshot of add key](./imgs/screens/key.svg)
 
-For manually added AVSs, be sure to add a node type to maximize insights.
+To maximize insights of the manually added AVS's, add a node type.
 
 ![Screenshot of add node](./imgs/screens/addtype2.png)
 
