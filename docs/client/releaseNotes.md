@@ -16,7 +16,7 @@ Updated on January 14, 2025.
     - System Metrics Monitoring: Track CPU, memory, disk usage, and system health for .
 - Startup Scripts: Reference scripts to start AVS containers with metrics ports exposed and install IvyNet client across mutliple environments. 
 - Multi-AVS Support: Run and monitor multiple AVSs on a single machine, enabling better infrastructure efficiency.
-- APIs and Interface: Access above unified metrics and insights through a virtual dashboard or API integration.
+- APIs and Interface: Access unified metrics and insights through a virtual dashboard or API integration.
 
 ## Acknowledgements
 
