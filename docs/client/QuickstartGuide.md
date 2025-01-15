@@ -65,7 +65,7 @@ Confirm the selection by pressing ENTER.
 
 IvyNet will also see all running containers.
 
-Enter YES to see a list.
+Enter Y to see a list.
 
 ![Screenshot of scan results](./imgs/screens/name.png)
 
