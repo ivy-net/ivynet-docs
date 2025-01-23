@@ -20,6 +20,7 @@ Aside from that, we look forward to streamlining the management of your processe
 - Assign a unique name to your Docker image
 - Use Semantic Versioning for updates
 - Expose a metrics port through bridge network mode, not host network mode to avoid conflicts
+- Make quorum registration happen after the AVS has been booted up, not before
 
 
 ### Integration Request
