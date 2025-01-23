@@ -18,8 +18,8 @@ Aside from that, we look forward to streamlining the management of your processe
 
 - Include a Docker image downloaded from a centralized repository, eg: ghcr.io, as part of your AVS deployment flow
 - Assign a unique name to your Docker image
-- Expose a metrics port 
-- Configure the metrics port to be exposed through bridge mode, not network mode host
+- Use Semantic Versioning for updates
+- Expose a metrics port through bridge network mode, not host network mode to avoid conflicts
 
 
 ### Integration Request
