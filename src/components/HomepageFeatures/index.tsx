@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         The IvyNet client is built to make managing any decentralized service
-        easy. Always have complete confidence your nodes are running correctly
+        easy. Always have complete confidence your nodes are running correctly.
       </>
     ),
   },

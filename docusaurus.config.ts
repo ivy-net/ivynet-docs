@@ -75,6 +75,12 @@ const config: Config = {
           activeBasePath: 'docs/client/',
         },
         {
+          to: 'docs/avsGuide/Overview',
+          label: 'AVS Guide',
+          position: 'left',
+          activeBasePath: 'docs/avsGuide/',
+        },
+        {
           to: 'docs/devnet/Introduction',
           label: 'Devnet',
           position: 'left',
