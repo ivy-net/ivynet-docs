@@ -16,7 +16,7 @@ Aside from that, we look forward to streamlining the management of your processe
 
 ### Deployment Recommendations
 
-- Include a Docker image as part of your AVS deployment options
+- Include a Docker image downloaded from a centralized repository, eg: ghcr.io, as part of your AVS deployment flow
 - Assign a unique name to your Docker image
 - Expose a metrics port 
 - Configure the metrics port to be exposed through bridge mode, not network mode host
