@@ -61,26 +61,4 @@ For ivynet to transmit metrics following conditions have to be met:
 
 ## Appendix: List of recognizable AVS's
 
-- altlayer-mach
-- arpa-network-node-client
-- automata
-- ava-protocol
-- chainbase-network-v-1
-- chainbase-network-v-2
-- cyber-mach
-- dodo-chain-mach
-- eigen-da
-- e-oracle
-- gm-network-mach
-- hyperlane
-- k-3-labs-avs
-- k-3-labs-avs-holesky
-- lagrange-state-committee
-- lagrange-zk-worker-holesky
-- lagrange-zk-worker-mainnet
-- omni
-- open-layer-holesky
-- open-layer-mainnet
-- predicate
-- witness-chain
-- xterio-mach
+IvyNet is working to recognize all mainnet and holesky AVSs for Ethereum restaking protocols. Containers that are not currently recognized can be manually added. 
