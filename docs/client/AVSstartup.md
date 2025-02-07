@@ -101,3 +101,55 @@ The logs can be accessed with the `docker logs` command, e.g. if the default nam
 docker logs predicate
 ```
 
+## Scripts using Ivynet API
+
+The script is an extended version of the [Predicate startup one](#predicate).
+Before the container is starts it gets the latest version of it from the ivynet API.
+It requires Ivynet credentials (at the moment email and password) to be stored in the `.ivynet.env` file.
+Additionally, the curl has to be installed.
+
+```
+#!/bin/bash
+
+# load credentials from the .ivynet.env file
+source .ivynet.env
+
+# get the version from the Ivynet API server
+VERSION=$(curl -u ${IVYNET_USER}:${IVYNET_PASS} -X 'GET' \
+  'https://api1.test.ivynet.dev/info/avs/version/Predicate' \
+  -H 'accept: application/json' | \
+    jq -r ' .[] | select( .chain | contains("holesky"))| .latest_version')
+
+# set the image
+IMAGE=ghcr.io/predicatelabs/operator:${VERSION}
+NAME=${1:-predicate}
+
+# ensure the content of the .env is loaded
+export ENV_FILE=./.env
+. $ENV_FILE
+
+echo "Kill docker container:"
+docker ps | grep -q ${NAME} && docker kill ${NAME}
+echo "Remove docker container:"
+docker ps -a | grep -q ${NAME} && docker rm ${NAME}
+
+echo "=========="
+echo "Pull the image:"
+docker pull ${IMAGE}
+
+echo "=========="
+echo "Run the container:"
+echo "${NAME}"
+docker run \
+  -d \
+  -p 19010:9010 \
+  -p 19090:9090 \
+  -p 19091:9091 \
+  --name ${NAME} \
+  --env-file ${ENV_FILE} \
+  -v "${DB_PATH}:/app/data/" \
+  -v "${PREDICATE_SIGNING_PRIVATE_KEY_STORE_PATH}:/app/signingkey.json" \
+  ${IMAGE} start \
+    --db-path /app/data/ \
+    --predicate-signing-private-key-store-path /app/signingkey.json
+```
