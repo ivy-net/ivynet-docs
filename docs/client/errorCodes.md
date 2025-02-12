@@ -7,8 +7,8 @@ sidebar_position: 5
 ## Machine Error
 
 - `Idle`
-  - The Ivynet Client is running, but is not aware of any currently running AVS's.
-  If you have recently changed AVS's, remember to rescan!
+  - The Ivynet Client is running, but is not aware of any currently running AVSs.
+  If you have recently changed AVSs, remember to rescan!
 - `SystemResourcesUsage`
   - The machine resource usage, specifically memory and/or disk space, is greater than 90%.
 

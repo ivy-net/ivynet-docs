@@ -13,9 +13,12 @@ The following document assumes that:
 - A contemporary Linux distribution (e.g. Debian 12, Ubuntu 24.04, RHEL 9) with libssl and libcrypto libraries is ready to use
 - Docker and docker-compose (or docker compose) are installed
 - User operating ivynet can control Docker, e.g. is a member of the docker group
-- The user's ECDSA account has already registered as an operator on the EigenLayer network.
-If not, go to the [EigenLayer site](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation).
-- All AVS's are deployed with Docker
+  - `sudo usermod -aG docker $USER` + `newgrp docker`
+- The user's operator key has already registered as an operator on the Symbiotic and/or EigenLayer networks.
+If not, go to their respecitve websites:
+  - [Symbiotic](https://docs.symbiotic.fi/handbooks/operators-handbook/#actions-in-symbiotic-core)
+  - [EigenLayer](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
+- All AVSs are deployed with Docker
 - You have obtained an ivynet username and password.
 If not, contact us on [telegram](https://t.me/ivynetdotdev) and we will create an organization on your behalf.
 This process will soon be DIY.
@@ -28,30 +31,41 @@ This process will soon be DIY.
 * Compare the hash of the downloaded file `sha256 ivynet-{version}` with the hash store in the bucket e.g.: `https://storage.googleapis.com/ivynet-share/ivynet-{version}.sha256`
 * Save the file as `ivynet` in a folder which is included in the PATH variable, or adjust the variable
 
+<!-- WAWRZEK //TODO: UPDATE ANSIBLE ROLE WITH AUTO MONITOR RESTART -->
+
 ## Setup and Configuration
 
 - Docker containers must have static names.
-- Docker containers must have metrics ports exposed through bridge mode, not network mode host.
+- Preferred: Docker containers must have metrics ports exposed through bridge mode, not network mode host. 
+  - 0.5.0 Update: Ivynet client now builds a sidecar to grab network mode host ports directly. If there are any problems here, we still recommend explicitly exposing ports for metrics.
 
 Check AVS startup scripts example on this [page](./AVSstartup.md).
 
-### Scan for active Nodes (AVS's)
+### Scan for active Nodes (AVSs)
 
-After the client has been configured, scan the system for running AVS's with:
+After the client has been configured, scan the system for running AVSs with:
 ```
 ivynet scan
 ```
 
-The output is an interactive list of all AVS's that Ivynet finds in your local environment.
+The output is an interactive list of all AVSs that Ivynet finds in your local environment.
 
 This occurs in 3 steps.
 
-#### 1. Recognized AVS's.
+#### 1. Registration
 
-IvyNet will automatically recognize some of your AVSs.
+If the application is started for the first time, it will ask for ivynet website registration details (username and password).
+
+This information is going to be stored in the `~/.ivynet/ivynet-config.toml` file along with the node information.
+
+The first line (`Node properly registered with key 0x{ecdsa_address}`) confirms that registration is successful.
+
+#### 2. Recognized AVSs
+
+IvyNet will automatically recognize your AVSs.
 
 These will be docker containers that have a known image repository on docker's image registry, `ghcr.io`, `gcr.io`, etc.
-Currently, we support all EigenLayer mainnet AVS's.
+Currently, we support all Symbiotic and EigenLayer mainnet AVSs, as well as most Holesky Eigenlayer AVSs.
 Then, the scanner will search though exposed ports for a working `/metrics` endpoint available at that port.
 (No metrics support yet for network mode host).
 
@@ -61,7 +75,7 @@ Select which containers should be monitored by pressing SPACE and ticking the bo
 
 Confirm the selection by pressing ENTER.
 
-#### 2. Manually Added AVS's.
+#### 3. Manually Added AVSs
 
 IvyNet will also see all running containers.
 
@@ -71,30 +85,34 @@ Enter Y to see a list.
 
 Same as above, select which containers should be monitored by pressing SPACE and confirm the selection by pressing ENTER.
 
-#### 3. Name AVS's. 
+#### 4. Name AVSs
 
 Next step is to name each AVS.
 The name has to be unique per system with ivynet (e.g. VM).
 
-![Screenshot with added AVS's](./imgs/screens/name3.png)
-The command will add all AVS's into the `~/.ivynet/monitor-config.toml` file.
+![Screenshot with added AVSs](./imgs/screens/name3.png)
+The command will add all AVSs into the `~/.ivynet/monitor-config.toml` file.
 
-### Monitor (Nodes) AVS's
+### Monitor (Nodes) AVSs
 
 Now, start the monitor with:
 
 ```
 ivynet monitor
 ```
-If the application is started for the first time, it will ask for ivynet website registration details (username and password).
 
-This information is going to be stored in the `~/.ivynet/ivynet-config.toml` file along with the node information.
+You will see rapid printouts to the CLI as it evaulates the status of your AVSs, starting with lines that look like this:
 
-The first line (`Node properly registered with key 0x{ecdsa_address}`) confirms that registration is successful.
-
-The second one, including `Starting monitor listiner`, indicates that the monitor started will transfer data to the backend.
+```
+2025-02-12T22:14:34.773660Z  INFO ivynet: Parsing commands...
+2025-02-12T22:14:34.785607Z  INFO cli::monitor: Starting monitor listener...
+```
 
 ![Screenshot of successful registration](./imgs/screens/monitor2.png)
+
+After that, the ivynet client will go through and attach listeners to each of your AVSs in order to broadcast their status for viewing in the Ivynet interface.
+
+0.5.0 Update: Monitor no longer requires any user interaction (it has all been moved to scan), feel free to automate restarts in whichever way is most familiar to you.
 
 ## Interface
 
@@ -108,7 +126,7 @@ Be sure to add a public operator key and the corresponding chain to maximize met
 
 ![Screenshot of add key](./imgs/screens/key.svg)
 
-To maximize insights of the manually added AVS's, add a node type.
+To maximize insights of the manually added AVSs, add a node type.
 
 ![Screenshot of add node](./imgs/screens/addtype2.png)
 

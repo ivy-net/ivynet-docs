@@ -33,7 +33,7 @@ For a Node to be added to ivynet with automated scan following conditions have t
 Ivynet observe blockchains to monitor if the operator continues to be part of an active set.
 
 For ivynet to monitor operator status in AVS active set following conditions have be met:
-- AVS is added to list of monitored AVS's on the client
+- AVS is added to list of monitored AVSs on the client
 - client is connected to the backend
 - right chain is selected in the frontend
 - AVS is on the [recognizable AVS list](#appendix-list-of-recognizable-avss)
@@ -59,6 +59,6 @@ For ivynet to transmit metrics following conditions have to be met:
 - the node port where metrics are served is exposed
 - node entry is present in the `~/.ivynet/ivynet-config.toml` configuration file
 
-## Appendix: List of recognizable AVS's
+## Appendix: List of recognizable AVSs
 
 IvyNet is working to recognize all mainnet and holesky AVSs for Ethereum restaking protocols. Containers that are not currently recognized can be manually added. 

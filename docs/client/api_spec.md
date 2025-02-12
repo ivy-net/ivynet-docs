@@ -445,11 +445,11 @@ Same as above, just with more metrics
 
 ## AVS View
 
-### Get all AVS's
+### Get all AVSs
 
 **Endpoint:** `/avs`
 **Method:** `GET`
-**Description:** Gets info on all AVS's
+**Description:** Gets info on all AVSs
 
 #### Response
 
@@ -505,4 +505,4 @@ Same as above, just with more metrics
 
 **Endpoint:** `/info/avs/version`
 **Method:** `GET`
-**Description:** Gets version information for all supported AVSes
+**Description:** Gets version information for all supported AVSs

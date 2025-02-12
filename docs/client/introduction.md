@@ -49,9 +49,9 @@ However, since AVS operators aren’t yet compensated, many are running multiple
 
 ### Where we're going
 
-**Ivynet Client:** For the near term, we’ll focus more on observability features rather than new deployments, as most operators are successfully building out their own AVS instances.
+**Ivynet Client:** For now, we’re focused entirely on observability features as nearly all operators are successfully building out their own AVS instances.
 
-**Interface and API:** Our next near-term release is metrics history (and data scaping endpoints to support that). In the longer term future, we'll enhancing AVS discoverability, statistics, and introducing an AI Ops tool to diagnose issues directly from your logs and metrics.
+**Interface and API:** Our next near-term release is alerting functionality and then Kubernetes integration. In the longer term future, we'll be enhancing AVS discoverability, statistics, and introducing an AI Ops tool to diagnose issues directly from your logs and metrics.
 
 ### Feedback Wanted
 

@@ -30,7 +30,7 @@ The command does not have any special options.
 ### scan
 
 prepares information for the monitoring.
-In the first step this command scans running docker containers for any known AVS's, and let user to select which to monitor.
+In the first step this command scans running docker containers for any known AVSs, and let user to select which to monitor.
 Additionally, it allows users to specify any running container.
 All information are added into the `~/.ivynet/monitor-config.toml` file.
 
@@ -84,7 +84,7 @@ Some of them are not implement or do not work at the moment.
 ### key
 
 provides methods to manage cryptographic keys.
-Ivynet does not require any key to interact with AVS's, so these command are not essential for ivynet.
+Ivynet does not require any key to interact with AVSs, so these command are not essential for ivynet.
 
 <!-- Commented out until deployments brought back in -->
 <!-- ## Key

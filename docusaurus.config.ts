@@ -69,7 +69,7 @@ const config: Config = {
           activeBasePath: '/docs/',
         },
         {
-          to: 'docs/client/clientExplanation',
+          to: 'docs/client/introduction',
           label: 'Client',
           position: 'left',
           activeBasePath: 'docs/client/',

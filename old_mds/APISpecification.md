@@ -405,15 +405,15 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 <!-- ## AVS -->
 
-<!-- AVS Specific information like what AVS's are being run, what AVS's can be run, registration information, etc.
+<!-- AVS Specific information like what AVSs are being run, what AVSs can be run, registration information, etc.
 
-### Get All Deployable AVS's
+### Get All Deployable AVSs
 
 **Endpoint:** `/avs/`
 
 **Method:** `GET`
 
-**Description:** Retrieves all AVS's deployable with the Ivynet Client
+**Description:** Retrieves all AVSs deployable with the Ivynet Client
 
 **Response:**
 
@@ -467,13 +467,13 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 }
 ``` -->
 <!--
-### Get All Deployed AVS's
+### Get All Deployed AVSs
 
 **Endpoint:** `/avs/deployed/`
 
 **Method:** `GET`
 
-**Description:** Retrieves all Ivynet deployed AVS's
+**Description:** Retrieves all Ivynet deployed AVSs
 
 **Response:**
 
@@ -506,13 +506,13 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 }
 ``` -->
 
-<!-- ### Get All Registered AVS's
+<!-- ### Get All Registered AVSs
 
 **Endpoint:** `/avs/registered/`
 
 **Method:** `GET`
 
-**Description:** Retrieves all registrations statuses for Ivynet deployable AVS's
+**Description:** Retrieves all registrations statuses for Ivynet deployable AVSs
 
 **Response:**
 
@@ -557,7 +557,7 @@ NoRunningAvsFound("No running AVS found when searching for condensed metrics")
 
 **Method:** `GET`
 
-**Description:** Retrieves all Ivynet deployed AVS's that need an update
+**Description:** Retrieves all Ivynet deployed AVSs that need an update
 
 **Response:**
 
