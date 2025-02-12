@@ -10,7 +10,9 @@ sidebar_position: 5
   - The Ivynet Client is running, but is not aware of any currently running AVSs.
   If you have recently changed AVSs, remember to rescan!
 - `SystemResourcesUsage`
-  - The machine resource usage, specifically memory and/or disk space, is greater than 90%.
+  - The machine resource usage, specifically memory and/or disk space, being greater than 90% is a `Warning` status. If it is higher than 95%, it is `Critical`. Disks are evaluated individually (by partition), and the worst score of any single disk is how criticality is determined.
+- `ClientUpdateRequired`
+  - This means the `ivynet` client you are using is on `0.4.X`, and we recommend you update to `0.5.X`
 
 ## Node Error
 
