@@ -23,7 +23,7 @@ That helps to familiarize with metrics available from an AVS.
 ## Docker image deployer
 
 The repository also contains packer scripts to prepare a Docker image containing smart contracts.
-The image is based on the Foundry Anvil one and adds precompiled smart contracts of EigenLayer and AVSes.
+The image is based on the Foundry Anvil one and adds precompiled smart contracts of EigenLayer and AVSs.
 It can be used to help in developing other solutions.
 Slight modifications (e.g., adjusting Network Id) enable smart contract deployments to other networks (e.g., Anvil or a public Testnet).
 That can be an element of a multi-step CI/CD pipeline.
