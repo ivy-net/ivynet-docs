@@ -36,8 +36,9 @@ This process will soon be DIY.
 ## Setup and Configuration
 
 - Docker containers must have static names.
-- Preferred: Docker containers must have metrics ports exposed through bridge mode, not network mode host. 
-  - 0.5.0 Update: Ivynet client now builds a sidecar to grab network mode host ports directly. If there are any problems here, we still recommend explicitly exposing ports for metrics.
+- Preferred: Docker containers must have a metrics port exposed for metrics telemetry, with bridge mode preferred.
+  - 0.5.0 Update: Ivynet client now builds a sidecar to grab network mode host ports directly. If there are any problems here, we still recommend explicitly exposing ports for metrics through bridge network mode.
+- Binaries are not supported *yet*.
 
 Check AVS startup scripts example on this [page](./AVSstartup.md).
 
