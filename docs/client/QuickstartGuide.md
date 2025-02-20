@@ -20,8 +20,7 @@ If not, go to their respecitve websites:
   - [EigenLayer](https://docs.eigenlayer.xyz/eigenlayer/operator-guides/operator-installation)
 - All AVSs are deployed with Docker
 - You have obtained an ivynet username and password.
-If not, contact us on [telegram](https://t.me/ivynetdotdev) and we will create an organization on your behalf.
-This process will soon be DIY.
+If not, sign up [here](https://metrics.ivynet.dev/signup).
 
 ## Installation
 
